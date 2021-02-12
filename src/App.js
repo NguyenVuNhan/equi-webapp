@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <GlobalStyles />
-      <h1>EQUI web-app fjdsanl dusaiiou dhsaibfksak </h1>
+      <h1>EQUI web-app fjds bdkasb anl dusaiiou dhsaibfksak </h1>
     </div>
   );
 }
