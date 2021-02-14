@@ -1,22 +1,29 @@
-image: node:10.16.3 # change to match your project's node version
+image: node:14.15.1 # change to match your project's node version
+
+stages: 
+ - build
+ - deploy 
 
 cache:
   paths:
     - node_modules/
 
-before_script:
-  - rm -rf build
-  - CI=false npm install
-
 pages:
-  stage: deploy
-  script:
+  stage: build
+    script: 
+    - rm -rf build
+    - CI=false npm install
     - CI=false npm run build
     - rm -rf public
     - cp build/index.html build/404.html
     - mv build public
-  artifacts:
-    paths:
+    artifacts:
+      paths:
       - public
-  only:
-    - master
+  stage: deploy
+    script:
+     - ls
+   artifacts:
+     paths:
+      - public
+ 
