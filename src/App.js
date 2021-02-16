@@ -1,4 +1,4 @@
-import logo from "./VIRTUeLOGO.png";
+import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
