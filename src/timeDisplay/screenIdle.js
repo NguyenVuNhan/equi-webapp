@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { VictoryChart, VictoryPolarAxis, VictoryTheme, VictoryLine } from 'victory';
 
-
 var hour = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; // containing half day hours to
-
-
 
 class Idle extends Component {
     constructor(props) {
