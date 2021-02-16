@@ -5,10 +5,11 @@ class DataDisplayed extends Component {
     render() {
         return (
             <div>
-                <VictoryChart polar
+                <VictoryChart
+                    polar={true}
                     startAngle={90}
                     endAngle={450}
-                    innerRadius="50"
+                    innerRadius={50}
                     theme={VictoryTheme.material}
                     domain={{ y: [0, 100], x: [25, 0] }}>
                     <VictoryPolarAxis dependentAxis
