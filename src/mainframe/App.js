@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import DataDisplayed from './dataDisplay/dataDisplayed';
-import Idle from './timeDisplay/screenIdle';
+import DataDisplayed from '../dataDisplay/dataDisplayed';
+import Idle from '../timeDisplay/screenIdle';
 import styled from 'styled-components';
 
 class App extends React.Component {
