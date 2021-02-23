@@ -3,7 +3,7 @@
 }
 
 .blackbox {
-  background: black;
+  background: rgb(0, 0, 0);
   flex: auto;
   align-items: center;
   overflow: hidden;
@@ -22,7 +22,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #6187d3;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -33,7 +33,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #e28711;
 }
 
 @keyframes App-logo-spin {
