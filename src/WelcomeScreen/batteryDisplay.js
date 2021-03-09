@@ -1,3 +1,5 @@
+import React, { useEffect } from "react";
+
 const batteryDisplay = (p) => {
   let cx, cy;
   let batteryLevel = 0;
