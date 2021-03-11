@@ -1,6 +1,9 @@
 import "./App.css";
-import React from "react";
+import React, { useEffect } from "react";
 import Standby from "../pages/Standby";
+
+import { useDispatch } from "react-redux";
+import { loadApi } from "../actions/apiAction";
 
 class App extends React.Component {
   render() {
