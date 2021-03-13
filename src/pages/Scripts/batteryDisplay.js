@@ -1,5 +1,3 @@
-import React, { useEffect } from "react";
-
 const batteryDisplay = (p) => {
   let cx, cy;
   let batteryLevel = 0;
@@ -12,25 +10,31 @@ const batteryDisplay = (p) => {
     p.angleMode(p.DEGREES);
     cx = p.width / 2;
     cy = p.height / 2;
-
     p.frameRate(30);
-    yvalues = new Array(100);
+    yvalues = new Array(50);
   };
 
   p.keyPressed = function () {
-    if (p.keyCode === p.RIGHT_ARROW) {
-      batteryLevel += 5;
-    } else if (p.keyCode === p.LEFT_ARROW) {
-      batteryLevel -= 5;
-    } else if (p.keyCode === p.UP_ARROW) {
-      console.log("x:" + p.mouseX);
-      console.log("y:" + p.mouseY);
+    if (p.keyCode === p.RIGHT_ARROW) 
+    {
+      batteryLevel += 10;
+    }
+    else if (p.keyCode === p.LEFT_ARROW) 
+    {
+      batteryLevel -= 10;
     }
   };
 
   p.draw = function () {
+
+    let hour = p.hour();
+    let minute = p.minute();
+    let hrAngle = p.map(hour % 12, 0, 12, 0, 360);
+    let minAngle = p.map(minute, 0, 60, 0, 360);
+
     EnergyColor(batteryLevel);
-    p.push(); // dial / cursor
+
+    p.push();
     p.fill(0);
     p.stroke(color); // circle
     p.strokeWeight(15);
@@ -39,15 +43,7 @@ const batteryDisplay = (p) => {
 
     EnergyLevels(batteryLevel, color);
 
-    /*p.push(); // dial / cursor
-    p.translate(cx, cy); // move to center of screen
-    p.rotate(angle);
-    p.stroke(color);
-    p.strokeWeight(5);
-    p.line(0, 0, 300, 300); // x1 , y1, x2, y2
-    p.pop();*/
-
-    p.push();
+    p.push(); 
     p.translate(cx, cy); // move to center of screen
     p.rotate(180);
     p.noStroke();
@@ -55,39 +51,70 @@ const batteryDisplay = (p) => {
     p.ellipse(0, 0, 250, 250); // circle
     p.rect(-40, 0, 80, 640); //rectangle
     p.pop();
+
+    Minutes(minAngle);
+    Hours(hrAngle);
   };
 
-  function MakeWaveLine(x1, x2, y) {
+  function Minutes(minAngle)
+  { 
+    p.push();
+    p.translate(cx, cy); // move to center of screen
+    p.stroke(125,125,125);
+    p.strokeWeight(7);
+    p.rotate(minAngle-90);
+    p.line(0,0,400,0);
+    p.pop();
+  }
+
+  function Hours(hrAngle)
+  { 
+    p.push(); 
+    p.translate(cx, cy); // move to center of screen
+    p.stroke(125,125,125);
+    p.strokeWeight(10);
+    p.rotate(hrAngle-90);
+    p.line(0,0,250,0);
+    p.pop();
+  }
+
+  function MakeWaveLine(x1, x2, y)
+  {
     p.noStroke();
-    for (let i = x1; i <= x2; i += 15) {
-      let diameter = p.random(20, 25);
+    for(let i=x1;i<=x2; i+=15)
+    {
+      let diameter = p.random(15,20);
       MoveWaveLine(x2, y);
       p.ellipse(i, yvalues[i], diameter, diameter);
     }
   }
 
-  function MoveWaveLine(cx2, y) {
-    p.theta += 0.05;
-    for (let i = 0; i < cx2 + 10; i++) {
-      if (i % 2 == 0) yvalues[i] = y + p.random(2, 4);
-      else yvalues[i] = y - p.random(1, 2);
+  function MoveWaveLine(cx2, y)
+  {
+    p.theta+=0.02;
+    for (let i = 0; i < cx2+10; i++) {
+      if(i%2==0)
+      yvalues[i] = y+p.random(2,4);
+      else
+      yvalues[i] = y-p.random(1,2);
     }
 
     let x = p.theta;
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 100; i++) 
+    {
       // Every other wave is cosine instead of sine
-      if (i % 2 == 0) {
-        yvalues[i] += p.sin(x) * 2;
-      } else {
-        yvalues[i] += p.cos(x) * 2;
-      }
-      x = y;
+      yvalues[i] += p.sin(x) * 75.0;
+      x += y;
     }
   }
 
-  function EnergyLevels(energy, color) {
-    if (energy === 0) {
-    } else if (energy <= 10 && energy > 0) {
+  function EnergyLevels(energy, color)
+  {
+    if(energy === 0)
+    {
+    }
+    else if(energy <= 10 && energy > 0)
+    {
       p.stroke(color);
       p.noStroke();
       p.fill(color);
@@ -101,7 +128,9 @@ const batteryDisplay = (p) => {
       p.curveVertex(708, 940);
       p.endShape(p.CLOSE);
       MakeWaveLine(343, 730, 940);
-    } else if (energy <= 20 && energy > 10) {
+    }
+    else if(energy <= 20 && energy > 10)
+    {
       p.stroke(color);
       p.noStroke();
       p.fill(color);
@@ -118,7 +147,9 @@ const batteryDisplay = (p) => {
       p.curveVertex(760, 840);
       p.endShape(p.CLOSE);
       MakeWaveLine(210, 870, 840);
-    } else if (energy <= 30 && energy > 20) {
+    }
+    else if(energy <= 30 && energy > 20)
+    {
       p.stroke(color);
       p.noStroke();
       p.fill(color);
@@ -137,7 +168,9 @@ const batteryDisplay = (p) => {
       p.curveVertex(850, 740);
       p.endShape(p.CLOSE);
       MakeWaveLine(140, 945, 740);
-    } else if (energy <= 40 && energy > 30) {
+    }
+    else if(energy <= 40 && energy > 30)
+    {
       p.stroke(color);
       p.noStroke();
       p.fill(color);
@@ -159,7 +192,9 @@ const batteryDisplay = (p) => {
       p.curveVertex(870, 640);
       p.endShape(p.CLOSE);
       MakeWaveLine(105, 975, 640);
-    } else if (energy <= 50 && energy > 40) {
+    }
+    else if(energy <= 50 && energy > 40)
+    {
       p.stroke(color);
       p.fill(color);
       p.beginShape();
@@ -183,7 +218,9 @@ const batteryDisplay = (p) => {
       p.curveVertex(900, 540);
       p.endShape(p.CLOSE);
       MakeWaveLine(95, 980, 540);
-    } else if (energy <= 60 && energy > 50) {
+    }
+    else if(energy <= 60 && energy > 50)
+    {
       p.stroke(color);
       p.line(105, 440, 975, 440);
       p.fill(color);
@@ -211,7 +248,9 @@ const batteryDisplay = (p) => {
       p.curveVertex(880, 440);
       p.endShape(p.CLOSE);
       MakeWaveLine(105, 975, 440);
-    } else if (energy <= 70 && energy > 60) {
+    }
+    else if(energy <= 70 && energy > 60)
+    {
       p.stroke(color);
       p.fill(color);
       p.noStroke();
@@ -240,7 +279,9 @@ const batteryDisplay = (p) => {
       p.curveVertex(850, 340);
       p.endShape(p.CLOSE);
       MakeWaveLine(140, 940, 340);
-    } else if (energy <= 80 && energy > 70) {
+    }
+    else if(energy <= 80 && energy > 70)
+    {
       p.stroke(color);
       p.fill(color);
       p.noStroke();
@@ -271,7 +312,9 @@ const batteryDisplay = (p) => {
       p.curveVertex(800, 240);
       p.endShape(p.CLOSE);
       MakeWaveLine(210, 870, 240);
-    } else if (energy <= 90 && energy > 80) {
+    }
+    else if(energy <= 90 && energy > 80)
+    {
       p.stroke(color);
       p.fill(color);
       p.noStroke();
@@ -304,7 +347,9 @@ const batteryDisplay = (p) => {
       p.curveVertex(535, 140);
       p.endShape(p.CLOSE);
       MakeWaveLine(345, 745, 140);
-    } else if (energy === 100) {
+    }
+    else if(energy <= 100)
+    {
       p.fill(color);
       p.noStroke();
       p.beginShape();
@@ -337,35 +382,63 @@ const batteryDisplay = (p) => {
       p.endShape(p.CLOSE);
     }
   }
+  
+  function EnergyColor(energy)
+  {
+      if(energy === 100)
+      {
+        color = p.color(0, 255, 0);
+      }
+      else if(energy > 90 && energy < 100)
+      {
+        color = p.color(50, 255, 0);
+      }
+      else if(energy <= 90 && energy > 80)
+      {
+        color = p.color(75, 255, 0);
+      }
+      else if(energy <= 80 && energy > 70)
+      {
+        color = p.color(100, 255, 0);
+      }
+      else if(energy <= 70 && energy > 60)
+      {
+        color = p.color(125, 255, 0);
+      }
+      else if(energy <= 60 && energy > 50)
+      {
+        color = p.color(150, 255, 0);
+      }
+      else if(energy <= 50 && energy > 40)
+      {
+        color = p.color(255, 200, 0);
+      }
+      else if(energy <= 40 && energy > 30)
+      {
+        color = p.color(200, 150, 0);
+      }
+      else if(energy <= 30 && energy > 20)
+      {
+        color = p.color(200, 125, 0);
+      }
+      else if(energy <= 20 && energy > 10)
+      {
+        color = p.color(255, 75, 0);
+      }
+      else if(energy <= 10 && energy > 0)
+      {
+        color = p.color(255, 50, 0);
+      }
+      else if(energy === 0)
+      {
+        color = p.color(255, 0, 0);
+      }
+      else
+      {
 
-  function EnergyColor(energy) {
-    if (energy === 100) {
-      color = p.color(0, 255, 0);
-    } else if (energy > 90 && energy < 100) {
-      color = p.color(50, 255, 0);
-    } else if (energy <= 90 && energy > 80) {
-      color = p.color(75, 255, 0);
-    } else if (energy <= 80 && energy > 70) {
-      color = p.color(100, 255, 0);
-    } else if (energy <= 70 && energy > 60) {
-      color = p.color(125, 255, 0);
-    } else if (energy <= 60 && energy > 50) {
-      color = p.color(150, 255, 0);
-    } else if (energy <= 50 && energy > 40) {
-      color = p.color(255, 200, 0);
-    } else if (energy <= 40 && energy > 30) {
-      color = p.color(200, 150, 0);
-    } else if (energy <= 30 && energy > 20) {
-      color = p.color(200, 125, 0);
-    } else if (energy <= 20 && energy > 10) {
-      color = p.color(255, 75, 0);
-    } else if (energy <= 10 && energy > 0) {
-      color = p.color(255, 50, 0);
-    } else if (energy === 0) {
-      color = p.color(255, 0, 0);
-    } else {
-    }
+      }
   }
 };
+
 
 export default batteryDisplay;

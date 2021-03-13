@@ -1,26 +1,14 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./mainframe/App";
-import reportWebVitals from "./reportWebVitals";
-
-//Redux setup
-import { createStore, applyMiddleware, compose } from "redux";
-import rootReducer from "./reducers/index";
-import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-
-//create Redux store
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancer(applyMiddleware(thunk)));
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './Mainframe/App';
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <App />
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
