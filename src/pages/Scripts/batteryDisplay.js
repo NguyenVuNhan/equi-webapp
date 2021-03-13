@@ -3,6 +3,7 @@ const batteryDisplay = (p) => {
   let batteryLevel = 0;
   let color;
   let yvalues;
+  let yoff = 0.0; // 2nd dimension of perlin noise
 
   p.setup = function () {
     p.createCanvas(1080, 1080);
@@ -22,6 +23,11 @@ const batteryDisplay = (p) => {
     else if (p.keyCode === p.LEFT_ARROW) 
     {
       batteryLevel -= 10;
+    }
+    else if (p.keyCode === p.UP_ARROW)
+    {
+      console.log('x:' + p.mouseX);
+      console.log('y:' + p.mouseY);
     }
   };
 
@@ -80,32 +86,25 @@ const batteryDisplay = (p) => {
 
   function MakeWaveLine(x1, x2, y)
   {
+    p.push();
     p.noStroke();
-    for(let i=x1;i<=x2; i+=15)
-    {
-      let diameter = p.random(15,20);
-      MoveWaveLine(x2, y);
-      p.ellipse(i, yvalues[i], diameter, diameter);
-    }
-  }
+    p.beginShape();
+    let xoff = 1; // Option #1: 2D Noise
+    // Iterate over horizontal pixels
+    for (let x = x1; x <= x2; x += 5) {
+      // Calculate a y value according to noise, map to
 
-  function MoveWaveLine(cx2, y)
-  {
-    p.theta+=0.02;
-    for (let i = 0; i < cx2+10; i++) {
-      if(i%2==0)
-      yvalues[i] = y+p.random(2,4);
-      else
-      yvalues[i] = y-p.random(1,2);
+      // Option #1: 2D Noise
+      let newY = p.map(p.noise(xoff, yoff), 0, 1, y-30, y+25);
+  
+      p.vertex(x, newY);
+      xoff += 0.03; // Increment x dimension for noise
     }
-
-    let x = p.theta;
-    for (let i = 0; i < 100; i++) 
-    {
-      // Every other wave is cosine instead of sine
-      yvalues[i] += p.sin(x) * 75.0;
-      x += y;
-    }
+    yoff += 0.03; // Increment y dimension for noise
+    p.vertex(x2+10, y);
+    p.vertex(x1-10, y);
+    p.endShape(p.CLOSE);
+    p.pop();
   }
 
   function EnergyLevels(energy, color)
@@ -116,7 +115,6 @@ const batteryDisplay = (p) => {
     else if(energy <= 10 && energy > 0)
     {
       p.stroke(color);
-      p.noStroke();
       p.fill(color);
       p.beginShape();
       p.curveVertex(320, 940);
@@ -132,7 +130,6 @@ const batteryDisplay = (p) => {
     else if(energy <= 20 && energy > 10)
     {
       p.stroke(color);
-      p.noStroke();
       p.fill(color);
       p.beginShape();
       p.curveVertex(205, 840);
@@ -151,7 +148,6 @@ const batteryDisplay = (p) => {
     else if(energy <= 30 && energy > 20)
     {
       p.stroke(color);
-      p.noStroke();
       p.fill(color);
       p.beginShape();
       p.curveVertex(140, 740);
@@ -172,7 +168,6 @@ const batteryDisplay = (p) => {
     else if(energy <= 40 && energy > 30)
     {
       p.stroke(color);
-      p.noStroke();
       p.fill(color);
       p.beginShape();
       p.curveVertex(105, 640);
@@ -222,9 +217,7 @@ const batteryDisplay = (p) => {
     else if(energy <= 60 && energy > 50)
     {
       p.stroke(color);
-      p.line(105, 440, 975, 440);
       p.fill(color);
-      p.noStroke();
       p.beginShape();
       p.curveVertex(105, 440);
       p.curveVertex(95, 540);
@@ -253,7 +246,6 @@ const batteryDisplay = (p) => {
     {
       p.stroke(color);
       p.fill(color);
-      p.noStroke();
       p.beginShape();
       p.curveVertex(140, 340);
       p.curveVertex(105, 440);
@@ -284,7 +276,6 @@ const batteryDisplay = (p) => {
     {
       p.stroke(color);
       p.fill(color);
-      p.noStroke();
       p.beginShape();
       p.curveVertex(205, 240);
       p.curveVertex(140, 340);
@@ -317,7 +308,6 @@ const batteryDisplay = (p) => {
     {
       p.stroke(color);
       p.fill(color);
-      p.noStroke();
       p.beginShape();
       p.curveVertex(330, 140);
       p.curveVertex(205, 240);
