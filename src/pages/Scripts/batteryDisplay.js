@@ -15,6 +15,7 @@ const batteryDisplay = (p) => {
     yvalues = new Array(50);
   };
 
+  //handles the fetched data as a prop
   p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
     if (props.batteryLevel !== null) {
       batteryLevel = p.int(props.batteryLevel);
