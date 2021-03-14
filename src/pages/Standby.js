@@ -7,6 +7,7 @@ import P5Wrapper from "react-p5-wrapper";
 import batteryDisplay from "./Scripts/batteryDisplay";
 
 const Standby = () => {
+  //fetching api data
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadApi());
@@ -15,10 +16,19 @@ const Standby = () => {
   const { apiData } = useSelector((state) => state.api);
 
   if (apiData.data) {
-    console.log(apiData);
+    console.log(apiData.data.bpi.USD.rate);
   }
 
-  return <P5Wrapper sketch={batteryDisplay} />;
+  return (
+    <div>
+      {apiData.data && (
+        <P5Wrapper
+          sketch={batteryDisplay}
+          batteryLevel={apiData.data.bpi.USD.rate}
+        />
+      )}
+    </div>
+  );
 };
 
 export default Standby;
