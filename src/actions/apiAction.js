@@ -7,7 +7,7 @@ export const loadApi = () => async (dispatch) => {
   const apiData = await axios.get(base_url);
 
   dispatch({
-    type: "FETCH_GAMES",
+    type: "FETCH_DATA",
     payload: {
       apiData: apiData,
     },
