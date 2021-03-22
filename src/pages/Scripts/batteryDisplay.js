@@ -5,6 +5,9 @@ const batteryDisplay = (p) => {
   let yvalues;
   let yoff = 0.0; // 2nd dimension of perlin noise
 
+  // creating variables
+  let energyBalance = 50;
+
   p.setup = function () {
     p.createCanvas(1080, 1080);
     p.stroke(0);
@@ -62,6 +65,8 @@ const batteryDisplay = (p) => {
 
     Minutes(minAngle);
     Hours(hrAngle);
+
+    // EnergyParticle(energyBalance);
   };
 
   function Minutes(minAngle) {
@@ -376,6 +381,24 @@ const batteryDisplay = (p) => {
     } else if (energy === 0) {
       color = p.color(255, 0, 0);
     } else {
+    }
+  }
+
+  function EnergyParticle(energyBalance) {
+    let rate;
+    let color;
+    let particleSize;
+
+    p.fill(255, 0, 0);
+
+    p.ellipse(cx, cy, 100);
+
+    rate = p.map(0, 100, 15, 120); //mapping from 0-100 to 20-120
+
+    //console.log(rate);
+
+    if (p.frameCount % (p.interval * 30) == 0) {
+      p.ellipse(0, 0, 100);
     }
   }
 };
