@@ -1,12 +1,14 @@
-const batteryDisplay = (p) => {
-  let cx, cy;
-  let batteryLevel = 0;
-  let color;
-  let yvalues;
-  let yoff = 0.0; // 2nd dimension of perlin noise
+import energyIcon from '../../custom-icons/EnergyIcon.svg';
+import scheduleIcon from '../../custom-icons/SchedulingIcon.svg';
+import devicesIcon from '../../custom-icons/AppliancesIcon.svg';
+import xIcon from '../../custom-icons/Union.svg';
 
-  // creating variables
-  let energyBalance = 50;
+const equi = (p) => {
+  let yoff = 0.0; // 2nd dimension of perlin noise
+  let URL = 'https://api.coindesk.com/v1/bpi/currentprice/CNY.json';
+  let page = 1;
+  let angle = -125;
+  let energyBtn, devicesBtn, scheduleBtn, cancelBtn, color, cx, cy, batteryLevel = 0;
 
   p.setup = function () {
     p.createCanvas(1080, 1080);
@@ -15,93 +17,182 @@ const batteryDisplay = (p) => {
     cx = p.width / 2;
     cy = p.height / 2;
     p.frameRate(30);
-    yvalues = new Array(50);
+    p.loadJSON(URL, getBatterLevel); // get battery level on startup
+    
+    energyBtn = p.loadImage(energyIcon);
+    devicesBtn = p.loadImage(devicesIcon);
+    scheduleBtn = p.loadImage(scheduleIcon);
+    cancelBtn =  p.loadImage(xIcon);
   };
 
-  //handles the fetched data as a prop
-  p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
-    if (props.batteryLevel !== null) {
-      batteryLevel = p.int(props.batteryLevel);
-      console.log(p.int(props.batteryLevel));
-    }
-  };
+  function getBatterLevel(level){
+    batteryLevel = p.int(level.bpi.USD.rate); // update battery level
+  }
 
-  p.keyPressed = function () {
-    if (p.keyCode === p.RIGHT_ARROW) {
-      batteryLevel += 10;
-    } else if (p.keyCode === p.LEFT_ARROW) {
-      batteryLevel -= 10;
-    } else if (p.keyCode === p.UP_ARROW) {
+  p.keyPressed = function () { // Input handler
+    if (p.keyCode === p.UP_ARROW) {
       console.log("x:" + p.mouseX);
       console.log("y:" + p.mouseY);
+    }
+    else if (p.keyCode === p.RIGHT_ARROW) 
+    {
+      angle += 5;
+      if(angle >= 215)
+      { 
+        angle = -125;
+      }
+    }
+    else if (p.keyCode === p.LEFT_ARROW) 
+    {
+      angle -= 5;
+      if(angle <= -125)
+      { 
+        angle = 215;
+      }
+    }
+    else if(p.keyCode === p.ENTER)
+    {
+      switch(page)
+      {
+        case 1:
+          page = 2; // Main menu
+          break;
+        case 2:
+          if(angle >= -105 &&  angle <= -70)
+          {
+            page = 1; // Battery display
+          }
+          else if(angle <= 200 &&  angle >= 160)
+          {
+            page = 3; // Energy display
+            console.log('energy pressed');
+          }
+          else if(angle >= -30 &&  angle <= 10)
+          {
+            console.log('appliances pressed');
+          }
+          else if(angle <= 120 &&  angle >= 80)
+          {
+            console.log('schedule pressed');
+          }
+          break;
+        case 3:
+          page = 2;
+          break;
+      }
     }
   };
 
   p.draw = function () {
-    let hour = p.hour();
-    let minute = p.minute();
-    let hrAngle = p.map(hour % 12, 0, 12, 0, 360);
-    let minAngle = p.map(minute, 0, 60, 0, 360);
+    switch(page)
+      {
+        case 1:
+          p.loadJSON(URL, getBatterLevel); // constantly obtain battery level
+          let hour = p.hour();
+          let minute = p.minute();
+          let hrAngle = p.map(hour % 12, 0, 12, 0, 360);
+          let minAngle = p.map(minute, 0, 60, 0, 360);
 
-    EnergyColor(batteryLevel);
+          EnergyColor(batteryLevel);
 
-    p.push();
-    p.fill(0);
-    p.stroke(color); // circle
-    p.strokeWeight(15);
-    p.arc(cx, cy, 900, 900, 0, 360);
-    p.pop();
+          p.push();
+          p.fill(0);
+          p.stroke(color); // circle
+          p.strokeWeight(15);
+          p.arc(cx, cy, 900, 900, 0, 360);
+          p.pop();
 
-    EnergyLevels(batteryLevel, color);
+          EnergyLevels(batteryLevel, color);
 
-    p.push();
-    p.translate(cx, cy); // move to center of screen
-    p.rotate(180);
-    p.noStroke();
-    p.fill(255, 255, 255); // cable / potentiometer (white area)
-    p.ellipse(0, 0, 250, 250); // circle
-    p.rect(-40, 0, 80, 640); //rectangle
-    p.pop();
+          Minutes(minAngle);
+          Hours(hrAngle, minAngle);
+          break;
+        case 2:
+          p.push();
+          p.fill(0);
+          p.stroke(150, 150, 150); // circle
+          p.strokeWeight(15);
+          p.arc(cx, cy, 900, 900, 0, 360);
+          p.pop();
+         
+          p.push();
+          p.noFill();
+          p.translate(cx, cy); // move to center of screen
+          p.stroke(150,150,150);
+          p.strokeWeight(25);
+          p.ellipse(0,0,550,550);
+          p.pop();
+          
+          selectionMenu(); 
+          dial();
+          break;
+        case 3:
+          p.push();
+          p.fill(0);
+          p.stroke(150, 150, 150); // circle
+          p.strokeWeight(15);
+          p.arc(cx, cy, 900, 900, 0, 360);
+          p.pop();
 
-    Minutes(minAngle);
-    Hours(hrAngle);
+          dial();
 
-    // EnergyParticle(energyBalance);
+          break;
+      }
+      p.push(); 
+      p.translate(cx, cy); // move to center of screen
+      p.rotate(180);
+      p.noStroke();
+      p.fill(255, 255, 255); // cable / potentiometer (white area)
+      p.ellipse(0, 0, 250, 250); // circle
+      p.rect(-40, 0, 80, 640); //rectangle
+      p.pop();
   };
 
-  function Minutes(minAngle) {
-    p.push();
-    p.translate(cx, cy); // move to center of screen
-    p.stroke(125, 125, 125);
-    p.strokeWeight(7);
-    p.rotate(minAngle - 90);
-    p.line(0, 0, 400, 0);
+  // --------------------------- MAIN MENU ---------------------------
+  function dial(){
+    p.push(); 
+    p.translate(cx, cy);
+    p.rotate(angle);
+    p.stroke(150, 100, 150);
+    p.strokeWeight(5);
+    p.line(0, 0, 300, 300); // x1 , y1, x2, y2
     p.pop();
   }
 
-  function Hours(hrAngle) {
+  function selectionMenu(){
     p.push();
-    p.translate(cx, cy); // move to center of screen
-    p.stroke(125, 125, 125);
+    p.stroke(150,150,150);
     p.strokeWeight(10);
-    p.rotate(hrAngle - 90);
-    p.line(0, 0, 250, 0);
+    p.fill('rgba(50,50,50,1)'); // top right
+    p.ellipse(750,350,200,200);
+    p.image(cancelBtn, 700, 295);
+
+    p.fill('rgba(244,230,150,1)'); // top left
+    p.ellipse(350,350,200,200);
+    p.image(energyBtn, 300, 270); 
+
+    p.fill('rgba(117,199,204,1)'); // bot right
+    p.ellipse(770,700,200,200);
+    p.image(devicesBtn, 705, 625); 
+
+    p.fill('rgba(226,76,58,1)'); // bot left
+    p.ellipse(320,700,200,200);
+    p.image(scheduleBtn, 255, 630); 
     p.pop();
   }
 
+  // --------------------------- BATTERY DISPLAY ---------------------------
   function MakeWaveLine(x1, x2, y) {
     p.push();
     p.noStroke();
     p.beginShape();
-    let xoff = 1; // Option #1: 2D Noise
+    let xoff = 1;
     // Iterate over horizontal pixels
-    for (let x = x1; x <= x2; x += 5) {
-      // Calculate a y value according to noise, map to
-
-      // Option #1: 2D Noise
+    for (let x = x1; x <= x2; x += 5)
+    {
       let newY = p.map(p.noise(xoff, yoff), 0, 1, y - 30, y + 25);
-
       p.vertex(x, newY);
+
       xoff += 0.03; // Increment x dimension for noise
     }
     yoff += 0.03; // Increment y dimension for noise
@@ -111,6 +202,29 @@ const batteryDisplay = (p) => {
     p.pop();
   }
 
+  // Minute dial
+  function Minutes(minAngle) {
+    p.push();
+    p.translate(cx, cy);
+    p.stroke(125, 125, 125);
+    p.strokeWeight(7);
+    p.rotate(minAngle - 90);
+    p.line(0, 0, 400, 0);
+    p.pop();
+  }
+
+  // Hour dial
+  function Hours(hrAngle, minAngle) {
+    p.push();
+    p.translate(cx, cy);
+    p.stroke(125, 125, 125);
+    p.strokeWeight(10);
+    p.rotate((hrAngle - 90) + (minAngle/60));
+    p.line(0, 0, 250, 0);
+    p.pop();
+  }
+
+  // Wave that displays battery level
   function EnergyLevels(energy, color) {
     if (energy === 0) {
     } else if (energy <= 10 && energy > 0) {
@@ -355,6 +469,7 @@ const batteryDisplay = (p) => {
     }
   }
 
+  // Color of Energy wave
   function EnergyColor(energy) {
     if (energy === 100) {
       color = p.color(0, 255, 0);
@@ -383,24 +498,6 @@ const batteryDisplay = (p) => {
     } else {
     }
   }
-
-  function EnergyParticle(energyBalance) {
-    let rate;
-    let color;
-    let particleSize;
-
-    p.fill(255, 0, 0);
-
-    p.ellipse(cx, cy, 100);
-
-    rate = p.map(0, 100, 15, 120); //mapping from 0-100 to 20-120
-
-    //console.log(rate);
-
-    if (p.frameCount % (p.interval * 30) == 0) {
-      p.ellipse(0, 0, 100);
-    }
-  }
 };
 
-export default batteryDisplay;
+export default equi;
