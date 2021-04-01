@@ -11,6 +11,9 @@ margin-top: 5%;
 position: absolute;
 display: flex;
 justify-content: center;
+-webkit-box-shadow:inset 110px 0px 0px 10px rgb(22, 172, 122);
+-moz-box-shadow:inset 0px 110px 0px 10px rgb(0, 170, 128);
+box-shadow:inset 0px 0px 110px 5px rgb(0, 189, 173);
 `
 
 export const CablesArea = styled.div`
