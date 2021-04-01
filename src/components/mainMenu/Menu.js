@@ -16,11 +16,11 @@ class Menu extends Component {
     return (
       <div className="equi" >
         <div className="equiBackground">
-        <div className="potentiometerPosition"/>
-        <div className="rectangleCable"/>
+          <div className="potentiometerPosition"/>
+            <div className="rectangleCable"/>
               <div className="grid2x2">
-                    <div>
-                    <ReactSVG
+                  <div>
+                  <ReactSVG
                     afterInjection={(error, svg) => {
                       if (error) {
                         console.error(error)
@@ -43,8 +43,8 @@ class Menu extends Component {
                     src={EnergySVG}
                     useRequestCache={false}
                     wrapper="div"/>
-                   </div>
-                   <div>
+                  </div>
+                  <div>
                     <ReactSVG
                     afterInjection={(error, svg) => {
                       if (error) {
@@ -68,8 +68,8 @@ class Menu extends Component {
                     src={EnergySVG}
                     useRequestCache={false}
                     wrapper="div"/>
-                    </div>
-                    <div>
+                  </div>
+                  <div>
                     <ReactSVG
                     afterInjection={(error, svg) => {
                       if (error) {
@@ -93,8 +93,8 @@ class Menu extends Component {
                     src={EnergySVG}
                     useRequestCache={false}
                     wrapper="div"/>
-                   </div>
-                   <div>
+                  </div>
+                  <div>
                     <ReactSVG
                     afterInjection={(error, svg) => {
                       if (error) {
@@ -118,12 +118,10 @@ class Menu extends Component {
                     src={EnergySVG}
                     useRequestCache={false}
                     wrapper="div"/>
-                    </div>
-              
-               
+                  </div>
               </div>
-              </div>
-              </div>
+            </div>
+        </div>
            
       
      

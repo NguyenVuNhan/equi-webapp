@@ -40,7 +40,6 @@ display: flex;
 justify-content: center;
 `
 
-
 export const ForCircle = styled.div`
 display:flex;
 flex-direction:column;
