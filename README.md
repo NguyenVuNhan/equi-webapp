@@ -1,8 +1,10 @@
 # Libraries used
 
 To make the repository run you must install the following Libraries:
-    npm install styled-components
-    npm install react-svg
+    - npm install styled-components
+    - npm install react-svg
+
+
 
 ## Available Scripts
 
