@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Libraries used
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To make the repository run you must install the following Libraries:
+    npm install styled-components
+    npm install react-svg
 
 ## Available Scripts
 
