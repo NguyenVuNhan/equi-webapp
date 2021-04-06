@@ -1,40 +1,38 @@
-
-.equi {
-  display: flex;
-  justify-content: center;
-  position: relative;
+.App {
+  text-align: center;
 }
 
-.equiBackground{
-  background: black;
-  border-radius: 50%;
-  width: 1080px;
-  height: 1080px;
-  border: 5px solid black;
-  margin-top: 5%;
-  position: absolute;
-  display: flex;
-  justify-content: center;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
-.grid2x2 {
-  position: absolute;
-  min-height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
-.grid2x2 > div {
-  display: flex; 
-  flex-basis: calc(50%);  
-  justify-content: center;
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
   flex-direction: column;
-}
-.grid2x2 > div > div {
-  display: flex;
+  align-items: center;
   justify-content: center;
-  flex-direction: row;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
-.eachDiv{
-  transition: height 0.25s linear;
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
