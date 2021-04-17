@@ -14,7 +14,7 @@ const DialCursor = () => {
       mask="url(#mask0)"
       stroke="white"
       transform={`rotate(${-90 + dialPosition} 540 540)`}
-      stroke-width="10"
+      strokeWidth="10"
     />
   );
 };

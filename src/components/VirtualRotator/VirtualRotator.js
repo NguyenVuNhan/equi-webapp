@@ -43,11 +43,11 @@ const VirtualRotator = () => {
       cy="540"
       fill="black"
       stroke="#ce4b99"
-      stroke-width="20"
+      strokeWidth="20"
       transform={`rotate(${-100 + dialPosition} 540 540)`}
-      stroke-dasharray={`${circumference}`}
-      stroke-dashoffset={`${circumference * (1 - 5 / 100)}`}
-      stroke-linecap="round"
+      strokeDasharray={`${circumference}`}
+      strokeDashoffset={`${circumference * (1 - 5 / 100)}`}
+      strokeLinecap="round"
     />
   );
 };

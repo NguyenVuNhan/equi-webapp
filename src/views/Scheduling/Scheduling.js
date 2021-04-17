@@ -11,11 +11,11 @@ const Scheduling = () => {
         cy="540"
         fill="transparent"
         stroke="#ce4b99"
-        stroke-width="10"
-        stroke-dasharray={`${circumference}`}
-        stroke-dashoffset={`${circumference * (1 - percentage / 100)}`}
+        strokeWidth="10"
+        strokeDasharray={`${circumference}`}
+        strokeDashoffset={`${circumference * (1 - percentage / 100)}`}
         transform="rotate(-90 540 540)"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
     );
   };

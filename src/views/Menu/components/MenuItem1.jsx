@@ -11,8 +11,8 @@ const MenuItem1 = ({ active, onClick }) => {
         y2="400"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#FFEB76" />
-        <stop offset="1" stop-color="#F4E696" stop-opacity="0.5" />
+        <stop stopColor="#FFEB76" />
+        <stop offset="1" stopColor="#F4E696" stopOpacity="0.5" />
       </linearGradient>
 
       {active ? (
@@ -24,7 +24,7 @@ const MenuItem1 = ({ active, onClick }) => {
           cy="273.5"
           r="119"
           stroke="white"
-          stroke-width="15"
+          strokeWidth="15"
         />
       )}
 
