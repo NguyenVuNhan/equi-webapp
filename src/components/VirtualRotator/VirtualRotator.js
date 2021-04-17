@@ -1,7 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
+import { calcAngle } from "../../helpers";
 
 const VirtualRotator = () => {
-  return <div>VirtualRotator</div>;
+  const circumference = Math.PI * (200 * 2);
+  const [mouseInside, setMouseInside] = useState(false);
+  const [rotate, setRotate] = useState(-100);
+
+  const onMouseMove = (ev) => {
+    if (mouseInside && (ev.buttons ?? ev.which) === 1) {
+      const rect = ev.target.getBoundingClientRect();
+      const cx = rect.height / 2;
+      const cy = rect.width / 2;
+      const x = ev.clientX - rect.left;
+      const y = ev.clientY - rect.top;
+
+      const dx = x - cx;
+      const dy = cy - y;
+
+      let angle = calcAngle(dx, dy) + 0;
+      if (dx >= 0 && dy <= 0) {
+        angle = calcAngle(dy, dx) + 90;
+      } else if (dx <= 0) {
+        if (dy <= 0) {
+          angle = calcAngle(dx, dy) + 180;
+        } else {
+          angle = calcAngle(dy, dx) + 270;
+        }
+      }
+
+      setRotate(-100 + angle);
+    }
+  };
+
+  return (
+    <circle
+      onMouseMove={onMouseMove}
+      onMouseEnter={() => setMouseInside(true)}
+      onMouseLeave={() => setMouseInside(false)}
+      r={200}
+      cx="540"
+      cy="540"
+      fill="black"
+      stroke="#ce4b99"
+      stroke-width="50"
+      transform={`rotate(${rotate} 540 540)`}
+      stroke-dasharray={`${circumference}`}
+      stroke-dashoffset={`${circumference * (1 - 5 / 100)}`}
+      stroke-linecap="round"
+    />
+  );
 };
 
 export default VirtualRotator;

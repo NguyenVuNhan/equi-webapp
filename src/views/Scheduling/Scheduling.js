@@ -2,7 +2,7 @@ import React from "react";
 
 const Scheduling = () => {
   const renderDataLine = (percentage, r) => {
-    const circumference = Math.PI * (230 * 2);
+    const circumference = Math.PI * ((220 + r) * 2);
 
     return (
       <circle
