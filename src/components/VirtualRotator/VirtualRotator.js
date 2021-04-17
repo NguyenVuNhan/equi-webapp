@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AppStateContext } from "../../app/App.context";
 import { calcAngle } from "../../helpers";
 
 const VirtualRotator = () => {
+  const { dialPosition, setDialPosition } = useContext(AppStateContext);
   const circumference = Math.PI * (200 * 2);
   const [mouseInside, setMouseInside] = useState(false);
-  const [rotate, setRotate] = useState(-100);
 
   const onMouseMove = (ev) => {
     if (mouseInside && (ev.buttons ?? ev.which) === 1) {
@@ -28,7 +29,7 @@ const VirtualRotator = () => {
         }
       }
 
-      setRotate(-100 + angle);
+      setDialPosition(angle);
     }
   };
 
@@ -42,8 +43,8 @@ const VirtualRotator = () => {
       cy="540"
       fill="black"
       stroke="#ce4b99"
-      stroke-width="50"
-      transform={`rotate(${rotate} 540 540)`}
+      stroke-width="20"
+      transform={`rotate(${-100 + dialPosition} 540 540)`}
       stroke-dasharray={`${circumference}`}
       stroke-dashoffset={`${circumference * (1 - 5 / 100)}`}
       stroke-linecap="round"
