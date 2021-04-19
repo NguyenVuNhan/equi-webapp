@@ -1,33 +1,19 @@
 import React from "react";
+import BatteryLevel from "./components/BatteryLevel";
+import PowerConsumption from "./components/PowerConsumption";
+import PowerProduction from "./components/PowerProduction";
 
 const Scheduling = () => {
-  const renderDataLine = (percentage, r) => {
-    const circumference = Math.PI * ((220 + r) * 2);
-
-    return (
-      <circle
-        r={220 + r}
-        cx="540"
-        cy="540"
-        fill="transparent"
-        stroke="#ce4b99"
-        strokeWidth="10"
-        strokeDasharray={`${circumference}`}
-        strokeDashoffset={`${circumference * (1 - percentage / 100)}`}
-        transform="rotate(-90 540 540)"
-        strokeLinecap="round"
-      />
-    );
-  };
+  const batteryLevel = "12%";
+  const powerConsumption = "0W";
+  const powerProduction = "605W";
 
   return (
-    <g>
-      <g mask="url(#mask0)">
-        {[10, 50, 60, 40, 90, 50, 90].map((value, index) =>
-          renderDataLine(value, (index + 1) * 20)
-        )}
-      </g>
-    </g>
+    <>
+      <BatteryLevel batteryLevel={batteryLevel} />
+      <PowerConsumption powerConsumption={powerConsumption} />
+      <PowerProduction powerProduction={powerProduction} />
+    </>
   );
 };
 
