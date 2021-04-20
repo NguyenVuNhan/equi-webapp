@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const PowerConsumption = ({ powerConsumption }) => {
   const textLength = powerConsumption.length * 17 + 30;
@@ -33,7 +34,7 @@ const PowerConsumption = ({ powerConsumption }) => {
           fill="white"
         />
 
-        <text x="65" y="45" font-size="35" fill="white">
+        <text x="65" y="45" fontSize="35" fill="white">
           {powerConsumption}
         </text>
         <defs>
@@ -45,13 +46,17 @@ const PowerConsumption = ({ powerConsumption }) => {
             y2="37.7864"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#75C7CC" />
-            <stop offset="1" stop-color="#75C7CC" stop-opacity="0.3" />
+            <stop stopColor="#75C7CC" />
+            <stop offset="1" stopColor="#75C7CC" stopOpacity="0.3" />
           </linearGradient>
         </defs>
       </g>
     </g>
   );
+};
+
+PowerConsumption.propsTypes = {
+  powerConsumption: PropTypes.string.isRequired,
 };
 
 export default PowerConsumption;
