@@ -41,7 +41,6 @@ function App() {
               fill="black"
             />
           </mask>
-          <VirtualRotator />
           <DialCursor />
 
           <Router>
@@ -55,6 +54,8 @@ function App() {
               <Redirect to="/menu" />
             </Switch>
           </Router>
+
+          <VirtualRotator />
         </svg>
       </div>
     </AppStateProvider>
