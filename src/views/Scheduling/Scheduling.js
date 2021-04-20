@@ -1,5 +1,6 @@
 import React from "react";
 import Polar from "../../components/Polar";
+import Appliance from "./components/Appliance";
 import BatteryLevel from "./components/BatteryLevel";
 import PowerConsumption from "./components/PowerConsumption";
 import PowerProduction from "./components/PowerProduction";
@@ -28,6 +29,9 @@ const Scheduling = () => {
         strokeDasharray="7"
         stroke="#B3D898"
       />
+
+      <Appliance name="DishWasherIcon" pos={300} />
+      <Appliance name="WashingMachineIcon" pos={45} />
 
       <BatteryLevel batteryLevel={currentBatteryLevel} />
       <PowerConsumption powerConsumption={currentPowerConsumption} />
