@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DialTimeText from "../../components/DialTimeText";
 import Polar from "../../components/Polar";
 import Appliance from "./components/Appliance";
 import AppliancePowerConsumption from "./components/AppliancePowerConsumption";
@@ -19,6 +20,7 @@ const Scheduling = () => {
 
   return (
     <g>
+      <DialTimeText />
       <Polar name="energy_production" data={energyProduction}>
         <stop offset="0.391621" stopColor="#75C7CC" />
         <stop offset="1" stopColor="#75C7CC" stopOpacity="0" />
@@ -65,7 +67,7 @@ const Scheduling = () => {
             }
           />
         </>
-      )}{" "}
+      )}
     </g>
   );
 };
