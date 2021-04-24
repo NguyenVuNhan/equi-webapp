@@ -58,7 +58,7 @@ const Appliance = ({ appliance, onActive, onLeave }) => {
   useEffect(() => {
     if (active) onActive && onActive(appliance);
     else onLeave && onLeave();
-  }, [active, onActive]);
+  }, [active, appliance, onActive, onLeave]);
 
   return (
     <g>
