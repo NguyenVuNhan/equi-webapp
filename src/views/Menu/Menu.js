@@ -13,7 +13,7 @@ const Menu = () => {
     setActive(id === active ? 0 : id);
 
     switch (id) {
-      case 3:
+      case 2:
         history.push("/scheduling");
         break;
       default:

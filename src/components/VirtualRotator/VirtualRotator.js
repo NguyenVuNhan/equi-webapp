@@ -34,21 +34,23 @@ const VirtualRotator = () => {
   };
 
   return (
-    <circle
-      onMouseMove={onMouseMove}
-      onMouseEnter={() => setMouseInside(true)}
-      onMouseLeave={() => setMouseInside(false)}
-      r={200}
-      cx="540"
-      cy="540"
-      fill="black"
-      stroke="#ce4b99"
-      strokeWidth="20"
-      transform={`rotate(${-100 + dialPosition} 540 540)`}
-      strokeDasharray={`${circumference}`}
-      strokeDashoffset={`${circumference * (1 - 5 / 100)}`}
-      strokeLinecap="round"
-    />
+    <>
+      <circle
+        onMouseMove={onMouseMove}
+        onMouseEnter={() => setMouseInside(true)}
+        onMouseLeave={() => setMouseInside(false)}
+        r={200}
+        cx="540"
+        cy="540"
+        fill="black"
+        stroke="#ce4b99"
+        strokeWidth="20"
+        transform={`rotate(${-100 + dialPosition} 540 540)`}
+        strokeDasharray={`${circumference}`}
+        strokeDashoffset={`${circumference * (1 - 5 / 100)}`}
+        strokeLinecap="round"
+      />
+    </>
   );
 };
 
