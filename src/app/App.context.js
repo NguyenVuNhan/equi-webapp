@@ -7,7 +7,6 @@ export const AppStateContext = createContext({
 
 export const AppStateProvider = ({ children }) => {
   const [dialPosition, setDialPosition] = useState(0);
-
   return (
     <AppStateContext.Provider value={{ dialPosition, setDialPosition }}>
       {children}
