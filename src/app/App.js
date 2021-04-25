@@ -10,6 +10,7 @@ import Scheduling from "../views/Scheduling/Scheduling";
 import VirtualRotator from "../components/VirtualRotator";
 import DialCursor from "../components/DialCursor";
 import AppStateProvider from "./App.context";
+import Appliances from "../views/Appliances/DummyBall";
 
 function App() {
   return (
@@ -45,6 +46,9 @@ function App() {
 
           <Router>
             <Switch>
+              <Route path="/appliances">
+                <Appliances />
+              </Route>
               <Route path="/scheduling">
                 <Scheduling />
               </Route>

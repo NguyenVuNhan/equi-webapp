@@ -14,9 +14,13 @@ const Menu = () => {
 
     switch (id) {
       case 3:
+        history.push("/appliances");
+        break;
+      case 2:
         history.push("/scheduling");
         break;
       default:
+        console.log(id);
         break;
     }
   };
