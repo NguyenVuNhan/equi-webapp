@@ -10,7 +10,7 @@ import Scheduling from "../views/Scheduling/Scheduling";
 import VirtualRotator from "../components/VirtualRotator";
 import DialCursor from "../components/DialCursor";
 import AppStateProvider from "./App.context";
-import Appliances from "../views/Appliances/DummyBall";
+import Appliances from "../views/Appliances";
 
 function App() {
   return (

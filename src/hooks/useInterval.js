@@ -1,20 +1,25 @@
 import { useEffect, useRef } from "react";
 
-export const useInterval = (callback, tick) => {
-  const callbackRef = useRef();
+function useInterval(callback, delay) {
+  const intervalRef = useRef();
+  const callbackRef = useRef(callback);
 
   useEffect(() => {
     callbackRef.current = callback;
   }, [callback]);
 
   useEffect(() => {
-    if (tick <= 0) return;
-    const id = setInterval(
-      () => callbackRef.current && callbackRef.current(),
-      tick
-    );
-    return () => clearInterval(id);
-  }, [tick]);
-};
+    if (typeof delay === "number") {
+      intervalRef.current = window.setInterval(
+        () => callbackRef.current(),
+        delay
+      );
+
+      return () => window.clearInterval(intervalRef.current);
+    }
+  }, [delay]);
+
+  return intervalRef;
+}
 
 export default useInterval;
