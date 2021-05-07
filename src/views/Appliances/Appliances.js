@@ -48,7 +48,7 @@ const Appliances = () => {
           key={i}
           x={540 + x}
           y={540 - y}
-          r={r}
+          r={r + 0.5}
           active={active === i}
         />
       ))}

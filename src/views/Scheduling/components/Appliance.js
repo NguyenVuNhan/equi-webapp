@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { AppStateContext } from "../../../app/App.context";
-import Icon from "../../../components/Icon";
 import {
   dateToAngle,
   deviceTypeToIcon,
@@ -74,11 +73,12 @@ const Appliance = ({ appliance, onActive, onLeave }) => {
         strokeWidth="3"
       />
 
-      <Icon
-        name={deviceTypeToIcon(appliance.device_type)}
+      <image
+        href={`${process.env.PUBLIC_URL}/assets/${deviceTypeToIcon(
+          appliance.device_type
+        )}.svg`}
         width={r.current * 2}
         height={r.current * 2}
-        fill="#E24C3A"
         style={{
           transform: `translateX(${x}px) translateY(${y}px)`,
         }}

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Icon from "../../../components/Icon";
 import { deviceTypeToIcon } from "../../../helpers";
 
 const Appliance = ({ x, y, r, active }) => {
   const [iconRadius, setIconRadius] = useState(r + 1);
 
   useEffect(() => {
-    active && setIconRadius(r - 3);
+    active ? setIconRadius(r - 3) : setIconRadius(r + 1);
   }, [active, r]);
 
   return (
@@ -21,11 +20,13 @@ const Appliance = ({ x, y, r, active }) => {
           strokeWidth="6"
         />
       )}
-      <Icon
-        name={deviceTypeToIcon("Dishwasher") + "2"}
+
+      <image
+        href={`${process.env.PUBLIC_URL}/assets/${deviceTypeToIcon(
+          "Dishwasher"
+        )}2.svg`}
         width={iconRadius * 2}
         height={iconRadius * 2}
-        fill="#e5e5e5"
         style={{
           transform: `translateX(${x - iconRadius}px) translateY(${
             y - iconRadius

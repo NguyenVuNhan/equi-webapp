@@ -47,8 +47,8 @@ const AppliancePower = ({ powerConsumption }) => {
             y2="64"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#75C7CC" />
-            <stop offset="1" stop-color="#75C7CC" stop-opacity="0.3" />
+            <stop stopColor="#75C7CC" />
+            <stop offset="1" stopColor="#75C7CC" stopOpacity="0.3" />
           </linearGradient>
         </defs>
       </g>
