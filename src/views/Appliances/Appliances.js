@@ -18,10 +18,6 @@ const Appliances = () => {
   }, []);
 
   useEffect(() => {
-    setDialPosition(10);
-  }, [setDialPosition]);
-
-  useEffect(() => {
     const diff = dialPosition - pDialPosition.current;
     if (Math.abs(diff) > 20) {
       let newActive = active + (diff > 0 ? 1 : -1);
