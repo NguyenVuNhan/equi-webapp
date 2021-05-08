@@ -7,7 +7,7 @@ import { appliances } from "./mockData";
 
 const Appliances = () => {
   const [balls, setBalls] = useState([]);
-  const { dialPosition, setDialPosition } = useContext(AppStateContext);
+  const { dialPosition } = useContext(AppStateContext);
   const [active, setActive] = useState(0);
   const pDialPosition = useRef(0);
 
