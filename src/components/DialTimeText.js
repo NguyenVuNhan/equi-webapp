@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppStateContext } from "../app/App.context";
+import { angleToTime } from "../helpers";
 
 const dialRightBoundary = 8;
 const dialLeftBoundary = 352;
@@ -38,7 +39,7 @@ const DialTimeText = () => {
           : "rotate(90 540 540)"
       }
     >
-      20:20
+      {angleToTime(dialPosition, dialAppear)}
     </text>
   );
 };
