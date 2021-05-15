@@ -11,6 +11,7 @@ import VirtualRotator from "../components/VirtualRotator";
 import DialCursor from "../components/DialCursor";
 import AppStateProvider from "./App.context";
 import Appliances from "../views/Appliances";
+import StandBy from "../views/Standby";
 
 function App() {
   return (
@@ -42,7 +43,6 @@ function App() {
               fill="black"
             />
           </mask>
-          <DialCursor />
 
           <Router>
             <Switch>
@@ -55,11 +55,14 @@ function App() {
               <Route path="/menu">
                 <Menu />
               </Route>
-              <Redirect to="/menu" />
+              <Route path="/standby">
+                <StandBy />
+              </Route>
+              <Redirect to="/standby" />
             </Switch>
+            <DialCursor />
+            <VirtualRotator />
           </Router>
-
-          <VirtualRotator />
         </svg>
       </div>
     </AppStateProvider>

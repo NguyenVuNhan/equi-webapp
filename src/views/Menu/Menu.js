@@ -19,6 +19,9 @@ const Menu = () => {
       case 3:
         history.push("/appliances");
         break;
+      case 4:
+        history.push("/standby");
+        break;
       default:
         console.log(id);
         break;
