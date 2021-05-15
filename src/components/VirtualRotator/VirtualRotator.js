@@ -1,11 +1,17 @@
 import React, { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { AppStateContext } from "../../app/App.context";
 import { calcAngle } from "../../helpers";
 
 const VirtualRotator = () => {
+  const history = useHistory();
   const { dialPosition, setDialPosition } = useContext(AppStateContext);
   const circumference = Math.PI * (200 * 2);
   const [mouseInside, setMouseInside] = useState(false);
+
+  const toMenu = () => {
+    history.push("/menu");
+  };
 
   const onMouseMove = (ev) => {
     if (mouseInside && (ev.buttons ?? ev.which) === 1) {
@@ -34,7 +40,7 @@ const VirtualRotator = () => {
   };
 
   return (
-    <>
+    <g>
       <circle
         onMouseMove={onMouseMove}
         onMouseEnter={() => setMouseInside(true)}
@@ -50,7 +56,8 @@ const VirtualRotator = () => {
         strokeDashoffset={`${circumference * (1 - 5 / 100)}`}
         strokeLinecap="round"
       />
-    </>
+      <circle cx="540" cy="540" r="80" fill="gray" onClick={toMenu} />
+    </g>
   );
 };
 
