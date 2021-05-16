@@ -1,21 +1,18 @@
 import { motion } from "framer-motion";
+import { memo } from "react";
 
 export interface BubbleProps {
   name: string;
-  waveHeight: number;
   isConsuming: boolean;
   x?: number;
 }
 
 const Bubble = ({
   name,
-  waveHeight,
   isConsuming,
   x = Math.random() * 1080,
 }: BubbleProps) => {
-  const y = !isConsuming
-    ? [0, waveHeight, waveHeight + 100]
-    : [waveHeight + 100, 100, 0];
+  const y = !isConsuming ? [0, 1080 + 100] : [1080 + 100, 0];
   return (
     <g>
       <clipPath id={name} width="1080" height="1080">
@@ -28,10 +25,9 @@ const Bubble = ({
             y,
             transition: {
               delay: Math.random() * 10,
-              duration: 7 * (1 - waveHeight / 1080),
+              duration: 9,
               ease: "linear",
               repeat: Infinity,
-              times: [0, 0.8, 1],
             },
           }}
         />
@@ -47,4 +43,4 @@ const Bubble = ({
   );
 };
 
-export default Bubble;
+export default memo<BubbleProps>(Bubble);
