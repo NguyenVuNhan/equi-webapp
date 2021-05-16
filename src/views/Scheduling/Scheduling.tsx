@@ -1,7 +1,9 @@
 import DataBubble from "components/DataBubble";
+import { TimePrettier } from "helpers";
 import { useState } from "react";
-import DialTimeText from "../../components/DialTimeText";
-import Polar from "../../components/Polar";
+import DialTimeText from "components/DialTimeText";
+import Polar from "components/Polar";
+import DialCursor from "components/DialCursor";
 import Appliance from "./components/Appliance";
 import * as AppliancePowerConsumption from "./components/AppliancePowerConsumption";
 import * as ApplianceSchedule from "./components/ApplianceSchedule";
@@ -15,13 +17,13 @@ import {
   general_energy_data,
   scheduled_item_data,
 } from "./dataMock";
-import { TimePrettier } from "helpers";
 
 const Scheduling = () => {
   const [appliance, setAppliance] = useState<Appliance>();
 
   return (
     <g>
+      <DialCursor />
       <DialTimeText />
 
       <Polar name="energy_production" data={energyProduction}>

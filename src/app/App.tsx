@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import Scheduling from "../views/Scheduling/Scheduling";
 import VirtualRotator from "../components/VirtualRotator";
-import DialCursor from "../components/DialCursor";
 import AppStateProvider from "./App.context";
 import Appliances from "../views/Appliances";
 import StandBy from "../views/Standby";
@@ -60,7 +59,6 @@ function App() {
               </Route>
               <Redirect to="/standby" />
             </Switch>
-            <DialCursor />
             <VirtualRotator />
           </Router>
         </svg>

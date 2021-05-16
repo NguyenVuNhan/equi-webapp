@@ -5,8 +5,7 @@ import { calcAngle } from "../helpers";
 
 const VirtualRotator = () => {
   const history = useHistory();
-  const { dialPosition, setDialPosition } = useContext(AppStateContext);
-  const circumference = Math.PI * (200 * 2);
+  const { setDialPosition } = useContext(AppStateContext);
   const [mouseInside, setMouseInside] = useState(false);
 
   const toMenu = () => {
@@ -49,12 +48,6 @@ const VirtualRotator = () => {
         cx="540"
         cy="540"
         fill="black"
-        stroke="#ce4b99"
-        strokeWidth="20"
-        transform={`rotate(${-100 + dialPosition} 540 540)`}
-        strokeDasharray={`${circumference}`}
-        strokeDashoffset={`${circumference * (1 - 5 / 100)}`}
-        strokeLinecap="round"
       />
       <circle cx="540" cy="540" r="80" fill="gray" onClick={toMenu} />
     </g>
