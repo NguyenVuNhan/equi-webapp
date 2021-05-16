@@ -44,7 +44,6 @@ function App() {
           </mask>
 
           <Router>
-            <VirtualRotator />
             <Switch>
               <Route path="/appliances">
                 <Appliances />
@@ -60,6 +59,7 @@ function App() {
               </Route>
               <Redirect to="/standby" />
             </Switch>
+            <VirtualRotator />
           </Router>
         </svg>
       </div>

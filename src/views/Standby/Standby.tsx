@@ -3,7 +3,7 @@ import { batteryLevel, powerConsumption, powerProduction } from "./batteryMock";
 import Bubble from "./components/Bubble";
 import "./Standby.css";
 
-const StandBy = () => {
+const StandByWave = () => {
   const [battery, setBattery] = useState(batteryLevel);
   const waveHeight = 1080 * (1 - battery / 100);
   var waveColor = "#E24C3A";
@@ -32,16 +32,6 @@ const StandBy = () => {
           <stop offset="1" stop-color={waveColor} stopOpacity="0" />
         </linearGradient>
       </defs>
-      {Array(6)
-        .fill(1)
-        .map((_, i) => (
-          <Bubble
-            key={i}
-            name={`bubble${i}`}
-            isConsuming={powerConsumption < powerProduction}
-            waveHeight={waveHeight}
-          />
-        ))}
 
       <clipPath id="wave1ClipPath" width="1080" height="1080" className="wave1">
         <path d="M555.653 16.5892C393.218 -48.9268 78.5496 95.3515 -58.4801 175.68L-150 684.503L428.626 1000L1031.26 747.602C1093.94 522.056 1197.59 79.1516 1110.77 111.91C1002.25 152.857 758.697 98.4841 555.653 16.5892Z" />
@@ -96,15 +86,15 @@ const StandBy = () => {
 
       {/* Battery level controller */}
       <circle
-        cx={540}
-        cy={400}
+        cx={40}
+        cy={40}
         r={40}
         fill="green"
         onClick={() => setBattery(battery + 5)}
       />
       <circle
-        cx={540}
-        cy={680}
+        cx={150}
+        cy={40}
         r={40}
         fill="red"
         onClick={() => setBattery(battery - 5)}
@@ -113,4 +103,18 @@ const StandBy = () => {
   );
 };
 
+const StandBy = () => (
+  <>
+    <StandByWave />
+    {Array(6)
+      .fill(1)
+      .map((_, i) => (
+        <Bubble
+          key={i}
+          name={`bubble${i}`}
+          isConsuming={powerConsumption > powerProduction}
+        />
+      ))}
+  </>
+);
 export default StandBy;
