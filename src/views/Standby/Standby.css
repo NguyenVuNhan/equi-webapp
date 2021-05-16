@@ -27,35 +27,3 @@
     transform: translate(-40px, var(--wave-height));
   }
 }
-
-.bubble {
-  transform: translate(var(--x), 0px);
-  animation: bubble 7s linear infinite;
-}
-
-.bubbleBg {
-  animation: bubbleBg 7s linear infinite;
-  opacity: 1;
-}
-
-@keyframes bubble {
-  0% {
-    transform: translate(var(--x), 0px);
-  }
-  80% {
-    transform: translate(var(--x), var(--wave-height));
-  }
-  100% {
-    transform: translate(var(--x), var(--bubble-height));
-  }
-}
-
-@keyframes bubbleBg {
-  0%,
-  70% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
