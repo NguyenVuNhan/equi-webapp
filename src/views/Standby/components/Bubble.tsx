@@ -1,35 +1,54 @@
-import { motion } from "framer-motion";
-import { memo } from "react";
+import { motion, useAnimation } from "framer-motion";
+import useInterval from "hooks/useInterval";
+import { memo, useEffect, useState } from "react";
 
 export interface BubbleProps {
   name: string;
   isConsuming: boolean;
   x?: number;
+  delay?: number;
 }
 
 const Bubble = ({
   name,
   isConsuming,
   x = Math.random() * 1080,
+  delay = 0,
 }: BubbleProps) => {
   const y = !isConsuming ? [0, 1080 + 100] : [1080 + 100, 0];
+  const [r, setR] = useState(Math.random() * 20 + 10);
+  // useInterval(() => {
+  //   setR(Math.random() * 20 + 10);
+  // }, 9000 + delay * 1000);
+  const control = useAnimation();
+
+  useEffect(() => {
+    control
+      .start({
+        y,
+        transition: {
+          delay,
+          duration: 9,
+          ease: "linear",
+        },
+      })
+      .then(() => {
+        control.stop();
+        setR(Math.random() * 20 + 10);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [r]);
+
   return (
     <g>
       <clipPath id={name} width="1080" height="1080">
         <motion.circle
-          r={40}
+          r={r}
           cx="0"
           cy="0"
           style={{ x, y: 2000 }}
-          animate={{
-            y,
-            transition: {
-              delay: Math.random() * 10,
-              duration: 9,
-              ease: "linear",
-              repeat: Infinity,
-            },
-          }}
+          animate={control}
+          onAnimationComplete={() => console.log("Complete")}
         />
       </clipPath>
       <rect
@@ -43,4 +62,4 @@ const Bubble = ({
   );
 };
 
-export default memo<BubbleProps>(Bubble);
+export default memo<BubbleProps>(Bubble, () => false);

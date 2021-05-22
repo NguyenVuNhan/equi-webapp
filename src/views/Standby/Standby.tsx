@@ -1,3 +1,4 @@
+import { gradientMapper } from "helpers";
 import { CSSProperties, useState } from "react";
 import { batteryLevel, powerConsumption, powerProduction } from "./batteryMock";
 import Bubble from "./components/Bubble";
@@ -6,12 +7,7 @@ import "./Standby.css";
 const StandByWave = () => {
   const [battery, setBattery] = useState(batteryLevel);
   const waveHeight = 1080 * (1 - battery / 100);
-  var waveColor = "#E24C3A";
-  if (battery >= 70) {
-    waveColor = "#B3D898";
-  } else if (battery >= 45) {
-    waveColor = "#F4E696";
-  }
+  const waveColor = gradientMapper("#E24C3A", "#B3D898", battery / 100);
 
   return (
     <g style={{ "--wave-height": `${waveHeight}px` } as CSSProperties}>
@@ -26,18 +22,18 @@ const StandByWave = () => {
         >
           <stop
             offset={1 - 100 / waveHeight}
-            stop-color={waveColor}
+            stopColor={waveColor}
             stopOpacity="1"
           />
-          <stop offset="1" stop-color={waveColor} stopOpacity="0" />
+          <stop offset="1" stopColor={waveColor} stopOpacity="0" />
         </linearGradient>
       </defs>
 
       <clipPath id="wave1ClipPath" width="1080" height="1080" className="wave1">
-        <path d="M555.653 16.5892C393.218 -48.9268 78.5496 95.3515 -58.4801 175.68L-150 684.503L428.626 1000L1031.26 747.602C1093.94 522.056 1197.59 79.1516 1110.77 111.91C1002.25 152.857 758.697 98.4841 555.653 16.5892Z" />
+        <path d="M556 13C393.6 -35.8 79 71.6666 -58 131.5L-149.5 1074.5L429 1309.5L1031.5 1121.5C1094.17 953.5 1197.8 59.6 1111 84C1002.5 114.5 759 74 556 13Z" />
       </clipPath>
       <clipPath id="wave2ClipPath" width="1080" height="1080" className="wave2">
-        <path d="M383.5 123.099C122.3 21.0481 -15 37.2062 -51 58.0417L-0.5 678.003L444.5 995L1099 720.737L1123 0C985.333 83.5545 644.7 225.151 383.5 123.099Z" />
+        <path d="M383.5 97C122.3 17 -15 29.6667 -51 46L-0.5 1097.5L444.5 1346L1099 1131L1123 0.5C985.333 66 644.7 177 383.5 97Z" />
       </clipPath>
       <defs>
         <linearGradient
@@ -49,7 +45,7 @@ const StandByWave = () => {
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor={waveColor} stopOpacity="0.3" />
-          <stop offset="1" stop-color={waveColor} />
+          <stop offset="1" stopColor={waveColor} />
         </linearGradient>
       </defs>
       <defs>
@@ -106,13 +102,14 @@ const StandByWave = () => {
 const StandBy = () => (
   <>
     <StandByWave />
-    {Array(6)
+    {Array(10)
       .fill(1)
       .map((_, i) => (
         <Bubble
           key={i}
           name={`bubble${i}`}
           isConsuming={powerConsumption > powerProduction}
+          delay={Math.random() * 10 + i}
         />
       ))}
   </>

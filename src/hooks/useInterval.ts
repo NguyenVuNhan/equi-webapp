@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 
-function useInterval(callback: Function, delay: number) {
+function useInterval(callback: () => void, delay: number) {
   const intervalRef = useRef<number>();
-  const callbackRef = useRef(callback);
+  const callbackRef = useRef<() => void>();
 
   useEffect(() => {
     callbackRef.current = callback;
@@ -11,7 +11,7 @@ function useInterval(callback: Function, delay: number) {
   useEffect(() => {
     if (typeof delay === "number") {
       intervalRef.current = window.setInterval(
-        () => callbackRef.current(),
+        () => callbackRef.current && callbackRef.current(),
         delay
       );
 
