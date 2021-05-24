@@ -72,7 +72,7 @@ export const angleToTime = (angle: number, active = false) => {
       .padStart(2, "0");
     return hour + ":" + min;
   }
-  var now = new Date("04 Dec 1995 01:12:00 GMT");
+  var now = new Date();
   return (
     now.getHours().toString().padStart(2, "0") +
     ":" +

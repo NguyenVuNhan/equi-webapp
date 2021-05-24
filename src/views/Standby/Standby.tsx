@@ -6,8 +6,11 @@ import "./Standby.css";
 
 const StandByWave = () => {
   const [battery, setBattery] = useState(batteryLevel);
-  const waveHeight = 1080 * (1 - battery / 100);
-  const waveColor = gradientMapper("#E24C3A", "#B3D898", battery / 100);
+  const waveHeight = 1080 * 0.8 * (1 - battery / 100);
+  const waveColor =
+    battery <= 50
+      ? gradientMapper("#E24C3A", "#F4E696", battery / 50)
+      : gradientMapper("#F4E696", "#B3D898", (battery - 50) / 50);
 
   return (
     <g style={{ "--wave-height": `${waveHeight}px` } as CSSProperties}>
