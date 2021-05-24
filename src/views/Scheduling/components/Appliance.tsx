@@ -78,6 +78,15 @@ const Appliance = ({ appliance, onActive, onLeave }: ApplianceProps) => {
         strokeWidth="3"
       />
 
+      <circle
+        cx={x + r.current}
+        cy={y + r.current}
+        r={r.current}
+        fill="#E24C3A"
+        strokeWidth={active ? 4 : 0}
+        stroke="white"
+      />
+
       <image
         href={`${process.env.PUBLIC_URL}/assets/${deviceTypeToIcon(
           appliance.device_type
@@ -91,13 +100,6 @@ const Appliance = ({ appliance, onActive, onLeave }: ApplianceProps) => {
 
       {active && (
         <>
-          <circle
-            cx={x + r.current}
-            cy={y + r.current}
-            r={r.current}
-            strokeWidth="4"
-            stroke="white"
-          />
           <text
             x={x + r.current}
             y={y + r.current * 2 + 25}

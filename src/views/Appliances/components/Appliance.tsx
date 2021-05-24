@@ -16,21 +16,33 @@ function Appliance(props: ApplianceProps) {
 
   return (
     <>
-      {active && (
-        <circle
-          cx={x}
-          cy={y}
-          r={r}
-          fill="none"
-          stroke="white"
-          strokeWidth="6"
-        />
-      )}
+      <circle
+        cx={x}
+        cy={y}
+        r={r}
+        fill="url(#applianceFill)"
+        stroke="white"
+        strokeWidth={active ? 6 : 0}
+      />
+
+      <defs>
+        <linearGradient
+          id="applianceFill"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="100%"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#75C7CC" />
+          <stop offset="1" stop-color="#75C7CC" stop-opacity="0.5" />
+        </linearGradient>
+      </defs>
 
       <image
         href={`${process.env.PUBLIC_URL}/assets/${deviceTypeToIcon(
           "Dishwasher"
-        )}2.svg`}
+        )}.svg`}
         width={iconRadius * 2}
         height={iconRadius * 2}
         style={{
