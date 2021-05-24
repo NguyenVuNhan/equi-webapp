@@ -17,7 +17,7 @@ function Polar(props: PolarProps) {
         opacity="0.8"
         d={pathGenerator(data)}
         fill={`url(#${name}color)`}
-        stroke="pink"
+        stroke="white"
         strokeWidth="2px"
         {...rest}
       />

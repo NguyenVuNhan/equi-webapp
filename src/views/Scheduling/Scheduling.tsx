@@ -26,11 +26,15 @@ const Scheduling = () => {
       <DialCursor />
       <DialTimeText />
 
-      <Polar name="energy_production" data={energyProduction}>
+      <Polar name="energy_production" stroke="#75C7CC" data={energyProduction}>
         <stop offset="0.391621" stopColor="#75C7CC" />
         <stop offset="1" stopColor="#75C7CC" stopOpacity="0" />
       </Polar>
-      <Polar name="energy_consumption" data={energyConsumption}>
+      <Polar
+        name="energy_consumption"
+        stroke="#F4E696"
+        data={energyConsumption}
+      >
         <stop offset="0.395478" stopColor="#F4E696" />
         <stop offset="0.732477" stopColor="#F4E696" stopOpacity="0" />
       </Polar>
