@@ -6,7 +6,7 @@ export interface ApplianceProps extends ApplianceBall {
 }
 
 function Appliance(props: ApplianceProps) {
-  const { x, y, r, active } = props;
+  const { x, y, r, active, type } = props;
 
   const [iconRadius, setIconRadius] = useState(r + 1);
 
@@ -34,15 +34,13 @@ function Appliance(props: ApplianceProps) {
           y2="100%"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#75C7CC" />
-          <stop offset="1" stop-color="#75C7CC" stop-opacity="0.5" />
+          <stop stopColor="#75C7CC" />
+          <stop offset="1" stopColor="#75C7CC" stopOpacity="0.5" />
         </linearGradient>
       </defs>
 
       <image
-        href={`${process.env.PUBLIC_URL}/assets/${deviceTypeToIcon(
-          "Dishwasher"
-        )}.svg`}
+        href={`${process.env.PUBLIC_URL}/assets/${deviceTypeToIcon(type)}.svg`}
         width={iconRadius * 2}
         height={iconRadius * 2}
         style={{

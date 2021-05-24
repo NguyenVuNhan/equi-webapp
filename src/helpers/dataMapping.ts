@@ -44,10 +44,36 @@ export const gradientMapper = (
 
 export const deviceTypeToIcon = (device: string) => {
   switch (device) {
+    case "Audio":
+      return "AudioIcon";
+    case "Big Fridge":
+      return "BigFridgeIcon";
     case "Dishwasher":
       return "DishWasherIcon";
     case "Washing Machine":
       return "WashingMachineIcon";
+    case "Coffee Machine":
+      return "CoffeeMachineIcon";
+    case "Completed":
+      return "CompletedIcon";
+    case "Dryer Machine":
+      return "DryerMachineIcon";
+    case "Extractor Hood":
+      return "ExtractorHoodIcon";
+    case "Floor Heating":
+      return "FloorHeatingIcon";
+    case "Induction Top":
+      return "InductionTopIcon";
+    case "Oven":
+      return "OvenIcon";
+    case "Small Fridge":
+      return "SmallFridgeIcon";
+    case "Tee Kettle":
+      return "TeeKettleIcon";
+    case "Television":
+      return "TelevisionIcon";
+    case "Wall Outlet":
+      return "WallOutletIcon";
     default:
       throw new Error("Unknown device type");
   }

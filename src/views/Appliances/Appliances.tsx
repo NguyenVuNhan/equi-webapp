@@ -52,13 +52,14 @@ const Appliances = () => {
           />
         }
       />
-      {balls.map(({ x, y, r }, i) => (
+      {balls.map(({ x, y, r, type }, i) => (
         <Appliance
           key={i}
           x={540 + x}
           y={540 - y}
           r={r + 0.5}
           active={active === i}
+          type={type}
         />
       ))}
     </g>

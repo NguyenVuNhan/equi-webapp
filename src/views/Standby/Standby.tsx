@@ -6,11 +6,11 @@ import "./Standby.css";
 
 const StandByWave = () => {
   const [battery, setBattery] = useState(batteryLevel);
-  const waveHeight = 1080 * 0.8 * (1 - battery / 100);
+  const waveHeight = 1080 * (1 - (battery * 0.8) / 100);
   const waveColor =
-    battery <= 50
-      ? gradientMapper("#E24C3A", "#F4E696", battery / 50)
-      : gradientMapper("#F4E696", "#B3D898", (battery - 50) / 50);
+    battery <= 60
+      ? gradientMapper("#E24C3A", "#F4E696", battery / 60)
+      : gradientMapper("#F4E696", "#B3D898", (battery - 60) / 40);
 
   return (
     <g style={{ "--wave-height": `${waveHeight}px` } as CSSProperties}>
@@ -89,14 +89,18 @@ const StandByWave = () => {
         cy={40}
         r={40}
         fill="green"
-        onClick={() => setBattery(battery + 5)}
+        onClick={() =>
+          setBattery((battery) => (battery >= 100 ? battery : battery + 5))
+        }
       />
       <circle
         cx={150}
         cy={40}
         r={40}
         fill="red"
-        onClick={() => setBattery(battery - 5)}
+        onClick={() =>
+          setBattery((battery) => (battery < 0 ? battery : battery - 5))
+        }
       />
     </g>
   );

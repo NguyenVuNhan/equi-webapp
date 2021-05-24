@@ -4,6 +4,7 @@ export interface ApplianceBall {
   x: number;
   y: number;
   r: number;
+  type: string;
 }
 
 export const getApplianceTimeRange = (appliance: Appliance) => {
@@ -40,8 +41,8 @@ export const arrangeAppliances = (appliances: Appliance[]) => {
 
         const x = Math.sin((a * Math.PI) / 180) * d;
         const y = Math.cos((a * Math.PI) / 180) * d;
-        if (!isCollision({ x, y, r: curr.size }, acc)) {
-          return [...acc, { x, y, r: curr.size }];
+        if (!isCollision({ x, y, r: curr.size, type: curr.device_type }, acc)) {
+          return [...acc, { x, y, r: curr.size, type: curr.device_type }];
         }
       }
     }

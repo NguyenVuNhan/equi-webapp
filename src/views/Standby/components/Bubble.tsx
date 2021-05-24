@@ -1,5 +1,4 @@
 import { motion, useAnimation } from "framer-motion";
-import useInterval from "hooks/useInterval";
 import { memo, useEffect, useState } from "react";
 
 export interface BubbleProps {
