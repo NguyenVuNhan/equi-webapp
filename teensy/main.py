@@ -20,10 +20,11 @@ async def teensyReader():
         print(line)
         if (line == 'R'):
             value += 1
-            await sendMessage(str(value))
         elif (line == 'L'):
             value -= 1
-            await sendMessage(str(value))
+        else:
+            pass
+        await sendMessage(str(value % 360))
 
 
 async def sendMessage(message):

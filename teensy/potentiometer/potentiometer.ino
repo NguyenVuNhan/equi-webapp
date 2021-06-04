@@ -1,34 +1,63 @@
 // Rotary Encoder Inputs
 #define SW 23
-#define DT 22
-#define CLK 21
+#define SHORT_PRESS_TIME 500 // 500 millisecond// Rotary Encoder Inputs
+#define inputCLK 21
+#define inputDT 22
 
-int pinA = CLK;
-int pinB = DT;
-int aState;
-int aLastState;
-
+String encdir = "";
+unsigned long pressedTime = 0, releasedTime = 0, timePressLimit = 0;
+int btnState, lastBtnState = HIGH, clicks = 0;
+int counter = 0;
+int currentStateCLK;
+int previousStateCLK;
 void setup() {
-  pinMode(pinA, INPUT);
-  pinMode(pinB, INPUT);
+  pinMode(inputCLK, INPUT);
+  pinMode(inputDT, INPUT);
+  pinMode(SW, INPUT_PULLUP);
   Serial.begin(9600);
-  // Starts output
-  aLastState = digitalRead(pinA);
+  previousStateCLK = digitalRead(inputCLK);
 }
-
-void loop() {
-  aState = digitalRead(pinA);
-
-  if (aState != aLastState) {
-    // outputB != outputA state, encoder is rotating clockwise
-    if (digitalRead(pinB) != aState) {
-        Serial.println("L");
-      // counter ++;
+void loop() { // Read the current state of inputCLK
+  currentStateCLK = digitalRead(inputCLK);
+  // If the previous and the current state of the
+  // inputCLK are different then a pulse has occured
+  if (currentStateCLK != previousStateCLK) {
+    // If the inputDT state is different than the inputCLK
+    // state then
+    // the encoder is rotating counterclockwise
+    if (digitalRead(inputDT) != currentStateCLK) {
+      counter--;
+      encdir = "L";
     } else {
-      // counter --;
-        Serial.println("R");
+      // Encoder is rotating clockwise
+      counter++;
+      encdir = "R";
+    }
+    Serial.println(encdir);
+  }
+  // Update previousStateCLK with the current state
+  previousStateCLK = currentStateCLK;
+  btnState = digitalRead(SW);
+  if (btnState == LOW && lastBtnState == HIGH) // button is pressed
+  {
+    clicks++;
+    pressedTime = millis();
+    timePressLimit = pressedTime + (unsigned long)SHORT_PRESS_TIME;
+  } else if (btnState == HIGH && lastBtnState == LOW) {
+    releasedTime = millis();
+    unsigned long pressDuration = releasedTime - pressedTime;
+    if (pressDuration < SHORT_PRESS_TIME) {
+      if (clicks != 2) {
+        Serial.println("A short press is detected");
+      } else {
+        if (millis() < timePressLimit)
+          Serial.println("A double click");
+        clicks = 0;
+      }
+    } else {
+      clicks = 0;
+      Serial.println("A long press is detected");
     }
   }
-
-  aLastState = aState;
+  lastBtnState = btnState;
 }
