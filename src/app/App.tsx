@@ -14,7 +14,7 @@ import StandBy from "../views/Standby";
 
 function App() {
   return (
-    <AppStateProvider>
+    <Router>
       <div className="App">
         <svg
           height="100%"
@@ -43,7 +43,7 @@ function App() {
             />
           </mask>
 
-          <Router>
+          <AppStateProvider>
             <Switch>
               <Route path="/appliances">
                 <Appliances />
@@ -60,10 +60,10 @@ function App() {
               <Redirect to="/standby" />
             </Switch>
             <VirtualRotator />
-          </Router>
+          </AppStateProvider>
         </svg>
       </div>
-    </AppStateProvider>
+    </Router>
   );
 }
 

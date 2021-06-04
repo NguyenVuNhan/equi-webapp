@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { AppStateContext } from "app/App.context";
+import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import MenuItem1 from "./components/MenuItem1";
 import MenuItem2 from "./components/MenuItem2";
@@ -8,6 +9,34 @@ import MenuItem4 from "./components/MenuItem4";
 const Menu = () => {
   const [active, setActive] = useState(0);
   const history = useHistory();
+  let { dialPosition, click, resetClick } = useContext(AppStateContext);
+
+  useEffect(() => {
+    dialPosition *= 4;
+    dialPosition %= 360;
+    if (dialPosition > 305) setActive(1);
+    else if (dialPosition > 215) setActive(2);
+    else if (dialPosition > 125) setActive(3);
+    else setActive(4);
+  }, [dialPosition]);
+
+  useEffect(() => {
+    if (click) {
+      switch (active) {
+        case 2:
+          history.push("/scheduling");
+          break;
+        case 3:
+          history.push("/appliances");
+          break;
+        case 4:
+          history.push("/standby");
+          break;
+      }
+      resetClick();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [click]);
 
   const handleActive = (id: number) => () => {
     setActive(id === active ? 0 : id);
