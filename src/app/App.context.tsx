@@ -5,7 +5,7 @@ export const AppStateContext = createContext({
   setDialPosition: (_pos: number) => {},
 });
 
-const wsUri = "ws://localhost:8080/echo_all";
+const wsUri = "ws://localhost:8765";
 
 export const AppStateProvider: React.FC = ({ children }) => {
   const webSocket = useRef<WebSocket>();
@@ -32,6 +32,7 @@ export const AppStateProvider: React.FC = ({ children }) => {
       console.log("DISCONNECTED");
     };
     webSocket.current.onmessage = async function (evt) {
+      console.log(evt.data);
       setDialPosition(parseInt(evt.data));
     };
     webSocket.current.onerror = function (evt) {

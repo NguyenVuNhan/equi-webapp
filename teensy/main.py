@@ -1,9 +1,60 @@
+import logging
+import asyncio
+import websockets
 import serial
 
-if __name__ == '__main__':
-	ser = serial .Serial('/dev/ttyACM0', 9600)
-	ser.flush()
-	while True:
-		if ser.in_waiting > 0:
-			line = ser.readline().decode('utf-8').rstrip()
-			print(line)
+
+from serial_asyncio import open_serial_connection
+
+clients = set()
+
+value = 0
+
+
+async def teensyReader():
+    global value
+    reader, writer = await open_serial_connection(url='/dev/ttyACM0', baudrate=9600)
+    while True:
+        line = await reader.readline()
+        line = str(line, 'utf-8').strip()
+        print(line)
+        if (line == 'R'):
+            value += 1
+            await sendMessage(str(value))
+        elif (line == 'L'):
+            value -= 1
+            await sendMessage(str(value))
+
+
+async def sendMessage(message):
+    if clients:
+        await asyncio.wait([c.send(message) for c in clients])
+
+
+async def register(websocket):
+    clients.add(websocket)
+
+
+async def deregister(websocket):
+    clients.remove(websocket)
+
+
+async def hello(websocket, path):
+    await register(websocket)
+    try:
+        while True:
+            value = await websocket.recv()
+            print(f"< {value}")
+
+            await sendMessage(value)
+    finally:
+        deregister(websocket)
+
+if __name__ == "__main__":
+    start_server = websockets.serve(hello, "localhost", 8765)
+
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(start_server)
+    loop.run_until_complete(teensyReader())
+
+    loop.run_forever()
