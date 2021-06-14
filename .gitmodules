@@ -1,0 +1,3 @@
+[submodule "apps/solar-forecast/virtueSolarForecast"]
+	path = apps/solar-forecast/virtueSolarForecast
+	url = https://github.com/Stactics040/virtue-solar-forecast.git
