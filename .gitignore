@@ -38,3 +38,6 @@ testem.log
 .DS_Store
 Thumbs.db
 node_modules
+
+__pycache__
+apps/solar-forecast/config.py
