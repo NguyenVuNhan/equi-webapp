@@ -1,0 +1,29 @@
+.wave1 {
+  animation: wave1 3s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  transform: translateY(0);
+}
+
+.wave2 {
+  animation: wave2 3s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+  transform: translateY(0);
+}
+
+@keyframes wave1 {
+  0%,
+  100% {
+    transform: translate(-40px, var(--wave-height));
+  }
+  50% {
+    transform: translate(40px, var(--wave-height));
+  }
+}
+
+@keyframes wave2 {
+  0%,
+  100% {
+    transform: translate(40px, var(--wave-height));
+  }
+  50% {
+    transform: translate(-40px, var(--wave-height));
+  }
+}
