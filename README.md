@@ -20,12 +20,13 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
+    <li>
+    <a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#load-the-code-to-teensy">load the code to teensy</a></li>
+      </ul>
+    </li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
@@ -37,11 +38,13 @@
     <img src="assets/equi_demo.png" alt="Equi_screenshot" width="500"/>
 </p>
 
-As a part of VirTUe smart and sustainable house, Equi is the dashboard which responsible for helping the user to control the house and also give the house status in realtime. The Equi application constituted by 3 main parts:
+As a part of VirTUe smart and sustainable house, Equi is the dashboard which responsible for helping the user to control the house and also give the house status in realtime.
+The Equi application constituted by 3 main parts:
 
 - The front-end - which responsible for rendering the view
 - The teensy controller - which read the signal from physic rotator and send feedback signal to equi
-- The librium - which is the brain of Equi. This allow equi to help the user schedule appliances. Process all house input and react with on the librium smart algorithm.
+- The librium - which is the brain of Equi.
+  This allow equi to help the user schedule appliances. Process all house input and react with on the librium smart algorithm.
 
 ### Build With
 
@@ -115,4 +118,7 @@ After this, you should be able to load the code to the teensy board with the ard
 
 Once finished, plug the teensy board to your computer and start the teensy serve.
 
-In case you have any question, contact [@NguyenVuNhan](nguyenvunhan1999@gmail.com) for answer
+## Contact
+
+In case you have any question, contact @NguyenVuNhan for answer
+email: nguyenvunhan1999@gmail.com
