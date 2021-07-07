@@ -37,6 +37,9 @@
     "tslib": "^2.0.0"
   },
   "devDependencies": {
+    "@angular-devkit/architect": "^0.1201.1",
+    "@angular-devkit/core": "^12.1.1",
+    "@angular-devkit/schematics": "^12.1.1",
     "@babel/core": "7.12.13",
     "@babel/preset-env": "7.12.13",
     "@babel/preset-react": "7.12.13",
@@ -51,6 +54,7 @@
     "@nrwl/tao": "12.3.6",
     "@nrwl/web": "12.3.6",
     "@nrwl/workspace": "12.3.6",
+    "@nx-python/nx-python": "^1.0.3",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "11.2.6",
     "@types/jest": "26.0.8",

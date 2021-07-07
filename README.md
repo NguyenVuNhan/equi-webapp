@@ -82,9 +82,9 @@ $ npm install
 Install the requirement packages for python
 
 ```bash
-$ python3 -m venv ./venv
-$ active ./venv/bin/active
-$ pip install requirements.txt
+$ python3 -m venv ./.venv
+$ source ./.venv/bin/activate
+$ pip install -r requirements.txt
 ```
 
 <!-- USAGE EXAMPLES -->
@@ -94,12 +94,14 @@ $ pip install requirements.txt
 Run the librium server
 
 ```bash
+$ source ./.venv/bin/activate
 $ npm run nx run librium:serve
 ```
 
 In case you want to interact with the physical rotator, it would required to load the code to teensy board first (see [Load the code to teensy](#load-the-code-to-teensy)]) then run the teensy server with this command
 
 ```bash
+$ source ./.venv/bin/activate
 $ npm run nx run teensy:serve
 ```
 
