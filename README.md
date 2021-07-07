@@ -122,5 +122,6 @@ Once finished, plug the teensy board to your computer and start the teensy serve
 
 ## Contact
 
-In case you have any question, contact @NguyenVuNhan for answer
+In case you have any question, contact @NguyenVuNhan 
+
 email: nguyenvunhan1999@gmail.com
