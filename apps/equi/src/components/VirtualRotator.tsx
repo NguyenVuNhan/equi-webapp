@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { RotatorContext } from '@virtue-equi/equi/feature/rotator';
+import { RotatorContext } from '@virtue-equi/equi/shared/feature/rotator';
 import { calcAngle } from '../helpers';
 
 const VirtualRotator = () => {

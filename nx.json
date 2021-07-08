@@ -35,7 +35,25 @@
     "teensy": {
       "tags": []
     },
-    "equi-feature-rotator": {
+    "equi-shared-feature-rotator": {
+      "tags": []
+    },
+    "equi-shared-utils-hooks": {
+      "tags": []
+    },
+    "equi-standby-ui": {
+      "tags": []
+    },
+    "equi-standby-feature": {
+      "tags": []
+    },
+    "equi-standby-utils": {
+      "tags": []
+    },
+    "equi-menu-feature": {
+      "tags": []
+    },
+    "equi-menu-ui": {
       "tags": []
     }
   }

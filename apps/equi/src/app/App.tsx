@@ -1,16 +1,16 @@
-import './App.css';
-import Menu from '../views/Menu';
+import { RotatorProvider } from '@virtue-equi/equi/shared/feature/rotator';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
   Redirect,
+  Route,
+  Switch,
 } from 'react-router-dom';
-import Scheduling from '../views/Scheduling/Scheduling';
 import VirtualRotator from '../components/VirtualRotator';
-import AppStateProvider from './App.context';
 import Appliances from '../views/Appliances';
-import StandBy from '../views/Standby';
+import Scheduling from '../views/Scheduling/Scheduling';
+import { Standby } from '@virtue-equi/equi/standby/feature';
+import { Menu } from '@virtue-equi/equi/menu/feature';
+import './App.css';
 
 function App() {
   return (
@@ -43,7 +43,7 @@ function App() {
             />
           </mask>
 
-          <AppStateProvider>
+          <RotatorProvider>
             <Switch>
               <Route path="/appliances">
                 <Appliances />
@@ -55,12 +55,12 @@ function App() {
                 <Menu />
               </Route>
               <Route path="/standby">
-                <StandBy />
+                <Standby />
               </Route>
               <Redirect to="/standby" />
             </Switch>
             <VirtualRotator />
-          </AppStateProvider>
+          </RotatorProvider>
         </svg>
       </div>
     </Router>

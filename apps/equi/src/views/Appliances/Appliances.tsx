@@ -1,6 +1,6 @@
 import DataBubble from '../../components/DataBubble';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { RotatorContext } from '@virtue-equi/equi/feature/rotator';
+import { RotatorContext } from '@virtue-equi/equi/shared/feature/rotator';
 import { ApplianceBall, arrangeAppliances } from '../../helpers';
 import Appliance from './components/Appliance';
 import { appliances } from './mockData';

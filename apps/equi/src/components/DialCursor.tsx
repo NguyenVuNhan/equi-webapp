@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { RotatorContext } from '@virtue-equi/equi/feature/rotator';
+import { RotatorContext } from '@virtue-equi/equi/shared/feature/rotator';
 
 function DialCursor() {
   const { dialPosition } = useContext(RotatorContext);
