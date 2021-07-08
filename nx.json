@@ -73,6 +73,21 @@
     },
     "equi-shared-utils-helper": {
       "tags": []
+    },
+    "equi-appliances-ui": {
+      "tags": []
+    },
+    "equi-appliances-feature": {
+      "tags": []
+    },
+    "equi-appliances-utils": {
+      "tags": []
+    },
+    "equi-shell-features-virtual-rotator": {
+      "tags": []
+    },
+    "equi-shell-utils": {
+      "tags": []
     }
   }
 }

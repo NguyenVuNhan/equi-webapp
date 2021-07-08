@@ -14,5 +14,10 @@ module.exports = {
     '<rootDir>/libs/equi/scheduler/feature',
     '<rootDir>/libs/shared/interfaces',
     '<rootDir>/libs/equi/shared/utils/helper',
+    '<rootDir>/libs/equi/appliances/ui',
+    '<rootDir>/libs/equi/appliances/feature',
+    '<rootDir>/libs/equi/appliances/utils',
+    '<rootDir>/libs/equi/shell/features/virtual-rotator',
+    '<rootDir>/libs/equi/shell/utils',
   ],
 };

@@ -1,15 +1,15 @@
+import { Appliances } from '@virtue-equi/equi/appliances/feature';
+import { Menu } from '@virtue-equi/equi/menu/feature';
+import { Scheduler } from '@virtue-equi/equi/scheduler/feature';
 import { RotatorProvider } from '@virtue-equi/equi/shared/feature/rotator';
+import { VirtualRotator } from '@virtue-equi/equi/shell/features/virtual-rotator';
+import { Standby } from '@virtue-equi/equi/standby/feature';
 import {
   BrowserRouter as Router,
   Redirect,
   Route,
   Switch,
 } from 'react-router-dom';
-import VirtualRotator from '../components/VirtualRotator';
-import Appliances from '../views/Appliances';
-import { Scheduler } from '@virtue-equi/equi/scheduler/feature';
-import { Standby } from '@virtue-equi/equi/standby/feature';
-import { Menu } from '@virtue-equi/equi/menu/feature';
 import './App.css';
 
 function App() {

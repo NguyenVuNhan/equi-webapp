@@ -41,7 +41,20 @@
       "@virtue-equi/shared/interfaces": ["libs/shared/interfaces/src/index.ts"],
       "@virtue-equi/equi/shared/utils/helper": [
         "libs/equi/shared/utils/helper/src/index.ts"
-      ]
+      ],
+      "@virtue-equi/equi/appliances/ui": [
+        "libs/equi/appliances/ui/src/index.ts"
+      ],
+      "@virtue-equi/equi/appliances/feature": [
+        "libs/equi/appliances/feature/src/index.ts"
+      ],
+      "@virtue-equi/equi/appliances/utils": [
+        "libs/equi/appliances/utils/src/index.ts"
+      ],
+      "@virtue-equi/equi/shell/features/virtual-rotator": [
+        "libs/equi/shell/features/virtual-rotator/src/index.ts"
+      ],
+      "@virtue-equi/equi/shell/utils": ["libs/equi/shell/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
