@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
-import { AppStateContext } from '../app/App.context';
+import { RotatorContext } from '@virtue-equi/equi/feature/rotator';
 import { angleToTime } from '../helpers';
 
 const dialRightBoundary = 8;
 const dialLeftBoundary = 352;
 
 const DialTimeText = () => {
-  const { dialPosition } = useContext(AppStateContext);
+  const { dialPosition } = useContext(RotatorContext);
   const [dialAppear, setDialAppear] = useState(false);
 
   useEffect(() => {

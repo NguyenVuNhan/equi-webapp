@@ -1,16 +1,10 @@
-import { createContext, useCallback, useEffect, useRef, useState } from 'react';
-import { useHistory } from 'react-router';
+import { RotatorContext } from './rotator.context';
+import { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-export const AppStateContext = createContext({
-  dialPosition: 0, // 0 degree
-  setDialPosition: (_pos: number) => {
-    return;
-  },
-  click: false,
-  resetClick: () => {
-    return;
-  },
-});
+export interface RotatorProviderProps {
+  children: ReactNode;
+}
 
 const wsUri = 'ws://localhost:8765';
 
@@ -21,7 +15,8 @@ const onRotateEvent = (isLeft = false) => (pos: number) => {
   return newPos;
 };
 
-export const AppStateProvider: React.FC = ({ children }) => {
+export function RotatorProvider(props: RotatorProviderProps) {
+  const { children } = props;
   const webSocket = useRef<WebSocket>();
   const history = useHistory();
 
@@ -80,12 +75,12 @@ export const AppStateProvider: React.FC = ({ children }) => {
   }, []);
 
   return (
-    <AppStateContext.Provider
+    <RotatorContext.Provider
       value={{ dialPosition, setDialPosition: updateCursor, click, resetClick }}
     >
       {children}
-    </AppStateContext.Provider>
+    </RotatorContext.Provider>
   );
-};
+}
 
-export default AppStateProvider;
+export default RotatorProvider;

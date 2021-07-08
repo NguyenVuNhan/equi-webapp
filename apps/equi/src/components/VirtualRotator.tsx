@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { AppStateContext } from '../app/App.context';
+import { RotatorContext } from '@virtue-equi/equi/feature/rotator';
 import { calcAngle } from '../helpers';
 
 const VirtualRotator = () => {
   const history = useHistory();
-  const { setDialPosition } = useContext(AppStateContext);
+  const { setDialPosition } = useContext(RotatorContext);
   const [mouseInside, setMouseInside] = useState(false);
 
   const toMenu = () => {

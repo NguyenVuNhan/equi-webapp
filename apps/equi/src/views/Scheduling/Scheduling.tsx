@@ -1,9 +1,9 @@
-import DataBubble from 'components/DataBubble';
-import { TimePrettier } from 'helpers';
+import DataBubble from '../../components/DataBubble';
+import { TimePrettier } from '../../helpers';
 import { useState } from 'react';
-import DialTimeText from 'components/DialTimeText';
-import Polar from 'components/Polar';
-import DialCursor from 'components/DialCursor';
+import DialTimeText from '../../components/DialTimeText';
+import Polar from '../../components/Polar';
+import DialCursor from '../../components/DialCursor';
 import Appliance from './components/Appliance';
 import * as AppliancePowerConsumption from './components/AppliancePowerConsumption';
 import * as ApplianceSchedule from './components/ApplianceSchedule';

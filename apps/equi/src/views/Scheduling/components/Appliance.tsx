@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import { AppStateContext } from '../../../app/App.context';
+import { RotatorContext } from '@virtue-equi/equi/feature/rotator';
 import {
   dateToAngle,
   deviceTypeToIcon,
@@ -18,7 +18,7 @@ export interface ApplianceProps {
 
 const Appliance = ({ appliance, onActive, onLeave }: ApplianceProps) => {
   const pos = useRef(dateToAngle(appliance.time_start));
-  const { dialPosition } = useContext(AppStateContext);
+  const { dialPosition } = useContext(RotatorContext);
   const originalX = useRef(540 + Math.sin((pos.current * Math.PI) / 180) * 360);
   const originalY = useRef(540 - Math.cos((pos.current * Math.PI) / 180) * 360);
   const r = useRef(defaultSize / 2);

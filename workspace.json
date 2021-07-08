@@ -29,36 +29,69 @@
       "projectType": "application",
       "targets": {
         "build": {
-          "executor": "@nrwl/workspace:run-commands",
+          "executor": "@nrwl/web:build",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "command": "node ../../node_modules/.bin/react-app-rewired build",
-            "cwd": "apps/equi",
-            "outputPath": "dist/apps/equi"
+            "outputPath": "dist/apps/equi",
+            "index": "apps/equi/src/index.html",
+            "main": "apps/equi/src/main.tsx",
+            "polyfills": "apps/equi/src/polyfills.ts",
+            "tsConfig": "apps/equi/tsconfig.app.json",
+            "assets": ["apps/equi/src/favicon.ico", "apps/equi/src/assets"],
+            "styles": ["apps/equi/src/styles.css"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/equi/src/environments/environment.ts",
+                  "with": "apps/equi/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
           }
         },
         "serve": {
-          "executor": "@nrwl/workspace:run-commands",
-          "outputs": [],
+          "executor": "@nrwl/web:dev-server",
           "options": {
-            "command": "node ../../node_modules/.bin/react-app-rewired start",
-            "cwd": "apps/equi"
+            "hmr": true,
+            "buildTarget": "equi:build",
+            "port": 3000
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "equi:build:production"
+            }
           }
         },
         "lint": {
-          "executor": "@nrwl/workspace:run-commands",
-          "outputs": [],
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "command": "node ../../node_modules/.bin/eslint src/**/*.tsx src/**/*.ts",
-            "cwd": "apps/equi"
+            "lintFilePatterns": ["apps/equi/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
-          "executor": "@nrwl/workspace:run-commands",
-          "outputs": [],
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/equi"],
           "options": {
-            "command": "node ../../node_modules/.bin/react-app-rewired test --watchAll=false",
-            "cwd": "apps/equi"
+            "jestConfig": "apps/equi/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
@@ -169,6 +202,29 @@
           "options": {
             "main": "apps/teensy/src/main.py",
             "templateType": "default"
+          }
+        }
+      }
+    },
+    "equi-feature-rotator": {
+      "root": "libs/equi/feature/rotator",
+      "sourceRoot": "libs/equi/feature/rotator/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/equi/feature/rotator/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/equi/feature/rotator"],
+          "options": {
+            "jestConfig": "libs/equi/feature/rotator/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }

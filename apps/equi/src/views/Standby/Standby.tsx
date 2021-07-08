@@ -1,4 +1,4 @@
-import { gradientMapper } from 'helpers';
+import { gradientMapper } from '../../helpers';
 import { CSSProperties, useState } from 'react';
 import { batteryLevel, powerConsumption, powerProduction } from './batteryMock';
 import Bubble from './components/Bubble';

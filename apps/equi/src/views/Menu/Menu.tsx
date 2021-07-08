@@ -1,4 +1,4 @@
-import { AppStateContext } from 'app/App.context';
+import { RotatorContext } from '@virtue-equi/equi/feature/rotator';
 import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import MenuItem1 from './components/MenuItem1';
@@ -9,7 +9,7 @@ import MenuItem4 from './components/MenuItem4';
 const Menu = () => {
   const [active, setActive] = useState(0);
   const history = useHistory();
-  const { dialPosition, click, resetClick } = useContext(AppStateContext);
+  const { dialPosition, click, resetClick } = useContext(RotatorContext);
 
   useEffect(() => {
     const pos = (dialPosition * 4) % 360;

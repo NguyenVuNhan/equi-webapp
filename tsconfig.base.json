@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@virtue-equi/equi/feature/rotator": [
+        "libs/equi/feature/rotator/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -9,17 +9,12 @@
   "affected": {
     "defaultBase": "master"
   },
-  "npmScope": "temp-workspace",
+  "npmScope": "virtue-equi",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "M2Y4ODA3ZjUtNmU3Ny00YjI5LTg0OGMtOTYxNzgwZjViOTM5fHJlYWQtd3JpdGU=",
         "canTrackAnalytics": false,
         "showUsageWarnings": true
@@ -32,14 +27,15 @@
     },
     "equi-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "equi"
-      ]
+      "implicitDependencies": ["equi"]
     },
     "librium": {
       "tags": []
     },
     "teensy": {
+      "tags": []
+    },
+    "equi-feature-rotator": {
       "tags": []
     }
   }

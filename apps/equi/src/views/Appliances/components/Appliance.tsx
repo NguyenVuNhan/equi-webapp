@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ApplianceBall, deviceTypeToIcon } from 'helpers';
+import { ApplianceBall, deviceTypeToIcon } from '../../../helpers';
 
 export interface ApplianceProps extends ApplianceBall {
   active: boolean;

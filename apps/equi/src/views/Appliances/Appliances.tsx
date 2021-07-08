@@ -1,13 +1,13 @@
-import DataBubble from 'components/DataBubble';
+import DataBubble from '../../components/DataBubble';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { AppStateContext } from '../../app/App.context';
+import { RotatorContext } from '@virtue-equi/equi/feature/rotator';
 import { ApplianceBall, arrangeAppliances } from '../../helpers';
 import Appliance from './components/Appliance';
 import { appliances } from './mockData';
 
 const Appliances = () => {
   const [balls, setBalls] = useState<ApplianceBall[]>([]);
-  const { dialPosition } = useContext(AppStateContext);
+  const { dialPosition } = useContext(RotatorContext);
   const [active, setActive] = useState(0);
   const pDialPosition = useRef(0);
 
