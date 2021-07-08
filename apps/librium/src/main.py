@@ -1,9 +1,9 @@
-class HelloFactory:
-    def __init__(self, **args):
-        for key, value in args.items():
-            setattr(self, key, 'Hello {}'.format(value))
+from virtueSolarForecast import get_data, get_forecast
+from config import API_url, API_key
 
 
 if __name__ == '__main__':
-    hello = HelloFactory(application="librium", user="Human")
-    print(hello.application)
+    data = get_data(API_url, API_key)
+
+    forecast = get_forecast(data)
+    print(forecast)

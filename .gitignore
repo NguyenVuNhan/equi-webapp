@@ -41,4 +41,4 @@ node_modules
 
 __pycache__
 .venv
-apps/solar-forecast/config.py
+config.py

@@ -4,5 +4,8 @@
         "Nhan",
         "Teensyduino",
         "cacheable"
+    ],
+    "python.analysis.extraPaths": [
+        "./apps/librium/src"
     ]
 }
