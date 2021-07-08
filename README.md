@@ -111,6 +111,16 @@ And finally, start the Equi interface
 $ npm run nx run equi:serve
 ```
 
+You can run many projects in parallel with this command:
+
+```bash
+$ source ./.venv/bin/activate
+$ yarn nx run-many --target=serve --projects=equi,librium,teensy --parallel
+```
+
+Note: This command `source ./.venv/bin/activate` use to trigger the python environment before executing the script.
+If you use only one shell session, then you will need to run this command only one time.
+
 ### Load the code to teensy
 
 Open the file `apps/potentionmeter/potentionmeter.ino` with the arduino IDE that you have install in the earlier step.
