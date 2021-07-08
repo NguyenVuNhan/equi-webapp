@@ -29,31 +29,49 @@
       "tags": [],
       "implicitDependencies": ["equi"]
     },
-    "librium": {
+    "equi-menu-feature": {
       "tags": []
     },
-    "teensy": {
+    "equi-menu-ui": {
+      "tags": []
+    },
+    "equi-scheduler-feature": {
+      "tags": []
+    },
+    "equi-scheduler-ui": {
+      "tags": []
+    },
+    "equi-scheduler-utils": {
       "tags": []
     },
     "equi-shared-feature-rotator": {
       "tags": []
     },
-    "equi-shared-utils-hooks": {
+    "equi-shared-ui": {
       "tags": []
     },
-    "equi-standby-ui": {
+    "equi-shared-utils-hooks": {
       "tags": []
     },
     "equi-standby-feature": {
       "tags": []
     },
+    "equi-standby-ui": {
+      "tags": []
+    },
     "equi-standby-utils": {
       "tags": []
     },
-    "equi-menu-feature": {
+    "librium": {
       "tags": []
     },
-    "equi-menu-ui": {
+    "shared-interfaces": {
+      "tags": []
+    },
+    "teensy": {
+      "tags": []
+    },
+    "equi-shared-utils-helper": {
       "tags": []
     }
   }

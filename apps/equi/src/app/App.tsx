@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import VirtualRotator from '../components/VirtualRotator';
 import Appliances from '../views/Appliances';
-import Scheduling from '../views/Scheduling/Scheduling';
+import { Scheduler } from '@virtue-equi/equi/scheduler/feature';
 import { Standby } from '@virtue-equi/equi/standby/feature';
 import { Menu } from '@virtue-equi/equi/menu/feature';
 import './App.css';
@@ -49,7 +49,7 @@ function App() {
                 <Appliances />
               </Route>
               <Route path="/scheduling">
-                <Scheduling />
+                <Scheduler />
               </Route>
               <Route path="/menu">
                 <Menu />

@@ -15,21 +15,33 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@virtue-equi/equi/menu/feature": ["libs/equi/menu/feature/src/index.ts"],
+      "@virtue-equi/equi/menu/ui": ["libs/equi/menu/ui/src/index.ts"],
+      "@virtue-equi/equi/scheduler/feature": [
+        "libs/equi/scheduler/feature/src/index.ts"
+      ],
+      "@virtue-equi/equi/scheduler/ui": ["libs/equi/scheduler/ui/src/index.ts"],
+      "@virtue-equi/equi/scheduler/utils": [
+        "libs/equi/scheduler/utils/src/index.ts"
+      ],
       "@virtue-equi/equi/shared/feature/rotator": [
         "libs/equi/shared/feature/rotator/src/index.ts"
       ],
+      "@virtue-equi/equi/shared/ui": ["libs/equi/shared/ui/src/index.ts"],
       "@virtue-equi/equi/shared/utils/hooks": [
         "libs/equi/shared/utils/hooks/src/index.ts"
       ],
-      "@virtue-equi/equi/standby/ui": ["libs/equi/standby/ui/src/index.ts"],
       "@virtue-equi/equi/standby/feature": [
         "libs/equi/standby/feature/src/index.ts"
       ],
+      "@virtue-equi/equi/standby/ui": ["libs/equi/standby/ui/src/index.ts"],
       "@virtue-equi/equi/standby/utils": [
         "libs/equi/standby/utils/src/index.ts"
       ],
-      "@virtue-equi/equi/menu/feature": ["libs/equi/menu/feature/src/index.ts"],
-      "@virtue-equi/equi/menu/ui": ["libs/equi/menu/ui/src/index.ts"]
+      "@virtue-equi/shared/interfaces": ["libs/shared/interfaces/src/index.ts"],
+      "@virtue-equi/equi/shared/utils/helper": [
+        "libs/equi/shared/utils/helper/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
