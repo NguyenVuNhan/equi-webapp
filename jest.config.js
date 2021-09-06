@@ -1,23 +1,9 @@
+const { getJestProjects } = require('@nrwl/jest');
+
 module.exports = {
   projects: [
+    ...getJestProjects(),
     '<rootDir>/apps/equi-react',
     '<rootDir>/libs/equi/feature/context/rotator',
-    '<rootDir>/libs/equi/shared/utils/hooks',
-    '<rootDir>/libs/equi/standby/ui',
-    '<rootDir>/libs/equi/standby/feature',
-    '<rootDir>/libs/equi/standby/utils',
-    '<rootDir>/libs/equi/menu/feature',
-    '<rootDir>/libs/equi/menu/ui',
-    '<rootDir>/libs/equi/shared/ui',
-    '<rootDir>/libs/equi/scheduler/ui',
-    '<rootDir>/libs/equi/scheduler/utils',
-    '<rootDir>/libs/equi/scheduler/feature',
-    '<rootDir>/libs/shared/interfaces',
-    '<rootDir>/libs/equi/shared/utils/helper',
-    '<rootDir>/libs/equi/appliances/ui',
-    '<rootDir>/libs/equi/appliances/feature',
-    '<rootDir>/libs/equi/appliances/utils',
-    '<rootDir>/libs/equi/shell/features/virtual-rotator',
-    '<rootDir>/libs/equi/shell/utils',
   ],
 };

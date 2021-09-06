@@ -25,6 +25,15 @@
     "equi": {
       "tags": []
     },
+    "equi-appliances-feature": {
+      "tags": []
+    },
+    "equi-appliances-ui": {
+      "tags": []
+    },
+    "equi-appliances-utils": {
+      "tags": []
+    },
     "equi-e2e": {
       "tags": [],
       "implicitDependencies": ["equi"]
@@ -50,7 +59,16 @@
     "equi-shared-ui": {
       "tags": []
     },
+    "equi-shared-utils-helper": {
+      "tags": []
+    },
     "equi-shared-utils-hooks": {
+      "tags": []
+    },
+    "equi-shell-features-virtual-rotator": {
+      "tags": []
+    },
+    "equi-shell-utils": {
       "tags": []
     },
     "equi-standby-feature": {
@@ -70,24 +88,14 @@
     },
     "teensy": {
       "tags": []
-    },
-    "equi-shared-utils-helper": {
-      "tags": []
-    },
-    "equi-appliances-ui": {
-      "tags": []
-    },
-    "equi-appliances-feature": {
-      "tags": []
-    },
-    "equi-appliances-utils": {
-      "tags": []
-    },
-    "equi-shell-features-virtual-rotator": {
-      "tags": []
-    },
-    "equi-shell-utils": {
-      "tags": []
     }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }

@@ -96,6 +96,73 @@
         }
       }
     },
+    "equi-appliances-feature": {
+      "root": "libs/equi/appliances/feature",
+      "sourceRoot": "libs/equi/appliances/feature/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/equi/appliances/feature/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/equi/appliances/feature"],
+          "options": {
+            "jestConfig": "libs/equi/appliances/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "equi-appliances-ui": {
+      "root": "libs/equi/appliances/ui",
+      "sourceRoot": "libs/equi/appliances/ui/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/equi/appliances/ui/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/equi/appliances/ui"],
+          "options": {
+            "jestConfig": "libs/equi/appliances/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "equi-appliances-utils": {
+      "root": "libs/equi/appliances/utils",
+      "sourceRoot": "libs/equi/appliances/utils/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/equi/appliances/utils/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/equi/appliances/utils"],
+          "options": {
+            "jestConfig": "libs/equi/appliances/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "equi-e2e": {
       "root": "apps/equi-e2e",
       "sourceRoot": "apps/equi-e2e/src",
@@ -286,6 +353,29 @@
         }
       }
     },
+    "equi-shared-utils-helper": {
+      "root": "libs/equi/shared/utils/helper",
+      "sourceRoot": "libs/equi/shared/utils/helper/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/equi/shared/utils/helper/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/equi/shared/utils/helper"],
+          "options": {
+            "jestConfig": "libs/equi/shared/utils/helper/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "equi-shared-utils-hooks": {
       "root": "libs/equi/shared/utils/hooks",
       "sourceRoot": "libs/equi/shared/utils/hooks/src",
@@ -304,6 +394,50 @@
           "outputs": ["coverage/libs/equi/shared/utils/hooks"],
           "options": {
             "jestConfig": "libs/equi/shared/utils/hooks/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "equi-shell-features-virtual-rotator": {
+      "root": "libs/equi/shell/features/virtual-rotator",
+      "sourceRoot": "libs/equi/shell/features/virtual-rotator/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/equi/shell/features/virtual-rotator/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/equi/shell/features/virtual-rotator"],
+          "options": {
+            "jestConfig": "libs/equi/shell/features/virtual-rotator/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "equi-shell-utils": {
+      "root": "libs/equi/shell/utils",
+      "sourceRoot": "libs/equi/shell/utils/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/equi/shell/utils/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/equi/shell/utils"],
+          "options": {
+            "jestConfig": "libs/equi/shell/utils/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -464,140 +598,6 @@
           "options": {
             "main": "apps/teensy/src/main.py",
             "templateType": "default"
-          }
-        }
-      }
-    },
-    "equi-shared-utils-helper": {
-      "root": "libs/equi/shared/utils/helper",
-      "sourceRoot": "libs/equi/shared/utils/helper/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/equi/shared/utils/helper/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/equi/shared/utils/helper"],
-          "options": {
-            "jestConfig": "libs/equi/shared/utils/helper/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "equi-appliances-ui": {
-      "root": "libs/equi/appliances/ui",
-      "sourceRoot": "libs/equi/appliances/ui/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/equi/appliances/ui/**/*.{ts,tsx,js,jsx}"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/equi/appliances/ui"],
-          "options": {
-            "jestConfig": "libs/equi/appliances/ui/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "equi-appliances-feature": {
-      "root": "libs/equi/appliances/feature",
-      "sourceRoot": "libs/equi/appliances/feature/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/equi/appliances/feature/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/equi/appliances/feature"],
-          "options": {
-            "jestConfig": "libs/equi/appliances/feature/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "equi-appliances-utils": {
-      "root": "libs/equi/appliances/utils",
-      "sourceRoot": "libs/equi/appliances/utils/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/equi/appliances/utils/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/equi/appliances/utils"],
-          "options": {
-            "jestConfig": "libs/equi/appliances/utils/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "equi-shell-features-virtual-rotator": {
-      "root": "libs/equi/shell/features/virtual-rotator",
-      "sourceRoot": "libs/equi/shell/features/virtual-rotator/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/equi/shell/features/virtual-rotator/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/equi/shell/features/virtual-rotator"],
-          "options": {
-            "jestConfig": "libs/equi/shell/features/virtual-rotator/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "equi-shell-utils": {
-      "root": "libs/equi/shell/utils",
-      "sourceRoot": "libs/equi/shell/utils/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/equi/shell/utils/**/*.{ts,tsx,js,jsx}"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/equi/shell/utils"],
-          "options": {
-            "jestConfig": "libs/equi/shell/utils/jest.config.js",
-            "passWithNoTests": true
           }
         }
       }

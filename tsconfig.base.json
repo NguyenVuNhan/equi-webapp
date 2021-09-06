@@ -15,6 +15,15 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@virtue-equi/equi/appliances/feature": [
+        "libs/equi/appliances/feature/src/index.ts"
+      ],
+      "@virtue-equi/equi/appliances/ui": [
+        "libs/equi/appliances/ui/src/index.ts"
+      ],
+      "@virtue-equi/equi/appliances/utils": [
+        "libs/equi/appliances/utils/src/index.ts"
+      ],
       "@virtue-equi/equi/menu/feature": ["libs/equi/menu/feature/src/index.ts"],
       "@virtue-equi/equi/menu/ui": ["libs/equi/menu/ui/src/index.ts"],
       "@virtue-equi/equi/scheduler/feature": [
@@ -28,9 +37,16 @@
         "libs/equi/shared/feature/rotator/src/index.ts"
       ],
       "@virtue-equi/equi/shared/ui": ["libs/equi/shared/ui/src/index.ts"],
+      "@virtue-equi/equi/shared/utils/helper": [
+        "libs/equi/shared/utils/helper/src/index.ts"
+      ],
       "@virtue-equi/equi/shared/utils/hooks": [
         "libs/equi/shared/utils/hooks/src/index.ts"
       ],
+      "@virtue-equi/equi/shell/features/virtual-rotator": [
+        "libs/equi/shell/features/virtual-rotator/src/index.ts"
+      ],
+      "@virtue-equi/equi/shell/utils": ["libs/equi/shell/utils/src/index.ts"],
       "@virtue-equi/equi/standby/feature": [
         "libs/equi/standby/feature/src/index.ts"
       ],
@@ -38,23 +54,7 @@
       "@virtue-equi/equi/standby/utils": [
         "libs/equi/standby/utils/src/index.ts"
       ],
-      "@virtue-equi/shared/interfaces": ["libs/shared/interfaces/src/index.ts"],
-      "@virtue-equi/equi/shared/utils/helper": [
-        "libs/equi/shared/utils/helper/src/index.ts"
-      ],
-      "@virtue-equi/equi/appliances/ui": [
-        "libs/equi/appliances/ui/src/index.ts"
-      ],
-      "@virtue-equi/equi/appliances/feature": [
-        "libs/equi/appliances/feature/src/index.ts"
-      ],
-      "@virtue-equi/equi/appliances/utils": [
-        "libs/equi/appliances/utils/src/index.ts"
-      ],
-      "@virtue-equi/equi/shell/features/virtual-rotator": [
-        "libs/equi/shell/features/virtual-rotator/src/index.ts"
-      ],
-      "@virtue-equi/equi/shell/utils": ["libs/equi/shell/utils/src/index.ts"]
+      "@virtue-equi/shared/interfaces": ["libs/shared/interfaces/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
