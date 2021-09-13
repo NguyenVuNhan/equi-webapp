@@ -1,5 +1,5 @@
 <p align="center">
-  <h3 align="center">Equi 3.0</h3>
+  <h3 align="center">Equi</h3>
   <p align="center"> VirTUe house smart dashboard - Equi</p>
 </p>
 
