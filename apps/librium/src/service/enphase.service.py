@@ -21,3 +21,6 @@ def getEnphaseData() -> EnphaseData:
     r = requests.get(EnphaseData.PRODUCTION_URL)
     print(r.json())
     pass
+
+if __name__ == "__main__":
+    getEnphaseData()
