@@ -1,9 +1,9 @@
-from virtueSolarForecast import get_data, get_forecast
-from config import API_url, API_key
+from importlib import import_module
+from app import app
 
+installed_apps = ["apps.enphase"]
+for installed_apps in installed_apps:
+    import_module(installed_apps)
 
-if __name__ == '__main__':
-    data = get_data(API_url, API_key)
-
-    forecast = get_forecast(data)
-    print(forecast)
+if __name__ == "__main__":
+    app.run(debug=True, port=8080, host='0.0.0.0')
