@@ -10,22 +10,22 @@ enphase_blueprint = Blueprint('enphase', __name__)
 @enphase_blueprint.route("/production", methods=['GET'])
 def production() -> int:
     enphaseData = getEnphaseData()
-    return getSuccessMessage(enphaseData.production)
+    return enphaseData.production
 
 
 @enphase_blueprint.route("/consumption", methods=['GET'])
 def consumption() -> int:
     enphaseData = getEnphaseData()
-    return getSuccessMessage(enphaseData.consumption)
+    return (enphaseData.consumption)
 
 
 @enphase_blueprint.route("/batery/state", methods=['GET'])
 def batteryState() -> Literal["idle", "charging", "discharging"]:
     enphaseData = getEnphaseData()
-    return getSuccessMessage(enphaseData.battery.state)
+    return (enphaseData.battery.state)
 
 
 @enphase_blueprint.route("/batery/percentage", methods=['GET'])
 def batteryPercentage() -> int:
     enphaseData = getEnphaseData()
-    return getSuccessMessage(enphaseData.battery.percent)
+    return (enphaseData.battery.percent)
