@@ -1,5 +1,6 @@
 from typing import Literal
 from flask import Blueprint
+from flask_socketio import SocketIO
 
 from apps.enphase.service import getEnphaseData
 from util.data import getSuccessMessage
@@ -19,13 +20,7 @@ def consumption() -> int:
     return getSuccessMessage(enphaseData.consumption)
 
 
-@enphase_blueprint.route("/batery/state", methods=['GET'])
+@enphase_blueprint.route("/battery/state", methods=['GET'])
 def batteryState() -> Literal["idle", "charging", "discharging"]:
     enphaseData = getEnphaseData()
-    return getSuccessMessage(enphaseData.battery.state)
-
-
-@enphase_blueprint.route("/batery/percentage", methods=['GET'])
-def batteryPercentage() -> int:
-    enphaseData = getEnphaseData()
-    return getSuccessMessage(enphaseData.battery.percent)
+    return getSuccessMessage(enphaseData.battery)

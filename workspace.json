@@ -443,6 +443,29 @@
         }
       }
     },
+    "equi-standby-data-access": {
+      "root": "libs/equi/standby/data-access",
+      "sourceRoot": "libs/equi/standby/data-access/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/equi/standby/data-access/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/equi/standby/data-access"],
+          "options": {
+            "jestConfig": "libs/equi/standby/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "equi-standby-feature": {
       "root": "libs/equi/standby/feature",
       "sourceRoot": "libs/equi/standby/feature/src",

@@ -71,6 +71,9 @@
     "equi-shell-utils": {
       "tags": []
     },
+    "equi-standby-data-access": {
+      "tags": []
+    },
     "equi-standby-feature": {
       "tags": []
     },

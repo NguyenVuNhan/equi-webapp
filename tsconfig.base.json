@@ -47,6 +47,9 @@
         "libs/equi/shell/features/virtual-rotator/src/index.ts"
       ],
       "@virtue-equi/equi/shell/utils": ["libs/equi/shell/utils/src/index.ts"],
+      "@virtue-equi/equi/standby/data-access": [
+        "libs/equi/standby/data-access/src/index.ts"
+      ],
       "@virtue-equi/equi/standby/feature": [
         "libs/equi/standby/feature/src/index.ts"
       ],

@@ -1,9 +1,6 @@
-from importlib import import_module
-from app import app
+from app import create_app, socketio
 
-installed_apps = ["apps.enphase"]
-for installed_apps in installed_apps:
-    import_module(installed_apps)
+app = create_app(debug=True)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8080, host='0.0.0.0')
+    socketio.run(app)

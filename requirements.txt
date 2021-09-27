@@ -1,9 +1,11 @@
 autopep8==1.5.7
+bidict==0.21.3
 certifi==2021.5.30
 chardet==4.0.0
 click==8.0.1
 cycler==0.10.0
 Flask==2.0.1
+Flask-SocketIO==5.1.1
 future==0.18.2
 idna==2.10
 iso8601==0.1.14
@@ -20,6 +22,8 @@ pyparsing==2.4.7
 pyserial==3.5
 pyserial-asyncio==0.5
 python-dateutil==2.8.1
+python-engineio==4.2.1
+python-socketio==5.4.0
 pytz==2021.1
 PyYAML==5.4.1
 requests==2.25.1
