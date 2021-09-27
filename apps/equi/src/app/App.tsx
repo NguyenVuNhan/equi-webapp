@@ -3,7 +3,7 @@ import { Menu } from '@virtue-equi/equi/menu/feature';
 import { Scheduler } from '@virtue-equi/equi/scheduler/feature';
 import { RotatorProvider } from '@virtue-equi/equi/shared/feature/rotator';
 import { VirtualRotator } from '@virtue-equi/equi/shell/features/virtual-rotator';
-import { Standby } from '@virtue-equi/equi/standby/feature';
+import { StandbyWrapper } from '@virtue-equi/equi/standby/feature';
 import {
   BrowserRouter as Router,
   Redirect,
@@ -55,7 +55,7 @@ function App() {
                 <Menu />
               </Route>
               <Route path="/standby">
-                <Standby />
+                <StandbyWrapper />
               </Route>
               <Redirect to="/standby" />
             </Switch>
