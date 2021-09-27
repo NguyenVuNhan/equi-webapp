@@ -65,6 +65,9 @@
     "equi-shared-utils-hooks": {
       "tags": []
     },
+    "equi-shared-utils-types": {
+      "tags": []
+    },
     "equi-shell-features-virtual-rotator": {
       "tags": []
     },

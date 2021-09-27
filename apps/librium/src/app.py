@@ -10,7 +10,7 @@ def create_app(debug=False):
     app.config.from_object("config.ProdConfig")
 
     from apps.enphase.controllers import enphase_blueprint
-    app.register_blueprint(enphase_blueprint, url_prefix='/enphase/')
+    app.register_blueprint(enphase_blueprint, url_prefix='/api/enphase/')
 
     socketio.init_app(app)
     return app

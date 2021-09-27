@@ -1,7 +1,7 @@
 import flask
 
 
-def getSuccessMessage(data, message=None, status=404):
+def getSuccessMessage(data, message="Success", status=404):
     return flask.jsonify({
         "message": message,
         "status": 200,

@@ -43,6 +43,9 @@
       "@virtue-equi/equi/shared/utils/hooks": [
         "libs/equi/shared/utils/hooks/src/index.ts"
       ],
+      "@virtue-equi/equi/shared/utils/types": [
+        "libs/equi/shared/utils/types/src/index.ts"
+      ],
       "@virtue-equi/equi/shell/features/virtual-rotator": [
         "libs/equi/shell/features/virtual-rotator/src/index.ts"
       ],
