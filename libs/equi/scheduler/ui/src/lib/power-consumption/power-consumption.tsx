@@ -14,7 +14,7 @@ export function PowerConsumption(props: PowerConsumptionProps) {
   return (
     <DataBubble
       name="PowerConsumption"
-      text={totalConsumption + ' W'}
+      text={totalConsumption.toFixed(2) + ' W'}
       textX={65}
       y={y}
       icon={

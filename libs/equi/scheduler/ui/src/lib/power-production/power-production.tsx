@@ -14,7 +14,7 @@ export function PowerProduction(props: PowerProductionProps) {
   return (
     <DataBubble
       name="PowerProduction"
-      text={totalProduction + ' W'}
+      text={totalProduction.toFixed(2) + ' W'}
       textX={65}
       y={y}
       icon={

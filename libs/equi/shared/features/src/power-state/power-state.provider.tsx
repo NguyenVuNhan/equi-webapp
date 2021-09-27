@@ -21,12 +21,13 @@ export function PowerStateProvider(props: PowerStateProviderProps) {
         (totalProduction) =>
           totalProduction && setTotalProduction(totalProduction)
       );
+
       getTotalConsumption().then(
         (totalConsumption) =>
           totalConsumption && setTotalConsumption(totalConsumption)
       );
     },
-    15 * 60 * 1000,
+    5000,
     { startNow: true }
   );
 
