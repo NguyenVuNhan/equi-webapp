@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { RotatorContext } from '@virtue-equi/equi/shared/feature/rotator';
+import { RotatorContext } from '@virtue-equi/equi-shared-features';
 import { calcAngle } from '@virtue-equi/equi/shell/utils';
 
 /* eslint-disable-next-line */

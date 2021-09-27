@@ -8,12 +8,14 @@ export interface RotatorProviderProps {
 
 const wsUri = 'ws://localhost:8765';
 
-const onRotateEvent = (isLeft = false) => (pos: number) => {
-  let newPos = pos + (isLeft ? -2 : 2);
-  newPos %= 360;
-  newPos = newPos < 0 ? 360 + newPos : newPos;
-  return newPos;
-};
+const onRotateEvent =
+  (isLeft = false) =>
+  (pos: number) => {
+    let newPos = pos + (isLeft ? -2 : 2);
+    newPos %= 360;
+    newPos = newPos < 0 ? 360 + newPos : newPos;
+    return newPos;
+  };
 
 export function RotatorProvider(props: RotatorProviderProps) {
   const { children } = props;

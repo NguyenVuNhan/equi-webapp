@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { RotatorContext } from '@virtue-equi/equi/shared/feature/rotator';
+import { RotatorContext } from '@virtue-equi/equi-shared-features';
 
 /* eslint-disable-next-line */
 export interface DialCursorProps {}

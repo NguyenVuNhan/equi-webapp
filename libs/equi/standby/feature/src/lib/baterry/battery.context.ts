@@ -1,4 +1,4 @@
-import { BatteryStatus } from '@virtue-equi/equi/standby/data-access';
+import { BatteryStatus } from '@virtue-equi/equi-shared-data-access';
 import { createContext } from 'react';
 
 export interface IBatteryContext {

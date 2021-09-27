@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import { RotatorContext } from '@virtue-equi/equi/shared/feature/rotator';
+import { RotatorContext } from '@virtue-equi/equi-shared-features';
 import { IAppliance } from '@virtue-equi/shared/interfaces';
 import {
   dateToAngle,

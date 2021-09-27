@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { PowerStateContext } from '@virtue-equi/equi-shared-features';
 import { DataBubble } from '@virtue-equi/equi/shared/ui';
 
 export interface PowerConsumptionProps {
@@ -6,7 +8,8 @@ export interface PowerConsumptionProps {
 }
 
 export function PowerConsumption(props: PowerConsumptionProps) {
-  const { y, totalConsumption } = props;
+  const { y } = props;
+  const { totalConsumption } = useContext(PowerStateContext);
 
   return (
     <DataBubble

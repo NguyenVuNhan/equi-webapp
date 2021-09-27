@@ -2,7 +2,7 @@ import {
   BatteryStatus,
   EnphaseBattery,
   getBatteryStatus,
-} from '@virtue-equi/equi/standby/data-access';
+} from '@virtue-equi/equi-shared-data-access';
 import { useInterval } from '@virtue-equi/equi/shared/utils/hooks';
 import { ReactNode, useState } from 'react';
 import { BatteryContext } from './battery.context';

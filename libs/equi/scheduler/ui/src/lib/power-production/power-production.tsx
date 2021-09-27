@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { PowerStateContext } from '@virtue-equi/equi-shared-features';
 import { DataBubble } from '@virtue-equi/equi/shared/ui';
 
 export interface PowerProductionProps {
@@ -6,7 +8,9 @@ export interface PowerProductionProps {
 }
 
 export function PowerProduction(props: PowerProductionProps) {
-  const { y, totalProduction } = props;
+  const { y } = props;
+  const { totalProduction } = useContext(PowerStateContext);
+
   return (
     <DataBubble
       name="PowerProduction"

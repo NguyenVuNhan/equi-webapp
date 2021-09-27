@@ -1,7 +1,7 @@
 import { Appliances } from '@virtue-equi/equi/appliances/feature';
 import { Menu } from '@virtue-equi/equi/menu/feature';
 import { Scheduler } from '@virtue-equi/equi/scheduler/feature';
-import { RotatorProvider } from '@virtue-equi/equi/shared/feature/rotator';
+import { RotatorProvider } from '@virtue-equi/equi-shared-features';
 import { VirtualRotator } from '@virtue-equi/equi/shell/features/virtual-rotator';
 import { Standby } from '@virtue-equi/equi/standby/feature';
 import { memo } from 'react';

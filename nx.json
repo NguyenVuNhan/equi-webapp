@@ -53,7 +53,10 @@
     "equi-scheduler-utils": {
       "tags": []
     },
-    "equi-shared-feature-rotator": {
+    "equi-shared-data-access": {
+      "tags": []
+    },
+    "equi-shared-features": {
       "tags": []
     },
     "equi-shared-ui": {
@@ -72,9 +75,6 @@
       "tags": []
     },
     "equi-shell-utils": {
-      "tags": []
-    },
-    "equi-standby-data-access": {
       "tags": []
     },
     "equi-standby-feature": {

@@ -1,4 +1,4 @@
-import { RotatorContext } from '@virtue-equi/equi/shared/feature/rotator';
+import { RotatorContext } from '@virtue-equi/equi-shared-features';
 import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {

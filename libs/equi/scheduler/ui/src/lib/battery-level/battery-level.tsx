@@ -8,7 +8,7 @@ export interface BatteryLevelProps {
 }
 
 export function BatteryLevel(props: BatteryLevelProps) {
-  const { y, batteryLevel } = props;
+  const { y } = props;
   const { percent } = useContext(BatteryContext);
 
   return (

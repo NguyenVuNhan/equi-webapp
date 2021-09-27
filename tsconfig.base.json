@@ -15,6 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@virtue-equi/equi-shared-data-access": [
+        "libs/equi/shared/data-access/src/index.ts"
+      ],
+      "@virtue-equi/equi-shared-features": [
+        "libs/equi/shared/features/src/index.ts"
+      ],
       "@virtue-equi/equi/appliances/feature": [
         "libs/equi/appliances/feature/src/index.ts"
       ],
@@ -33,9 +39,6 @@
       "@virtue-equi/equi/scheduler/utils": [
         "libs/equi/scheduler/utils/src/index.ts"
       ],
-      "@virtue-equi/equi/shared/feature/rotator": [
-        "libs/equi/shared/feature/rotator/src/index.ts"
-      ],
       "@virtue-equi/equi/shared/ui": ["libs/equi/shared/ui/src/index.ts"],
       "@virtue-equi/equi/shared/utils/helper": [
         "libs/equi/shared/utils/helper/src/index.ts"
@@ -50,9 +53,6 @@
         "libs/equi/shell/features/virtual-rotator/src/index.ts"
       ],
       "@virtue-equi/equi/shell/utils": ["libs/equi/shell/utils/src/index.ts"],
-      "@virtue-equi/equi/standby/data-access": [
-        "libs/equi/standby/data-access/src/index.ts"
-      ],
       "@virtue-equi/equi/standby/feature": [
         "libs/equi/standby/feature/src/index.ts"
       ],
