@@ -7,6 +7,7 @@ export function TextClock() {
 
   useInterval(() => setTime(getCurrentTime()), 1000);
 
+  // eslint-disable-next-line react/jsx-no-useless-fragment
   return <>{time}</>;
 }
 
