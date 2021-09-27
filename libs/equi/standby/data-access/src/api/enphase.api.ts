@@ -6,7 +6,7 @@ export interface EnphaseBattery {
 }
 
 export const getBatteryStatus = async (): Promise<EnphaseBattery | false> => {
-  const res = await fetch('/batery/percentage');
+  const res = await fetch('/api/enphase/battery');
   if (res.ok) {
     const data = await res.json();
     return data.data;
