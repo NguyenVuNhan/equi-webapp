@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { RotatorContext } from '@virtue-equi/equi/shared/feature/rotator';
+import { RotatorContext } from '@virtue-equi/equi-shared-features';
 import { angleToTime } from '@virtue-equi/equi/scheduler/utils';
 
 const dialRightBoundary = 8;
