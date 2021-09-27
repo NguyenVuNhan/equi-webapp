@@ -15,16 +15,20 @@ export function PowerStateProvider(props: PowerStateProviderProps) {
   const [totalConsumption, setTotalConsumption] = useState(0);
   const [totalProduction, setTotalProduction] = useState(0);
 
-  useInterval(() => {
-    getTotalProduction().then(
-      (totalProduction) =>
-        totalProduction && setTotalProduction(totalProduction)
-    );
-    getTotalConsumption().then(
-      (totalConsumption) =>
-        totalConsumption && setTotalConsumption(totalConsumption)
-    );
-  }, 15 * 60 * 1000);
+  useInterval(
+    () => {
+      getTotalProduction().then(
+        (totalProduction) =>
+          totalProduction && setTotalProduction(totalProduction)
+      );
+      getTotalConsumption().then(
+        (totalConsumption) =>
+          totalConsumption && setTotalConsumption(totalConsumption)
+      );
+    },
+    15 * 60 * 1000,
+    { startNow: true }
+  );
 
   return (
     <PowerStateContext.Provider value={{ totalConsumption, totalProduction }}>

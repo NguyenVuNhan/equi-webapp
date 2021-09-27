@@ -1,6 +1,13 @@
 import { useEffect, useRef } from 'react';
 
-export function useInterval(callback: () => void, delay: number) {
+interface Config {
+  startNow?: boolean;
+}
+export function useInterval(
+  callback: () => void,
+  delay: number,
+  config?: Config
+) {
   const intervalRef = useRef<number>();
   const callbackRef = useRef<() => void>();
 
@@ -10,6 +17,7 @@ export function useInterval(callback: () => void, delay: number) {
 
   useEffect(() => {
     if (typeof delay === 'number') {
+      config?.startNow && callbackRef.current && callbackRef.current();
       intervalRef.current = window.setInterval(
         () => callbackRef.current && callbackRef.current(),
         delay
