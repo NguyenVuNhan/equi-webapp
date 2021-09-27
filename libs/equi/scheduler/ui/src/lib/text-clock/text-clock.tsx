@@ -7,7 +7,7 @@ export function TextClock() {
 
   useInterval(() => setTime(getCurrentTime()), 1000);
 
-  return <>time</>;
+  return <>{time}</>;
 }
 
 export default TextClock;
