@@ -23,4 +23,7 @@ def consumption() -> int:
 @enphase_blueprint.route("/battery", methods=['GET'])
 def batteryState() -> Literal["idle", "charging", "discharging"]:
     enphaseData = getEnphaseData()
-    return getSuccessMessage(enphaseData.battery)
+    return getSuccessMessage({
+        "state": enphaseData.battery.state,
+        "percent": enphaseData.battery.percent,
+    })
