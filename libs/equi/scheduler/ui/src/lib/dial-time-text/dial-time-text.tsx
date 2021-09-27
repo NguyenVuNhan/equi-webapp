@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { RotatorContext } from '@virtue-equi/equi-shared-features';
 import { angleToTime } from '@virtue-equi/equi/scheduler/utils';
-
+import TextClock from '../text-clock/text-clock';
 const dialRightBoundary = 8;
 const dialLeftBoundary = 352;
 
@@ -38,7 +38,7 @@ export function DialTimeText() {
           : 'rotate(90 540 540)'
       }
     >
-      {angleToTime(dialPosition, dialAppear)}
+      {dialAppear ? angleToTime(dialPosition) : <TextClock />}
     </text>
   );
 }
