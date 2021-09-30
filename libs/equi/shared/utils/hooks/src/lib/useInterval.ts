@@ -6,7 +6,7 @@ interface Config {
 export function useInterval(
   callback: () => void,
   delay: number,
-  config?: Config
+  config: Config = { startNow: true }
 ) {
   const intervalRef = useRef<number>();
   const callbackRef = useRef<() => void>();
@@ -17,7 +17,7 @@ export function useInterval(
 
   useEffect(() => {
     if (typeof delay === 'number') {
-      config?.startNow && callbackRef.current && callbackRef.current();
+      config.startNow && callbackRef.current && callbackRef.current();
       intervalRef.current = window.setInterval(
         () => callbackRef.current && callbackRef.current(),
         delay
@@ -29,7 +29,7 @@ export function useInterval(
     return () => {
       return;
     };
-  }, [delay]);
+  }, [config.startNow, delay]);
 
   return intervalRef;
 }
