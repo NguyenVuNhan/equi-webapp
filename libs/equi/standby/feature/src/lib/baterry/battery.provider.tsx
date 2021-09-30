@@ -22,7 +22,7 @@ export function BatteryProvider(props: BatteryProviderProps) {
     getBatteryStatus().then((value) => {
       value && setBattery(value);
     });
-  }, 5000);
+  }, 60 * 60 * 1000);
 
   return (
     <BatteryContext.Provider value={battery}>
