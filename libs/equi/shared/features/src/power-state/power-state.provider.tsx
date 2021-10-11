@@ -1,5 +1,5 @@
 import { useInterval } from '@virtue-equi/equi/shared/utils/hooks';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useMemo, useState } from 'react';
 import { PowerStateContext } from './power-state.context';
 import {
   getTotalConsumption,
@@ -16,19 +16,20 @@ export function PowerStateProvider(props: PowerStateProviderProps) {
   const [totalProduction, setTotalProduction] = useState(0);
 
   useInterval(() => {
-    getTotalProduction().then(
-      (totalProduction) =>
-        totalProduction && setTotalProduction(totalProduction)
-    );
+    Promise.all([getTotalProduction(), getTotalConsumption()])
+      .then(([totalConsumption, totalProduction]) => {
+        totalConsumption && setTotalConsumption(totalConsumption);
 
-    getTotalConsumption().then(
-      (totalConsumption) =>
-        totalConsumption && setTotalConsumption(totalConsumption)
-    );
+        totalProduction && setTotalProduction(totalProduction);
+      })
+      // TODO: Handle error
+      .catch(console.error);
   }, 5000);
 
+  const value = useMemo(() => ({ totalConsumption, totalProduction }), []);
+
   return (
-    <PowerStateContext.Provider value={{ totalConsumption, totalProduction }}>
+    <PowerStateContext.Provider value={value}>
       {children}
     </PowerStateContext.Provider>
   );

@@ -1,5 +1,4 @@
 import {
-  BatteryStatus,
   EnphaseBattery,
   getBatteryStatus,
 } from '@virtue-equi/equi-shared-data-access';
@@ -19,9 +18,12 @@ export function BatteryProvider(props: BatteryProviderProps) {
   });
 
   useInterval(() => {
-    getBatteryStatus().then((value) => {
-      value && setBattery(value);
-    });
+    getBatteryStatus()
+      .then((value) => {
+        value && setBattery(value);
+      })
+      // TODO: Handle error
+      .catch(console.error);
   }, 60 * 60 * 1000);
 
   return (

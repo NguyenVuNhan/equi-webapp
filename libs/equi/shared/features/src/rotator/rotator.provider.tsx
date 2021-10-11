@@ -1,6 +1,7 @@
 import { RotatorContext } from './rotator.context';
 import { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useMemo } from 'react-router/node_modules/@types/react';
 
 export interface RotatorProviderProps {
   children: ReactNode;
@@ -76,12 +77,13 @@ export function RotatorProvider(props: RotatorProviderProps) {
     };
   }, []);
 
+  const value = useMemo(
+    () => ({ dialPosition, setDialPosition: updateCursor, click, resetClick }),
+    []
+  );
+
   return (
-    <RotatorContext.Provider
-      value={{ dialPosition, setDialPosition: updateCursor, click, resetClick }}
-    >
-      {children}
-    </RotatorContext.Provider>
+    <RotatorContext.Provider value={value}>{children}</RotatorContext.Provider>
   );
 }
 
