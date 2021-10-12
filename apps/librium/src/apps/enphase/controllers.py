@@ -33,5 +33,5 @@ def batteryState() -> Literal["idle", "charging", "discharging"]:
 @enphase_blueprint.route("/data", methods=['GET', 'POST'])
 def data():
     data = request.get_json()
-    print(json.dumps(request))
+    print(request.mimetype)
     return jsonify(data)
