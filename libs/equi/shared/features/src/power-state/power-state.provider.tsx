@@ -26,7 +26,10 @@ export function PowerStateProvider(props: PowerStateProviderProps) {
       .catch(console.error);
   }, 5000);
 
-  const value = useMemo(() => ({ totalConsumption, totalProduction }), []);
+  const value = useMemo(
+    () => ({ totalConsumption, totalProduction }),
+    [totalConsumption, totalProduction]
+  );
 
   return (
     <PowerStateContext.Provider value={value}>

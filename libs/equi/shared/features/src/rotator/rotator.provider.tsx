@@ -79,7 +79,7 @@ export function RotatorProvider(props: RotatorProviderProps) {
 
   const value = useMemo(
     () => ({ dialPosition, setDialPosition: updateCursor, click, resetClick }),
-    []
+    [dialPosition]
   );
 
   return (
