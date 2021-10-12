@@ -1,5 +1,5 @@
 from typing import Literal
-from flask import Blueprint
+from flask import Blueprint, request
 from flask_socketio import SocketIO
 
 from apps.enphase.service import getEnphaseData
@@ -27,3 +27,9 @@ def batteryState() -> Literal["idle", "charging", "discharging"]:
         "state": enphaseData.battery.state,
         "percent": enphaseData.battery.percent,
     })
+
+
+@enphase_blueprint.route("/data", methods=['POST'])
+def data():
+    data = request.form
+    print(data)
