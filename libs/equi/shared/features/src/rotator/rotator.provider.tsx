@@ -1,7 +1,13 @@
 import { RotatorContext } from './rotator.context';
-import { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import {
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { useHistory } from 'react-router-dom';
-import { useMemo } from 'react-router/node_modules/@types/react';
 
 export interface RotatorProviderProps {
   children: ReactNode;
