@@ -1,3 +1,4 @@
+import json
 from typing import Literal
 from flask import Blueprint, request, jsonify
 from flask_socketio import SocketIO
@@ -32,5 +33,5 @@ def batteryState() -> Literal["idle", "charging", "discharging"]:
 @enphase_blueprint.route("/data", methods=['POST'])
 def data():
     data = request.json
-    print(jsonify(data))
+    print(json.dumps(jsonify(data)))
     return jsonify(data)
