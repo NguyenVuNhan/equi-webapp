@@ -1,5 +1,5 @@
 from typing import Literal
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from flask_socketio import SocketIO
 
 from apps.enphase.service import getEnphaseData
@@ -33,4 +33,4 @@ def batteryState() -> Literal["idle", "charging", "discharging"]:
 def data():
     data = request.json
     print(data)
-    return data
+    return jsonify(data)
