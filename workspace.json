@@ -1,27 +1,5 @@
 {
   "version": 2,
-  "cli": {
-    "defaultCollection": "@nrwl/react"
-  },
-  "defaultProject": "equi",
-  "generators": {
-    "@nrwl/react": {
-      "application": {
-        "style": "css",
-        "linter": "eslint",
-        "strict": true,
-        "babel": true
-      },
-      "component": {
-        "style": "css"
-      },
-      "library": {
-        "style": "css",
-        "linter": "eslint",
-        "strict": true
-      }
-    }
-  },
   "projects": {
     "equi": {
       "root": "apps/equi",
@@ -85,7 +63,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/equi/**/*.{ts,tsx,js,jsx}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -95,7 +74,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-appliances-feature": {
       "root": "libs/equi/appliances/feature",
@@ -108,7 +88,8 @@
             "lintFilePatterns": [
               "libs/equi/appliances/feature/**/*.{ts,tsx,js,jsx}"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -118,7 +99,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-appliances-ui": {
       "root": "libs/equi/appliances/ui",
@@ -129,7 +111,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/equi/appliances/ui/**/*.{ts,tsx,js,jsx}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -139,7 +122,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-appliances-utils": {
       "root": "libs/equi/appliances/utils",
@@ -152,7 +136,8 @@
             "lintFilePatterns": [
               "libs/equi/appliances/utils/**/*.{ts,tsx,js,jsx}"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -162,7 +147,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-e2e": {
       "root": "apps/equi-e2e",
@@ -182,7 +168,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/equi-e2e/**/*.{js,ts}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "e2e-run": {
           "executor": "@nrwl/cypress:cypress",
@@ -199,7 +186,9 @@
             "readyWhen": "can now view"
           }
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["equi"]
     },
     "equi-menu-feature": {
       "root": "libs/equi/menu/feature",
@@ -210,7 +199,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/equi/menu/feature/**/*.{ts,tsx,js,jsx}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -220,7 +210,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-menu-ui": {
       "root": "libs/equi/menu/ui",
@@ -231,7 +222,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/equi/menu/ui/**/*.{ts,tsx,js,jsx}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -241,7 +233,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-scheduler-feature": {
       "root": "libs/equi/scheduler/feature",
@@ -254,7 +247,8 @@
             "lintFilePatterns": [
               "libs/equi/scheduler/feature/**/*.{ts,tsx,js,jsx}"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -264,7 +258,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-scheduler-ui": {
       "root": "libs/equi/scheduler/ui",
@@ -275,7 +270,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/equi/scheduler/ui/**/*.{ts,tsx,js,jsx}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -285,7 +281,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-scheduler-utils": {
       "root": "libs/equi/scheduler/utils",
@@ -298,7 +295,8 @@
             "lintFilePatterns": [
               "libs/equi/scheduler/utils/**/*.{ts,tsx,js,jsx}"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -308,7 +306,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-shared-data-access": {
       "root": "libs/equi/shared/data-access",
@@ -321,7 +320,8 @@
             "lintFilePatterns": [
               "libs/equi/shared/data-access/**/*.{ts,tsx,js,jsx}"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -331,7 +331,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-shared-features": {
       "root": "libs/equi/shared/features",
@@ -344,7 +345,8 @@
             "lintFilePatterns": [
               "libs/equi/shared/features/**/*.{ts,tsx,js,jsx}"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -354,7 +356,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-shared-ui": {
       "root": "libs/equi/shared/ui",
@@ -365,7 +368,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/equi/shared/ui/**/*.{ts,tsx,js,jsx}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -375,7 +379,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-shared-utils-helper": {
       "root": "libs/equi/shared/utils/helper",
@@ -388,7 +393,8 @@
             "lintFilePatterns": [
               "libs/equi/shared/utils/helper/**/*.{ts,tsx,js,jsx}"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -398,7 +404,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-shared-utils-hooks": {
       "root": "libs/equi/shared/utils/hooks",
@@ -411,7 +418,8 @@
             "lintFilePatterns": [
               "libs/equi/shared/utils/hooks/**/*.{ts,tsx,js,jsx}"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -421,7 +429,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-shared-utils-types": {
       "root": "libs/equi/shared/utils/types",
@@ -434,7 +443,8 @@
             "lintFilePatterns": [
               "libs/equi/shared/utils/types/**/*.{ts,tsx,js,jsx}"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -444,7 +454,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-shell-features-virtual-rotator": {
       "root": "libs/equi/shell/features/virtual-rotator",
@@ -457,7 +468,8 @@
             "lintFilePatterns": [
               "libs/equi/shell/features/virtual-rotator/**/*.{ts,tsx,js,jsx}"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -467,7 +479,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-shell-utils": {
       "root": "libs/equi/shell/utils",
@@ -478,7 +491,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/equi/shell/utils/**/*.{ts,tsx,js,jsx}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -488,7 +502,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-standby-feature": {
       "root": "libs/equi/standby/feature",
@@ -501,7 +516,8 @@
             "lintFilePatterns": [
               "libs/equi/standby/feature/**/*.{ts,tsx,js,jsx}"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -511,7 +527,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-standby-ui": {
       "root": "libs/equi/standby/ui",
@@ -522,7 +539,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/equi/standby/ui/**/*.{ts,tsx,js,jsx}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -532,7 +550,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "equi-standby-utils": {
       "root": "libs/equi/standby/utils",
@@ -543,7 +562,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/equi/standby/utils/**/*.{ts,tsx,js,jsx}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -553,7 +573,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "librium": {
       "projectType": "application",
@@ -590,7 +611,8 @@
             "templateType": "default"
           }
         }
-      }
+      },
+      "tags": []
     },
     "shared-interfaces": {
       "root": "libs/shared/interfaces",
@@ -601,7 +623,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/shared/interfaces/**/*.ts"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -611,7 +634,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "teensy": {
       "projectType": "application",
@@ -647,7 +671,8 @@
             "templateType": "default"
           }
         }
-      }
+      },
+      "tags": []
     }
   }
 }

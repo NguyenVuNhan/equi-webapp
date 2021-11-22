@@ -17,83 +17,9 @@
         "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "M2Y4ODA3ZjUtNmU3Ny00YjI5LTg0OGMtOTYxNzgwZjViOTM5fHJlYWQtd3JpdGU=",
         "canTrackAnalytics": false,
-        "showUsageWarnings": true
+        "showUsageWarnings": true,
+        "parallel": 1
       }
-    }
-  },
-  "projects": {
-    "equi": {
-      "tags": []
-    },
-    "equi-appliances-feature": {
-      "tags": []
-    },
-    "equi-appliances-ui": {
-      "tags": []
-    },
-    "equi-appliances-utils": {
-      "tags": []
-    },
-    "equi-e2e": {
-      "tags": [],
-      "implicitDependencies": ["equi"]
-    },
-    "equi-menu-feature": {
-      "tags": []
-    },
-    "equi-menu-ui": {
-      "tags": []
-    },
-    "equi-scheduler-feature": {
-      "tags": []
-    },
-    "equi-scheduler-ui": {
-      "tags": []
-    },
-    "equi-scheduler-utils": {
-      "tags": []
-    },
-    "equi-shared-data-access": {
-      "tags": []
-    },
-    "equi-shared-features": {
-      "tags": []
-    },
-    "equi-shared-ui": {
-      "tags": []
-    },
-    "equi-shared-utils-helper": {
-      "tags": []
-    },
-    "equi-shared-utils-hooks": {
-      "tags": []
-    },
-    "equi-shared-utils-types": {
-      "tags": []
-    },
-    "equi-shell-features-virtual-rotator": {
-      "tags": []
-    },
-    "equi-shell-utils": {
-      "tags": []
-    },
-    "equi-standby-feature": {
-      "tags": []
-    },
-    "equi-standby-ui": {
-      "tags": []
-    },
-    "equi-standby-utils": {
-      "tags": []
-    },
-    "librium": {
-      "tags": []
-    },
-    "shared-interfaces": {
-      "tags": []
-    },
-    "teensy": {
-      "tags": []
     }
   },
   "targetDependencies": {
@@ -103,5 +29,27 @@
         "projects": "dependencies"
       }
     ]
-  }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/react"
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "css",
+        "linter": "eslint",
+        "strict": true,
+        "babel": true
+      },
+      "component": {
+        "style": "css"
+      },
+      "library": {
+        "style": "css",
+        "linter": "eslint",
+        "strict": true
+      }
+    }
+  },
+  "defaultProject": "equi"
 }
