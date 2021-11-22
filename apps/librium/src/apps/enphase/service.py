@@ -1,6 +1,9 @@
+from typing import List
 import requests
 from exception import AppError
 from flask import current_app
+
+from util.time import getTimeStamp
 
 
 class EnphaseBattery:
@@ -31,3 +34,14 @@ def getEnphaseData() -> EnphaseData:
         )
 
     raise AppError("Unable to get enphase data")
+
+
+def getEnphaseDataGraph() -> List[List[int]]:
+    query = '''
+        from(bucket:"test")
+            |> range(start: -24h, stop: now())
+            |> window(every: 15m, period: 5m, createEmpty: true)
+            |> mean()
+            |> duplicate(column: "_stop", as: "_time")
+            |> window(every: inf)
+    '''
