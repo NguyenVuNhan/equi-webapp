@@ -1,12 +1,11 @@
 import { RotatorContext } from '@virtue-equi/equi-shared-features';
+import {
+  ApplianceButton,
+  CloseButton,
+  ScheduleButton,
+} from '@virtue-equi/equi/menu/ui';
 import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  CloseButton,
-  EnergyButton,
-  ScheduleButton,
-  ApplianceButton,
-} from '@virtue-equi/equi/menu/ui';
 
 /* eslint-disable-next-line */
 export interface EquiMenuFeatureProps {}
@@ -14,7 +13,7 @@ export interface EquiMenuFeatureProps {}
 export function Menu(props: EquiMenuFeatureProps) {
   const [active, setActive] = useState(0);
   const history = useHistory();
-  const { dialPosition, click, resetClick } = useContext(RotatorContext);
+  const { dialPosition, click } = useContext(RotatorContext);
 
   useEffect(() => {
     const pos = (dialPosition * 4) % 360;
@@ -37,9 +36,8 @@ export function Menu(props: EquiMenuFeatureProps) {
           history.push('/standby');
           break;
       }
-      resetClick();
     }
-  }, [active, click, history, resetClick]);
+  }, [active, click, history]);
 
   const handleActive = (id: number) => () => {
     setActive(id === active ? 0 : id);

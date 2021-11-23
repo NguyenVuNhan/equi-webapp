@@ -8,7 +8,7 @@ export interface VirtualRotatorProps {}
 
 export function VirtualRotator(props: VirtualRotatorProps) {
   const history = useHistory();
-  const { setDialPosition } = useContext(RotatorContext);
+  const { setDialPosition, setClick } = useContext(RotatorContext);
   const [mouseInside, setMouseInside] = useState(false);
 
   const toMenu = () => {
@@ -52,7 +52,13 @@ export function VirtualRotator(props: VirtualRotatorProps) {
         cy="540"
         fill="black"
       />
-      <circle cx="540" cy="540" r="80" fill="gray" onClick={toMenu} />
+      <circle
+        cx="540"
+        cy="540"
+        r="80"
+        fill="gray"
+        onClick={() => setClick(true)}
+      />
     </g>
   );
 }

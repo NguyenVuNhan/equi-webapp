@@ -20,41 +20,61 @@ export interface ApplianceProps {
 export function Appliance(props: ApplianceProps) {
   const { appliance, onActive, onLeave } = props;
   const pos = useRef(dateToAngle(appliance.time_start));
-  const { dialPosition } = useContext(RotatorContext);
+  const { dialPosition, click } = useContext(RotatorContext);
   const originalX = useRef(540 + Math.sin((pos.current * Math.PI) / 180) * 360);
   const originalY = useRef(540 - Math.cos((pos.current * Math.PI) / 180) * 360);
   const r = useRef(defaultSize / 2);
   const [x, setX] = useState(originalX.current - r.current);
   const [y, setY] = useState(originalY.current - r.current);
   const [active, setActive] = useState(false);
+  const [isScheduling, setIsScheduling] = useState(false);
 
   useEffect(() => {
-    // Inactive --> Active
-    if (!active) {
+    if (!isScheduling) {
+      // If not in scheduling mode
+      // Inactive --> Active
+      if (!active) {
+        if (
+          pos.current - threshold <= dialPosition &&
+          dialPosition <= pos.current + threshold
+        ) {
+          r.current = (defaultSize + activeGrow) / 2;
+          setX(originalX.current - r.current);
+          setY(originalY.current - r.current);
+          setActive(true);
+        }
+        return;
+      }
+
+      // Active --> Inactive
       if (
-        pos.current - threshold <= dialPosition &&
-        dialPosition <= pos.current + threshold
+        pos.current - threshold > dialPosition ||
+        dialPosition > pos.current + threshold
       ) {
-        r.current = (defaultSize + activeGrow) / 2;
+        r.current = defaultSize / 2;
         setX(originalX.current - r.current);
         setY(originalY.current - r.current);
-        setActive(true);
+        setActive(false);
       }
-      return;
-    }
-
-    // Active --> Inactive
-    if (
-      pos.current - threshold > dialPosition ||
-      dialPosition > pos.current + threshold
-    ) {
-      r.current = defaultSize / 2;
+    } else if (isScheduling) {
+      // If in scheduling mode
+      originalX.current = 540 + Math.sin((dialPosition * Math.PI) / 180) * 360;
+      originalY.current = 540 - Math.cos((dialPosition * Math.PI) / 180) * 360;
+      pos.current = dialPosition;
       setX(originalX.current - r.current);
       setY(originalY.current - r.current);
-      setActive(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dialPosition]);
+
+  useEffect(() => {
+    if (active && click) {
+      setIsScheduling((value) => {
+        console.log(!value);
+        return !value;
+      });
+    }
+  }, [active, click]);
 
   useEffect(() => {
     originalX.current = 540 + Math.sin((pos.current * Math.PI) / 180) * 360;

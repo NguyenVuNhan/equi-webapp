@@ -1,4 +1,4 @@
-import { RotatorContext } from './rotator.context';
+import { useTimeout } from '@virtue-equi/equi/shared/utils/hooks';
 import {
   ReactNode,
   useCallback,
@@ -8,6 +8,7 @@ import {
   useState,
 } from 'react';
 import { useHistory } from 'react-router-dom';
+import { RotatorContext } from './rotator.context';
 
 export interface RotatorProviderProps {
   children: ReactNode;
@@ -33,7 +34,8 @@ export function RotatorProvider(props: RotatorProviderProps) {
   const [connected, setConnected] = useState(false);
   const [click, setClick] = useState(false);
 
-  const resetClick = useCallback(() => setClick(false), []);
+  // Simulate click. After user click -> click =true, after 100ms -> click = false
+  useTimeout(() => setClick(false), 100, click);
 
   const updateCursor = (val: number) => {
     setDialPosition(val);
@@ -84,8 +86,13 @@ export function RotatorProvider(props: RotatorProviderProps) {
   }, []);
 
   const value = useMemo(
-    () => ({ dialPosition, setDialPosition: updateCursor, click, resetClick }),
-    [dialPosition]
+    () => ({
+      dialPosition,
+      setDialPosition: updateCursor,
+      click,
+      setClick,
+    }),
+    [dialPosition, updateCursor, click]
   );
 
   return (

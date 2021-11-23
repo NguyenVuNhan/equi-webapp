@@ -36,7 +36,7 @@ export const Polar = memo<PolarProps>(
       </g>
     );
   },
-  (prev, next) => prev.data === next.data
+  (prev, next) => prev.name === next.name && prev.data === next.data
 );
 
 export default Polar;

@@ -4,18 +4,16 @@ export interface IRotatorContext {
   dialPosition: number;
   setDialPosition: (pos: number) => void;
   click: boolean;
-  resetClick: () => void;
+  setClick: (value: boolean) => void;
 }
 
 const initial: IRotatorContext = {
   dialPosition: 0,
-  setDialPosition: (_pos: number) => {
-    return;
-  },
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setDialPosition: () => {},
   click: false,
-  resetClick: () => {
-    return;
-  },
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setClick: () => {},
 };
 
 export const RotatorContext = createContext<IRotatorContext>(initial);
