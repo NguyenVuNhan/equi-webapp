@@ -1,14 +1,22 @@
-class Config:
-    ENVOY_BASE_URL = "http://envoy.local"
-    ENVOY_PRODUCTION_URL = ENVOY_BASE_URL + "/production.json?details=1"
-    INFLUXDB_TOKEN = "x75OjHI7A0AMMuZYSFSmjzg0Yiz61UG__FoQyiceZ3A4XDshOcAyKadClPs2HChc5kvMcodhg9gsi5gykbflYA=="
-    INFLUXDB_ORG = "equi"
-    INFLUXDB_BUCKET = "test"
+from os import environ
 
 
-class ProdConfig(Config):
-    pass
+class Config(object):
+    DEBUG = False
+    ENVOY_URL = environ.get('ENVOY_URL')
+    INFLUXDB_URL = environ.get('INFLUXDB_URL')
+    INFLUXDB_TOKEN = environ.get('INFLUXDB_TOKEN')
+    INFLUXDB_ORG = environ.get('INFLUXDB_ORG')
+    INFLUXDB_ENPHASE_BUCKET = environ.get('INFLUXDB_ENPHASE_BUCKET')
+
+    @property
+    def ENVOY_PRODUCTION_URL(self):
+        return f"{self.ENVOY_URL}/production.json?details=1"
 
 
-class DevConfig(Config):
+class Development(Config):
+    DEBUG = True
+
+
+class Production(Config):
     pass

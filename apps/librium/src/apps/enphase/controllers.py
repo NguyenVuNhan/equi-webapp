@@ -1,9 +1,8 @@
 import json
 from typing import Literal
-from flask import Blueprint, request, jsonify
-from flask_socketio import SocketIO
 
-from apps.enphase.service import getEnphaseData
+from apps.enphase.service import getEnphaseData, getEnphaseDataGraph
+from flask import Blueprint, jsonify, request
 from util.data import getSuccessMessage
 
 enphase_blueprint = Blueprint('enphase', __name__)
@@ -28,3 +27,8 @@ def batteryState() -> Literal["idle", "charging", "discharging"]:
         "state": enphaseData.battery.state,
         "percent": enphaseData.battery.percent,
     })
+
+
+@enphase_blueprint.route("/series", methods=['GET'])
+def series():
+    return getEnphaseDataGraph()

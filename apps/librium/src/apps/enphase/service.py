@@ -1,9 +1,11 @@
 from typing import List
+
 import requests
+from app import influxdb
 from exception import AppError
 from flask import current_app
-
 from util.time import getTimeStamp
+from util.helper import pluck
 
 
 class EnphaseBattery:
@@ -37,11 +39,24 @@ def getEnphaseData() -> EnphaseData:
 
 
 def getEnphaseDataGraph() -> List[List[int]]:
-    query = '''
-        from(bucket:"test")
+    query = f'''
+        from(bucket:"{influxdb.enphase_bucket}")
             |> range(start: -24h, stop: now())
-            |> window(every: 15m, period: 5m, createEmpty: true)
-            |> mean()
-            |> duplicate(column: "_stop", as: "_time")
-            |> window(every: inf)
+            |> filter(fn: (r) => r["_measurement"] == "Enphasehttpjson")
+            |> filter(fn: (r) => r["_field"] == "consumption_1_wNow" or r["_field"] == "production_1_wNow" or r["_field"] == "storage_0_wNow")
+            |> aggregateWindow(every: 5m, fn: mean, createEmpty: true)
+            |> yield(name: "mean")
     '''
+    tables = influxdb.query(query, org=influxdb.org)
+    dict = {}
+    for table in tables:
+        for record in table.records:
+            # print(record)
+            _time, _value, _field = pluck(
+                record.values, "_time", "_value", "_field")
+            if _field in dict:
+                dict[_field].append({'time': _time, 'value': _value})
+            else:
+                dict[_field] = [{'time': _time, 'value': _value}]
+
+    return dict
