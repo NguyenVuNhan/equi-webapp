@@ -3,4 +3,3 @@ export * from './lib/time-prettier';
 export * from './lib/angle-to-time';
 export * from './lib/date-to-angle';
 export * from './lib/get-appliance-time-range';
-export * from './lib/time-utils';

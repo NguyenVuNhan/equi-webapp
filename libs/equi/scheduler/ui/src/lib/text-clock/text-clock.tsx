@@ -1,14 +1,13 @@
-import { getCurrentTime } from '@virtue-equi/equi/scheduler/utils';
-import { useInterval } from '@virtue-equi/equi/shared/utils/hooks';
-import { useState } from 'react';
+import { useClock } from '@virtue-equi/equi-shared-features';
 
 export function TextClock() {
-  const [time, setTime] = useState(getCurrentTime());
+  const clock = useClock();
 
-  useInterval(() => setTime(getCurrentTime()), 1000);
-
-  // eslint-disable-next-line react/jsx-no-useless-fragment
-  return <>{time}</>;
+  return (
+    <>
+      {clock.hour} : {clock.minute}
+    </>
+  );
 }
 
 export default TextClock;

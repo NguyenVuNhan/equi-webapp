@@ -35,7 +35,7 @@ export function CloseButton(props: CloseButtonProps) {
           cy="541.5"
           r="119"
           stroke="white"
-          stroke-width="15"
+          strokeWidth="15"
         />
       )}
 

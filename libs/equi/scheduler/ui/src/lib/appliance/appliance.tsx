@@ -69,10 +69,11 @@ export function Appliance(props: ApplianceProps) {
 
   useEffect(() => {
     const clickedSubscriber = clicked$.subscribe(() => {
-      active &&
+      if (active) {
         setIsScheduling((value) => {
           return !value;
         });
+      }
     });
     return () => {
       clickedSubscriber.unsubscribe();
@@ -108,7 +109,7 @@ export function Appliance(props: ApplianceProps) {
         cy={y + r.current}
         r={r.current}
         fill="#E24C3A"
-        strokeWidth={active ? 4 : 0}
+        strokeWidth={active || isScheduling ? 4 : 0}
         stroke="white"
       />
 
