@@ -1,4 +1,3 @@
-import { useTimeout } from '@virtue-equi/equi/shared/utils/hooks';
 import {
   ReactNode,
   useCallback,
@@ -8,7 +7,8 @@ import {
   useState,
 } from 'react';
 import { useHistory } from 'react-router-dom';
-import { RotatorContext } from './rotator.context';
+import { ClickEvent, RotatorContext } from './rotator.context';
+import { setClicked } from './rotator.event';
 
 export interface RotatorProviderProps {
   children: ReactNode;
@@ -32,14 +32,28 @@ export function RotatorProvider(props: RotatorProviderProps) {
 
   const [dialPosition, setDialPosition] = useState(0);
   const [connected, setConnected] = useState(false);
-  const [click, setClick] = useState(false);
 
-  // Simulate click. After user click -> click =true, after 100ms -> click = false
-  useTimeout(() => setClick(false), 100, click);
-
-  const updateCursor = (val: number) => {
-    setDialPosition(val);
-  };
+  const handleClick = useCallback((event: ClickEvent) => {
+    switch (event) {
+      case 'rotateRightEvent':
+        setDialPosition(onRotateEvent());
+        break;
+      case 'rotateLeftEvent':
+        setDialPosition(onRotateEvent(true));
+        break;
+      case 'holdEvent':
+        history.goBack();
+        break;
+      case 'clickEvent':
+        setClicked();
+        break;
+      case 'doubleClickEvent':
+        history.push('/menu');
+        break;
+      default:
+        break;
+    }
+  }, []);
 
   useEffect(() => {
     webSocket.current = new WebSocket(wsUri);
@@ -55,25 +69,7 @@ export function RotatorProvider(props: RotatorProviderProps) {
     };
 
     webSocket.current.onmessage = async function (evt) {
-      switch (evt.data) {
-        case 'rotateRightEvent':
-          setDialPosition(onRotateEvent());
-          break;
-        case 'rotateLeftEvent':
-          setDialPosition(onRotateEvent(true));
-          break;
-        case 'holdEvent':
-          history.goBack();
-          break;
-        case 'clickEvent':
-          setClick(true);
-          break;
-        case 'doubleClickEvent':
-          history.push('/menu');
-          break;
-        default:
-          break;
-      }
+      handleClick(evt.data);
     };
 
     webSocket.current.onerror = function (evt) {
@@ -88,11 +84,10 @@ export function RotatorProvider(props: RotatorProviderProps) {
   const value = useMemo(
     () => ({
       dialPosition,
-      setDialPosition: updateCursor,
-      click,
-      setClick,
+      setDialPosition,
+      handleClick,
     }),
-    [dialPosition, updateCursor, click]
+    [dialPosition]
   );
 
   return (

@@ -3,7 +3,7 @@ import { ButtonProps } from '../button-props';
 export type ScheduleButtonProps = ButtonProps;
 
 export function ScheduleButton(props: ScheduleButtonProps) {
-  const { active, onClick } = props;
+  const { active } = props;
 
   return (
     <g>
@@ -108,14 +108,7 @@ export function ScheduleButton(props: ScheduleButtonProps) {
         />
       </g>
 
-      <circle
-        cx="168.5"
-        cy="541.5"
-        r="119"
-        fill="white"
-        opacity="0"
-        onClick={onClick}
-      />
+      <circle cx="168.5" cy="541.5" r="119" fill="white" opacity="0" />
     </g>
   );
 }

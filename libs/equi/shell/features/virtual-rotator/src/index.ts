@@ -1,1 +1,1 @@
-export * from './lib/equi-shell-features-virtual-rotator';
+export * from './lib/virtual-rotator';

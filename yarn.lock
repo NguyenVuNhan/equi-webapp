@@ -2796,6 +2796,16 @@
     schema-utils "^3.0.0"
     source-map "^0.7.3"
 
+"@react-rxjs/core@^0.8.4":
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/@react-rxjs/core/-/core-0.8.4.tgz#26f6fe3c64014097b487fdd5aa7e36577e5c333a"
+  integrity sha512-n+aa0sSrzj3ctBgmHl13nz0a4nKzcDmu+z+WgUtOmRp7niAzs+f02t2D/FyEfvs0Fp1Zq7z2hh5HM2LBlQPAhA==
+
+"@react-rxjs/utils@^0.9.3":
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/@react-rxjs/utils/-/utils-0.9.3.tgz#1762b7146aa6c32677fe1863cf7213d1f7622d22"
+  integrity sha512-arwh1iW+5ciE/fdWwrXXYXF1anyGqBU1WkxvKGZkfxO2sNk+45t9glzHLDWkOUSrMaQeonuTw3vSg7qK/xhJCg==
+
 "@rollup/plugin-babel@^5.3.0":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-babel/-/plugin-babel-5.3.0.tgz#9cb1c5146ddd6a4968ad96f209c50c62f92f9879"
@@ -14482,6 +14492,13 @@ rxjs@6.6.7, rxjs@^6.5.4, rxjs@^6.6.7:
   dependencies:
     tslib "^1.9.0"
 
+rxjs@^7.4.0:
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.4.0.tgz#a12a44d7eebf016f5ff2441b87f28c9a51cebc68"
+  integrity sha512-7SQDi7xeTMCJpqViXh8gL/lebcwlp3d831F05+9B44A4B0WfsEwUQHR64gsH1kvJ+Ep/J9K2+n1hVl1CsGN23w==
+  dependencies:
+    tslib "~2.1.0"
+
 safe-buffer@5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
@@ -15900,7 +15917,7 @@ tsconfig-paths@^3.9.0:
     minimist "^1.2.0"
     strip-bom "^3.0.0"
 
-tslib@2.1.0:
+tslib@2.1.0, tslib@~2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.1.0.tgz#da60860f1c2ecaa5703ab7d39bc05b6bf988b97a"
   integrity sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==

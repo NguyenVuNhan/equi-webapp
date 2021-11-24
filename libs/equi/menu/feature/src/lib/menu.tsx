@@ -1,4 +1,4 @@
-import { RotatorContext } from '@virtue-equi/equi-shared-features';
+import { clicked$, RotatorContext } from '@virtue-equi/equi-shared-features';
 import {
   ApplianceButton,
   CloseButton,
@@ -13,18 +13,10 @@ export interface EquiMenuFeatureProps {}
 export function Menu(props: EquiMenuFeatureProps) {
   const [active, setActive] = useState(0);
   const history = useHistory();
-  const { dialPosition, click } = useContext(RotatorContext);
+  const { dialPosition } = useContext(RotatorContext);
 
   useEffect(() => {
-    const pos = (dialPosition * 4) % 360;
-    if (pos > 305) setActive(1);
-    else if (pos > 215) setActive(2);
-    else if (pos > 125) setActive(3);
-    else setActive(4);
-  }, [dialPosition]);
-
-  useEffect(() => {
-    if (click) {
+    const clickedSubscriber = clicked$.subscribe(() => {
       switch (active) {
         case 2:
           history.push('/scheduling');
@@ -36,27 +28,19 @@ export function Menu(props: EquiMenuFeatureProps) {
           history.push('/standby');
           break;
       }
-    }
-  }, [active, click, history]);
+    });
+    return () => {
+      clickedSubscriber.unsubscribe();
+    };
+  }, [active, history]);
 
-  const handleActive = (id: number) => () => {
-    setActive(id === active ? 0 : id);
-
-    switch (id) {
-      case 2:
-        history.push('/scheduling');
-        break;
-      case 3:
-        history.push('/appliances');
-        break;
-      case 4:
-        history.push('/standby');
-        break;
-      default:
-        console.log(id);
-        break;
-    }
-  };
+  useEffect(() => {
+    const pos = (dialPosition * 4) % 360;
+    if (pos > 305) setActive(1);
+    else if (pos > 215) setActive(2);
+    else if (pos > 125) setActive(3);
+    else setActive(4);
+  }, [dialPosition]);
 
   return (
     <g>
@@ -68,9 +52,9 @@ export function Menu(props: EquiMenuFeatureProps) {
         fill="#C4C4C4"
       />
 
-      <ScheduleButton active={active === 2} onClick={handleActive(2)} />
-      <ApplianceButton active={active === 3} onClick={handleActive(3)} />
-      <CloseButton active={active === 4} onClick={handleActive(4)} />
+      <ScheduleButton active={active === 2} />
+      <ApplianceButton active={active === 3} />
+      <CloseButton active={active === 4} />
     </g>
   );
 }

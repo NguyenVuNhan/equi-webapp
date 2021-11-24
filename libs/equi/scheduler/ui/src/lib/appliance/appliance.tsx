@@ -1,11 +1,11 @@
-import { useContext, useEffect, useRef, useState } from 'react';
-import { RotatorContext } from '@virtue-equi/equi-shared-features';
-import { IAppliance } from '@virtue-equi/shared/interfaces';
+import { clicked$, RotatorContext } from '@virtue-equi/equi-shared-features';
 import {
   dateToAngle,
   getApplianceTimeRange,
 } from '@virtue-equi/equi/scheduler/utils';
 import { getDeviceIcon } from '@virtue-equi/equi/shared/utils/helper';
+import { IAppliance } from '@virtue-equi/shared/interfaces';
+import { useContext, useEffect, useRef, useState } from 'react';
 
 const threshold = 5;
 const defaultSize = 64;
@@ -20,7 +20,7 @@ export interface ApplianceProps {
 export function Appliance(props: ApplianceProps) {
   const { appliance, onActive, onLeave } = props;
   const pos = useRef(dateToAngle(appliance.time_start));
-  const { dialPosition, click } = useContext(RotatorContext);
+  const { dialPosition } = useContext(RotatorContext);
   const originalX = useRef(540 + Math.sin((pos.current * Math.PI) / 180) * 360);
   const originalY = useRef(540 - Math.cos((pos.current * Math.PI) / 180) * 360);
   const r = useRef(defaultSize / 2);
@@ -68,13 +68,16 @@ export function Appliance(props: ApplianceProps) {
   }, [dialPosition]);
 
   useEffect(() => {
-    if (active && click) {
-      setIsScheduling((value) => {
-        console.log(!value);
-        return !value;
-      });
-    }
-  }, [active, click]);
+    const clickedSubscriber = clicked$.subscribe(() => {
+      active &&
+        setIsScheduling((value) => {
+          return !value;
+        });
+    });
+    return () => {
+      clickedSubscriber.unsubscribe();
+    };
+  }, [active]);
 
   useEffect(() => {
     originalX.current = 540 + Math.sin((pos.current * Math.PI) / 180) * 360;

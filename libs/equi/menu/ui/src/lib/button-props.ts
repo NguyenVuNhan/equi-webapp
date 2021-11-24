@@ -1,4 +1,4 @@
 export interface ButtonProps {
   active: boolean;
-  onClick: React.MouseEventHandler<SVGCircleElement>;
+  onClick?: React.MouseEventHandler<SVGCircleElement>;
 }
