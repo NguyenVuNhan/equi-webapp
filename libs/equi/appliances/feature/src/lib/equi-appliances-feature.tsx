@@ -1,11 +1,11 @@
+import { useDialAngle } from '@virtue-equi/equi-shared-features';
 import { ApplianceBubble } from '@virtue-equi/equi/appliances/ui';
 import {
   arrangeAppliances,
   IApplianceBubble,
 } from '@virtue-equi/equi/appliances/utils';
-import { RotatorContext } from '@virtue-equi/equi-shared-features';
 import { DataBubble } from '@virtue-equi/equi/shared/ui';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { appliances } from './mockData';
 
 /* eslint-disable-next-line */
@@ -13,7 +13,7 @@ export interface AppliancesProps {}
 
 export function Appliances(props: AppliancesProps) {
   const [balls, setBalls] = useState<IApplianceBubble[]>([]);
-  const { dialPosition } = useContext(RotatorContext);
+  const dialPosition = useDialAngle();
   const [active, setActive] = useState(0);
   const pDialPosition = useRef(0);
 

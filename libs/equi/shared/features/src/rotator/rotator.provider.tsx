@@ -8,22 +8,13 @@ import {
 } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ClickEvent, RotatorContext } from './rotator.context';
-import { setClicked } from './rotator.event';
+import { setClicked, setDialRotate } from './rotator.event';
 
 export interface RotatorProviderProps {
   children: ReactNode;
 }
 
 const wsUri = 'ws://localhost:8765';
-
-const onRotateEvent =
-  (isLeft = false) =>
-  (pos: number) => {
-    let newPos = pos + (isLeft ? -2 : 2);
-    newPos %= 360;
-    newPos = newPos < 0 ? 360 + newPos : newPos;
-    return newPos;
-  };
 
 export function RotatorProvider(props: RotatorProviderProps) {
   const { children } = props;
@@ -36,10 +27,10 @@ export function RotatorProvider(props: RotatorProviderProps) {
   const handleClick = useCallback((event: ClickEvent) => {
     switch (event) {
       case 'rotateRightEvent':
-        setDialPosition(onRotateEvent());
+        setDialRotate(true);
         break;
       case 'rotateLeftEvent':
-        setDialPosition(onRotateEvent(true));
+        setDialRotate(false);
         break;
       case 'holdEvent':
         history.goBack();

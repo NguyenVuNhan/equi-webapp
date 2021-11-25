@@ -1,11 +1,11 @@
-import { clicked$, RotatorContext } from '@virtue-equi/equi-shared-features';
+import { clicked$, useDialAngle } from '@virtue-equi/equi-shared-features';
 import {
   dateToAngle,
   getApplianceTimeRange,
 } from '@virtue-equi/equi/scheduler/utils';
 import { getDeviceIcon } from '@virtue-equi/equi/shared/utils/helper';
 import { IAppliance } from '@virtue-equi/shared/interfaces';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const threshold = 5;
 const defaultSize = 64;
@@ -20,7 +20,6 @@ export interface ApplianceProps {
 export function Appliance(props: ApplianceProps) {
   const { appliance, onActive, onLeave } = props;
   const pos = useRef(dateToAngle(appliance.time_start));
-  const { dialPosition } = useContext(RotatorContext);
   const originalX = useRef(540 + Math.sin((pos.current * Math.PI) / 180) * 360);
   const originalY = useRef(540 - Math.cos((pos.current * Math.PI) / 180) * 360);
   const r = useRef(defaultSize / 2);
@@ -28,13 +27,14 @@ export function Appliance(props: ApplianceProps) {
   const [y, setY] = useState(originalY.current - r.current);
   const [active, setActive] = useState(false);
   const [isScheduling, setIsScheduling] = useState(false);
+  const dialPosition = useDialAngle();
 
   useEffect(() => {
     if (!isScheduling) {
       // If not in scheduling mode
-      // Inactive --> Active
       if (!active) {
         if (
+          // Inactive --> Active
           pos.current - threshold <= dialPosition &&
           dialPosition <= pos.current + threshold
         ) {
@@ -44,19 +44,17 @@ export function Appliance(props: ApplianceProps) {
           setActive(true);
         }
         return;
-      }
-
-      // Active --> Inactive
-      if (
+      } else if (
         pos.current - threshold > dialPosition ||
         dialPosition > pos.current + threshold
       ) {
+        // Active --> Inactive
         r.current = defaultSize / 2;
         setX(originalX.current - r.current);
         setY(originalY.current - r.current);
         setActive(false);
       }
-    } else if (isScheduling) {
+    } else {
       // If in scheduling mode
       originalX.current = 540 + Math.sin((dialPosition * Math.PI) / 180) * 360;
       originalY.current = 540 - Math.cos((dialPosition * Math.PI) / 180) * 360;

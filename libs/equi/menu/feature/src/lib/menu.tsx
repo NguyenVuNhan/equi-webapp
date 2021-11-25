@@ -1,10 +1,10 @@
-import { clicked$, RotatorContext } from '@virtue-equi/equi-shared-features';
+import { clicked$, useDialAngle } from '@virtue-equi/equi-shared-features';
 import {
   ApplianceButton,
   CloseButton,
   ScheduleButton,
 } from '@virtue-equi/equi/menu/ui';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 /* eslint-disable-next-line */
@@ -13,7 +13,7 @@ export interface EquiMenuFeatureProps {}
 export function Menu(props: EquiMenuFeatureProps) {
   const [active, setActive] = useState(0);
   const history = useHistory();
-  const { dialPosition } = useContext(RotatorContext);
+  const dialPosition = useDialAngle();
 
   useEffect(() => {
     const clickedSubscriber = clicked$.subscribe(() => {

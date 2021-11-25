@@ -8,15 +8,10 @@ export type ClickEvent =
   | 'rotateRightEvent';
 
 export interface IRotatorContext {
-  dialPosition: number;
-  setDialPosition: (pos: number) => void;
   handleClick: (event: ClickEvent) => void;
 }
 
 const initial: IRotatorContext = {
-  dialPosition: 0,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setDialPosition: () => {},
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   handleClick: () => {},
 };

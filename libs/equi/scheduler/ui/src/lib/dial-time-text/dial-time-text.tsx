@@ -1,13 +1,13 @@
-import { memo, useContext, useEffect, useState } from 'react';
-import { RotatorContext } from '@virtue-equi/equi-shared-features';
+import { useDialAngle } from '@virtue-equi/equi-shared-features';
 import { angleToTime } from '@virtue-equi/equi/scheduler/utils';
+import { memo, useEffect, useState } from 'react';
 import TextClock from '../text-clock/text-clock';
 const dialRightBoundary = 8;
 const dialLeftBoundary = 352;
 
 export const DialTimeText = memo(
   () => {
-    const { dialPosition } = useContext(RotatorContext);
+    const dialPosition = useDialAngle();
     const [dialAppear, setDialAppear] = useState(false);
 
     useEffect(() => {
@@ -27,7 +27,7 @@ export const DialTimeText = memo(
 
     return (
       <text
-        x="30"
+        x={dialAppear ? '5' : '30'}
         y={dialAppear ? 520 : 490}
         fontSize={dialAppear ? 40 : 110}
         fontWeight="300"

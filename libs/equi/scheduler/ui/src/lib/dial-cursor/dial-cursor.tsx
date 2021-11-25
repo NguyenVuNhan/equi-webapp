@@ -1,12 +1,12 @@
-import { RotatorContext } from '@virtue-equi/equi-shared-features';
-import { memo, useContext } from 'react';
+import { useDialAngle } from '@virtue-equi/equi-shared-features';
+import { memo } from 'react';
 
 /* eslint-disable-next-line */
 export interface DialCursorProps {}
 
 export const DialCursor = memo(
   (props: DialCursorProps) => {
-    const { dialPosition } = useContext(RotatorContext);
+    const dialPosition = useDialAngle();
 
     return (
       <line

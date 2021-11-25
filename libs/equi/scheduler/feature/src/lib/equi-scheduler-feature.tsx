@@ -1,3 +1,4 @@
+import { setDialAngleChange } from '@virtue-equi/equi-shared-features';
 import {
   Appliance,
   AppliancePowerConsumption,
@@ -10,7 +11,7 @@ import {
   PowerProduction,
 } from '@virtue-equi/equi/scheduler/ui';
 import { IAppliance } from '@virtue-equi/shared/interfaces';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   batteryLevel,
   energyConsumption,
@@ -24,6 +25,12 @@ export interface SchedulerProps {}
 
 export function Scheduler(props: SchedulerProps) {
   const [appliance, setAppliance] = useState<IAppliance>();
+
+  // On initialize, reset the dial position
+  useEffect(() => {
+    setDialAngleChange(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <g>
