@@ -1,5 +1,6 @@
 from typing import List
 
+from flask import jsonify
 import requests
 from app import influxdb
 from exception import AppError
@@ -13,12 +14,25 @@ class EnphaseBattery:
         self.percent = percent
         self.state = state
 
+    def getJson(self):
+        return {
+            "percent": self.percent,
+            "state": self.state,
+        }
+
 
 class EnphaseData:
     def __init__(self, production: int, consumption: int, battery: EnphaseBattery):
         self.production = production
         self.consumption = consumption
         self.battery = battery
+
+    def getJson(self):
+        return {
+            "production": self.production,
+            "consumption": self.consumption,
+            "battery": self.battery.getJson()
+        }
 
 
 def getEnphaseData() -> EnphaseData:

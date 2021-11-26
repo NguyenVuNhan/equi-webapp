@@ -1,21 +1,17 @@
 import {
-  RotatorContext,
   setDialAngleChange,
+  useRotatorContext,
 } from '@virtue-equi/equi-shared-features';
 import { useTimeout } from '@virtue-equi/equi/shared/utils/hooks';
 import { calcAngle } from '@virtue-equi/equi/shell/utils';
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
 
 // Button timing variables
-const debounce = 20; // ms debounce period to prevent flickering when pressing or releasing the button
 const DCgap = 250; // max ms between clicks for a double click event
 const holdTime = 500; // ms hold period: how long to wait for press+hold event
-const longHoldTime = 3000; // ms long hold period: how long to wait for press+hold event
 
 export function VirtualRotator() {
-  const history = useHistory();
-  const { handleClick } = useContext(RotatorContext);
+  const { handleClick } = useRotatorContext();
   const [mouseInside, setMouseInside] = useState(false);
   const [click, setClick] = useState(false);
   const lastMouseDownTime = useRef<number | undefined>();

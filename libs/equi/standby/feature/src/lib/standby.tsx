@@ -1,16 +1,14 @@
+import { usePowerStatus } from '@virtue-equi/equi-shared-features';
 import { BatteryBubble, BatteryWave } from '@virtue-equi/equi/standby/ui';
-import { useContext, useState } from 'react';
-import { BatteryContext } from './baterry/battery.context';
-import BatteryProvider from './baterry/battery.provider';
 import './standby.css';
 
 export function Standby() {
-  const { percent, status } = useContext(BatteryContext);
+  const { battery } = usePowerStatus();
 
   return (
     <g>
-      <BatteryWave battery={percent} />
-      <BatteryBubble isConsuming={status !== 'charging'} />
+      <BatteryWave battery={battery.percent} />
+      <BatteryBubble isConsuming={battery.status !== 'charging'} />
     </g>
   );
 }

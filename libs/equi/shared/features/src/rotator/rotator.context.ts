@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 
 export type ClickEvent =
   | 'doubleClickEvent'
@@ -17,3 +17,4 @@ const initial: IRotatorContext = {
 };
 
 export const RotatorContext = createContext<IRotatorContext>(initial);
+export const useRotatorContext = () => useContext(RotatorContext);

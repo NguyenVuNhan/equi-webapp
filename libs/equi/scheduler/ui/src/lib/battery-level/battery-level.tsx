@@ -1,6 +1,5 @@
+import { usePowerStatus } from '@virtue-equi/equi-shared-features';
 import { DataBubble } from '@virtue-equi/equi/shared/ui';
-import { useContext } from 'react';
-import { BatteryContext } from '@virtue-equi/equi/standby/feature';
 
 export interface BatteryLevelProps {
   y?: number;
@@ -9,12 +8,12 @@ export interface BatteryLevelProps {
 
 export function BatteryLevel(props: BatteryLevelProps) {
   const { y } = props;
-  const { percent } = useContext(BatteryContext);
+  const { battery } = usePowerStatus();
 
   return (
     <DataBubble
       name="BatteryLevel"
-      text={percent + ' %'}
+      text={battery.percent + ' %'}
       textX={65}
       y={y}
       icon={
