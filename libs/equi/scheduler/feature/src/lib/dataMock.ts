@@ -45,6 +45,7 @@ export const batteryLevel = [
   417, 424, 428, 421, 424, 416, 407, 410, 404, 405, 397, 394, 387, 380, 382,
   374, 369, 369,
 ];
+console.log(batteryLevel.length);
 
 export const energyProduction = [
   321, 330, 334, 324, 320, 321, 328, 334, 331, 322, 332, 339, 332, 328, 336,

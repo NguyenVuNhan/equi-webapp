@@ -6,19 +6,13 @@ import {
   BatteryLevel,
   DialCursor,
   DialTimeText,
-  Polar,
   PowerConsumption,
   PowerProduction,
 } from '@virtue-equi/equi/scheduler/ui';
 import { IAppliance } from '@virtue-equi/shared/interfaces';
 import { useEffect, useState } from 'react';
-import {
-  batteryLevel,
-  energyConsumption,
-  energyProduction,
-  general_energy_data,
-  scheduled_item_data,
-} from './dataMock'; // TODO: replace with real data
+import { scheduled_item_data } from './dataMock'; // TODO: replace with real data
+import SchedulerPolar from './scheduler-polar';
 
 /* eslint-disable-next-line */
 export interface SchedulerProps {}
@@ -36,25 +30,7 @@ export function Scheduler(props: SchedulerProps) {
     <g>
       <DialCursor />
       <DialTimeText />
-
-      <Polar name="energy_production" stroke="#75C7CC" data={energyProduction}>
-        <stop offset="0.391621" stopColor="#75C7CC" />
-        <stop offset="1" stopColor="#75C7CC" stopOpacity="0" />
-      </Polar>
-      <Polar
-        name="energy_consumption"
-        stroke="#F4E696"
-        data={energyConsumption}
-      >
-        <stop offset="0.395478" stopColor="#F4E696" />
-        <stop offset="0.732477" stopColor="#F4E696" stopOpacity="0" />
-      </Polar>
-      <Polar
-        name="battery_level"
-        data={batteryLevel}
-        strokeDasharray="7"
-        stroke="#B3D898"
-      />
+      <SchedulerPolar />
       {scheduled_item_data.map((item, id) => (
         <Appliance
           key={id}
@@ -86,18 +62,9 @@ export function Scheduler(props: SchedulerProps) {
         </>
       ) : (
         <>
-          <BatteryLevel
-            y={80}
-            batteryLevel={general_energy_data.current.battery_level}
-          />
-          <PowerConsumption
-            y={160}
-            totalConsumption={general_energy_data.current.total_consumption}
-          />
-          <PowerProduction
-            y={240}
-            totalProduction={general_energy_data.current.total_solar_production}
-          />
+          <BatteryLevel y={80} />
+          <PowerConsumption y={160} />
+          <PowerProduction y={240} />
         </>
       )}
     </g>

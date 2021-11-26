@@ -57,7 +57,7 @@ def getEnphaseDataGraph() -> List[List[int]]:
         from(bucket:"{influxdb.enphase_bucket}")
             |> range(start: -24h, stop: now())
             |> filter(fn: (r) => r["_measurement"] == "Enphasehttpjson")
-            |> filter(fn: (r) => r["_field"] == "consumption_1_wNow" or r["_field"] == "production_1_wNow" or r["_field"] == "storage_0_wNow")
+            |> filter(fn: (r) => r["_field"] == "consumption_1_wNow" or r["_field"] == "production_1_wNow" or r["_field"] == "storage_0_percentFull")
             |> aggregateWindow(every: 5m, fn: mean, createEmpty: true)
             |> yield(name: "mean")
     '''
@@ -66,11 +66,10 @@ def getEnphaseDataGraph() -> List[List[int]]:
     for table in tables:
         for record in table.records:
             # print(record)
-            _time, _value, _field = pluck(
-                record.values, "_time", "_value", "_field")
+            _value, _field = pluck(record.values, "_value", "_field")
             if _field in dict:
-                dict[_field].append({'time': _time, 'value': _value})
+                dict[_field].append(_value)
             else:
-                dict[_field] = [{'time': _time, 'value': _value}]
+                dict[_field] = [_value]
 
     return dict

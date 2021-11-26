@@ -1,19 +1,18 @@
-import { usePowerStatus } from '@virtue-equi/equi-shared-features';
+import { usePowerProductionStatus } from '@virtue-equi/equi-shared-features';
 import { DataBubble } from '@virtue-equi/equi/shared/ui';
 
 export interface PowerProductionProps {
   y?: number;
-  totalProduction: number;
 }
 
 export function PowerProduction(props: PowerProductionProps) {
   const { y } = props;
-  const { production } = usePowerStatus();
+  const production = usePowerProductionStatus();
 
   return (
     <DataBubble
       name="PowerProduction"
-      text={production.toFixed(2) + ' W'}
+      text={production}
       textX={65}
       y={y}
       icon={

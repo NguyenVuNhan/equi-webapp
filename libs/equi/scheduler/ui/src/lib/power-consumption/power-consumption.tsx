@@ -1,19 +1,18 @@
-import { usePowerStatus } from '@virtue-equi/equi-shared-features';
+import { usePowerConsumptionStatus } from '@virtue-equi/equi-shared-features';
 import { DataBubble } from '@virtue-equi/equi/shared/ui';
 
 export interface PowerConsumptionProps {
   y?: number;
-  totalConsumption: number;
 }
 
 export function PowerConsumption(props: PowerConsumptionProps) {
   const { y } = props;
-  const { consumption } = usePowerStatus();
+  const consumption = usePowerConsumptionStatus();
 
   return (
     <DataBubble
       name="PowerConsumption"
-      text={consumption.toFixed(2) + ' W'}
+      text={consumption}
       textX={65}
       y={y}
       icon={

@@ -16,4 +16,9 @@ def powerStatus() -> EnphaseData:
 
 @enphase_blueprint.route("/series", methods=['GET'])
 def series():
-    return getEnphaseDataGraph()
+    data = getEnphaseDataGraph()
+    return getSuccessMessage({
+        "battery": data["storage_0_percentFull"][1:],
+        "production": data["production_1_wNow"][1:],
+        "consumption": data["consumption_1_wNow"][1:],
+    })
