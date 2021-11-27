@@ -15,13 +15,11 @@ const defaultSize = 64;
 const activeGrow = 64;
 
 export interface ApplianceProps {
-  onActive?: (appliance: IAppliance) => void;
-  onLeave?: (appliance: undefined) => void;
   appliance: IAppliance;
 }
 
 export function Appliance(props: ApplianceProps) {
-  const { appliance, onActive, onLeave } = props;
+  const { appliance } = props;
   const initPosition = useMemo<AppliancePosition>(() => {
     const angle = dateToAngle(appliance.time_start);
 

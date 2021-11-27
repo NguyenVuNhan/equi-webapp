@@ -1,11 +1,15 @@
 import { bind } from '@react-rxjs/core';
-import { dialAngle$ } from '@virtue-equi/equi-shared-features';
+import { createSignal } from '@react-rxjs/utils';
+import { clicked$, dialAngle$ } from '@virtue-equi/equi-shared-features';
 import { IAppliance } from '@virtue-equi/shared/interfaces';
 import {
   BehaviorSubject,
+  combineLatest,
   distinctUntilChanged,
   filter,
   map,
+  merge,
+  tap,
   withLatestFrom,
 } from 'rxjs';
 
@@ -29,46 +33,75 @@ export interface ApplianceState {
   radious: number;
 }
 
-export const [useDummy] = bind(
-  (id: number) =>
-    dialAngle$.pipe(
-      withLatestFrom(scheduleAppliance$),
-      map((value) => `${id} - ${value}`)
-    ),
-  (id) => `${id}`
+export const [onActiveAppliance$, setActiveAppliance] =
+  createSignal<IAppliance | null>();
+export const [useActiveAppliance, activeAppliance$] = bind(
+  onActiveAppliance$,
+  null
 );
+
+export const onScheduleAppliance = clicked$.pipe(
+  withLatestFrom(activeAppliance$, scheduleAppliance$),
+  tap(([_, appliance, scheduleAppliance]) => {
+    if (appliance) {
+      setScheduleAppliance(scheduleAppliance !== null ? null : appliance.id);
+    }
+  })
+);
+
+export const applianceUpdate$ = combineLatest([dialAngle$, scheduleAppliance$]);
+
 export const [useApplianceState, applianceState$] = bind(
   (appliance: IAppliance, initPosition: AppliancePosition) =>
-    dialAngle$.pipe(
-      withLatestFrom(scheduleAppliance$),
-      filter(
-        ([_, scheduleAppliance]) =>
-          scheduleAppliance === null || scheduleAppliance === appliance.id
-      ),
-      map(([dialAngle, _]) => {
-        const { angle, x, y } = initPosition;
-        if (
-          angle - APPLIANCE_ACTIVE_THRESHOLD <= dialAngle &&
-          dialAngle <= angle + APPLIANCE_ACTIVE_THRESHOLD
-        ) {
-          const radious = APPLIANCE_ACTIVE_RADIOUS;
+    merge(
+      // Stream for toggle active state
+      applianceUpdate$.pipe(
+        filter(([_, scheduleAppliance]) => scheduleAppliance === null),
+        map(([dialAngle]) => {
+          const { angle, x, y } = initPosition;
+          if (
+            angle - APPLIANCE_ACTIVE_THRESHOLD <= dialAngle &&
+            dialAngle <= angle + APPLIANCE_ACTIVE_THRESHOLD
+          ) {
+            const radious = APPLIANCE_ACTIVE_RADIOUS;
+            return {
+              active: true,
+              position: {
+                x: x - radious,
+                y: y - radious,
+                angle,
+              },
+              radious,
+            };
+          }
           return {
-            active: true,
-            position: {
-              x: x - radious,
-              y: y - radious,
-              angle,
-            },
-            radious,
+            active: false,
+            position: getApplianceInitPosition(initPosition),
+            radious: APPLIANCE_DEFAULT_RADIOUS,
           };
-        }
-        return {
-          active: false,
-          position: getApplianceInitPosition(initPosition),
-          radious: APPLIANCE_DEFAULT_RADIOUS,
-        };
-      }),
-      distinctUntilChanged((prev, curr) => prev.active === curr.active)
+        }),
+        distinctUntilChanged((prev, curr) => prev.active === curr.active),
+        tap(({ active }) => setActiveAppliance(active ? appliance : null))
+      ),
+      // Stream for scheduling
+      applianceUpdate$.pipe(
+        filter(([_, scheduleAppliance]) => scheduleAppliance === appliance.id),
+        map(([dialAngle]) => {
+          // TODO: Update the appliance with new data
+          // This will work and update the reference to the init position
+          // thanks to the advantage of using same object referent (similar to pointer)
+          initPosition = {
+            angle: dialAngle,
+            x: 540 + Math.sin((dialAngle * Math.PI) / 180) * 360,
+            y: 540 - Math.cos((dialAngle * Math.PI) / 180) * 360,
+          };
+          return {
+            active: false,
+            position: getApplianceInitPosition(initPosition),
+            radious: APPLIANCE_DEFAULT_RADIOUS,
+          };
+        })
+      )
     ),
   (_, initPosition) => ({
     active: false,

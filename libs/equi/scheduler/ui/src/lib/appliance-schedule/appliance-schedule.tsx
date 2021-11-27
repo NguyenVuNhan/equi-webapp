@@ -1,13 +1,23 @@
+import { useDialAngle } from '@virtue-equi/equi-shared-features';
 import { timePrettier } from '@virtue-equi/equi/scheduler/utils';
 import { DataBubble } from '@virtue-equi/equi/shared/ui';
+import { useEffect } from 'react';
 
 export interface ApplianceScheduleProps {
   y?: number;
   timeStart: Date;
 }
 
-export function ApplianceSchedule(props: ApplianceScheduleProps) {
-  const { y, timeStart } = props;
+export function ApplianceSchedule({ y, timeStart }: ApplianceScheduleProps) {
+  const dialPosition = useDialAngle();
+
+  useEffect(() => {
+    const currentTime = new Date();
+    const t = (dialPosition * 24 * 60) / 360;
+    const hour = Math.floor(t / 60 + currentTime.getHours()) % 24;
+    const min = Math.floor((t + currentTime.getMinutes()) % 60);
+    timeStart.setHours(hour, min);
+  }, [dialPosition, timeStart]);
 
   return (
     <DataBubble
