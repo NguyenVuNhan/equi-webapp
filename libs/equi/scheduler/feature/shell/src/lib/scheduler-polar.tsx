@@ -3,7 +3,6 @@ import { Polar } from '@virtue-equi/equi/scheduler/ui';
 
 const SchedulerPolar = () => {
   const { battery, production, consumption } = useEnphaseSeries();
-  console.log(consumption);
 
   return (
     <>

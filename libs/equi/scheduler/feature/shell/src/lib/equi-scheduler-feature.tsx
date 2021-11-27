@@ -11,7 +11,8 @@ import {
 } from '@virtue-equi/equi/scheduler/ui';
 import { IAppliance } from '@virtue-equi/shared/interfaces';
 import { useEffect, useState } from 'react';
-import { scheduled_item_data } from './dataMock'; // TODO: replace with real data
+// TODO: replace with real data
+import { scheduled_item_data } from './dataMock';
 import SchedulerPolar from './scheduler-polar';
 
 /* eslint-disable-next-line */
@@ -31,6 +32,7 @@ export function Scheduler(props: SchedulerProps) {
       <DialCursor />
       <DialTimeText />
       <SchedulerPolar />
+
       {scheduled_item_data.map((item, id) => (
         <Appliance
           key={id}

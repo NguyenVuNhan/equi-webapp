@@ -70,7 +70,7 @@ export const [useEnphaseSeries, enphaseSeries$] = bind<EnphaseSeries>(
           return {
             battery: value.battery.map((value) => value * 4),
             consumption: value.consumption.map(
-              (value) => (value - minConsumption) / 3
+              (value) => (value + Math.abs(minConsumption)) / 3
             ),
             production: value.production.map(
               (value) => (value + minProduction) * 1.2

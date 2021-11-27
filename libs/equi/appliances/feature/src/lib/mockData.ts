@@ -17,8 +17,9 @@ const device_type = [
 ];
 
 export const appliances = Array(10)
-  .fill(new Date())
-  .map(() => ({
+  .fill(0)
+  .map((_, index) => ({
+    id: index,
     power_consumption: Math.floor(Math.random() * 1023),
     time_start: new Date(),
     time_end: new Date(),
