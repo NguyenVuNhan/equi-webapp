@@ -16,7 +16,7 @@ jobs:
       - name: Build
         run: |
           npm install
-          npm run-script build
+          npm run nx run equi:build
         env:
           NX_LIBRIUM_URL: ${{ secrets.NX_LIBRIUM_URL }}
 
@@ -24,4 +24,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           BRANCH: gh-pages
-          FOLDER: build
+          FOLDER: dist/apps/equi
