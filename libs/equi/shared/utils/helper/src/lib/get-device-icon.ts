@@ -17,5 +17,6 @@ const devices: { [key: string]: string } = {
 };
 
 export const getDeviceIcon = (device: string) => {
-  return '/assets/' + devices[device];
+  const prefix = process.env.NX_EQUI_BASENAME;
+  return prefix ? `/${prefix}}` : '' + '/assets/' + devices[device];
 };
