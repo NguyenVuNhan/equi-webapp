@@ -11,7 +11,7 @@
                     "outputs": ["{options.outputPath}"],
                     "options": {
                         "outputPath": "dist/apps/equi",
-                        "index": "apps/equi/public/index.html",
+                        "index": "apps/equi/src/index.html",
                         "main": "apps/equi/src/main.tsx",
                         "polyfills": "apps/equi/src/polyfills.ts",
                         "tsConfig": "apps/equi/tsconfig.app.json",
