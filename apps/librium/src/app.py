@@ -1,23 +1,13 @@
-from flask import Flask
 import os
+
 import config
+from flask import Flask
+from flask_cors import CORS
 from util.influxdb import InfluxDb
 
 _deployed_env_ = os.environ.get("ENVIRONMENT", default="development")
 
 influxdb = InfluxDb()
-
-
-def app(environ, start_response):
-    """Simplest possible application object"""
-    data = b'Hello, World!\n'
-    status = '200 OK'
-    response_headers = [
-        ('Content-type', 'text/plain'),
-        ('Content-Length', str(len(data)))
-    ]
-    start_response(status, response_headers)
-    return iter([data])
 
 
 def create_app():
@@ -30,6 +20,12 @@ def create_app():
     else:
         raise RuntimeError('Unknown environment setting provided.')
     app.debug = app.config.get("DEBUG")
+
+    CORS(app, resources={
+        r"/api/*": {
+            "origins": "*"
+        }
+    })
 
     # Register all controller to app
     from apps.enphase.controllers import enphase_blueprint

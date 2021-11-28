@@ -10,7 +10,9 @@ export interface EnphasePowerStatus {
   battery: EnphaseBattery;
 }
 export const getPowerStatus = async (): Promise<EnphasePowerStatus | false> => {
-  const res = await fetch('/api/enphase/power-status');
+  const res = await fetch(
+    `${process.env.NX_LIBRIUM_URL}/api/enphase/power-status`
+  );
   if (res.ok) {
     const data = await res.json();
     return data.data;
@@ -24,7 +26,7 @@ export interface EnphaseSeries {
   production: number[];
 }
 export const getEnphaseSeries = async (): Promise<EnphaseSeries | false> => {
-  const res = await fetch('/api/enphase/series');
+  const res = await fetch(`${process.env.NX_LIBRIUM_URL}/api/enphase/series`);
   if (res.ok) {
     const data = await res.json();
     return data.data;
