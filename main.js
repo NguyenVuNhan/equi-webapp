@@ -2553,7 +2553,8 @@ const devices = {
   'Wall Outlet': 'WallOutletIcon.svg'
 };
 const getDeviceIcon = device => {
-  return '/assets/' + devices[device];
+  const prefix = "equi-webapp";
+  return prefix ? `/${prefix}}` : '' + '/assets/' + devices[device];
 };
 
 /***/ }),
