@@ -13,9 +13,10 @@ import {
   Switch,
 } from 'react-router-dom';
 import './App.css';
+
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.NX_EQUI_BASENAME}>
       <div className="App">
         <svg
           height="100%"

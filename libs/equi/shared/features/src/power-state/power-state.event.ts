@@ -6,7 +6,16 @@ import {
   getEnphaseSeries,
   getPowerStatus,
 } from '@virtue-equi/equi-shared-data-access';
-import { concatMap, from, map, pluck, scan, throttleTime, timer } from 'rxjs';
+import {
+  catchError,
+  concatMap,
+  EMPTY,
+  from,
+  map,
+  pluck,
+  throttleTime,
+  timer,
+} from 'rxjs';
 import { clock$ } from '../clock/clock.event';
 
 const UPDATE_POWER_STATE_INTERVAL = 5000;
@@ -19,12 +28,11 @@ export const [usePowerStatus, powerStatus$] = bind<EnphasePowerStatus>(
   timer(UPDATE_POWER_STATE_INTERVAL).pipe(
     concatMap(() =>
       from(getPowerStatus()).pipe(
-        scan((acc, value) => {
-          if (value === false) {
-            return acc;
-          }
+        map((value) => {
+          if (value === false) return initBatteryState;
           return value;
-        }, initBatteryState)
+        }),
+        catchError(() => EMPTY)
       )
     )
   ),
@@ -60,23 +68,24 @@ export const [useEnphaseSeries, enphaseSeries$] = bind<EnphaseSeries>(
     throttleTime(5 * 60 * 1000),
     concatMap(() =>
       from(getEnphaseSeries()).pipe(
-        scan((acc, value) => {
-          if (value === false) {
-            return acc;
-          }
+        map((response) => {
+          // This will never happend since we filter all false values
+          // But still needed to prevent the error from ts compiler
+          if (response === false) return initialEnphaseSeries;
 
-          const minConsumption = Math.min(...value.consumption);
-          const minProduction = Math.min(...value.production);
+          const minConsumption = Math.min(...response.consumption);
+          const minProduction = Math.min(...response.production);
           return {
-            battery: value.battery.map((value) => value * 4),
-            consumption: value.consumption.map(
+            battery: response.battery.map((value) => value * 4),
+            consumption: response.consumption.map(
               (value) => (value + Math.abs(minConsumption)) / 3
             ),
-            production: value.production.map(
+            production: response.production.map(
               (value) => (value + minProduction) * 1.2
             ),
           };
-        }, initialEnphaseSeries)
+        }),
+        catchError(() => EMPTY)
       )
     )
   ),

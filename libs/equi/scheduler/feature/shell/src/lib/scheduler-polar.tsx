@@ -1,7 +1,8 @@
 import { useEnphaseSeries } from '@virtue-equi/equi-shared-features';
 import { Polar } from '@virtue-equi/equi/scheduler/ui';
+import { memo } from 'react';
 
-const SchedulerPolar = () => {
+const SchedulerPolar = memo(() => {
   const { battery, production, consumption } = useEnphaseSeries();
 
   return (
@@ -22,6 +23,6 @@ const SchedulerPolar = () => {
       />
     </>
   );
-};
+});
 
 export default SchedulerPolar;
