@@ -2554,7 +2554,7 @@ const devices = {
 };
 const getDeviceIcon = device => {
   const prefix = "equi-webapp";
-  return prefix ? `/${prefix}}` : '' + '/assets/' + devices[device];
+  return (prefix ? `/${prefix}` : '') + '/assets/' + devices[device];
 };
 
 /***/ }),
