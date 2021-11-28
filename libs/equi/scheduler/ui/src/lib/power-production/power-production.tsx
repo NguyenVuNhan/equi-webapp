@@ -1,13 +1,15 @@
 import { usePowerProductionStatus } from '@virtue-equi/equi-shared-features';
 import { DataBubble } from '@virtue-equi/equi/shared/ui';
+import { memo } from 'react';
 
 export interface PowerProductionProps {
   y?: number;
 }
 
-export function PowerProduction(props: PowerProductionProps) {
+export const PowerProduction = memo((props: PowerProductionProps) => {
   const { y } = props;
   const production = usePowerProductionStatus();
+  console.log(production);
 
   return (
     <DataBubble
@@ -79,6 +81,6 @@ export function PowerProduction(props: PowerProductionProps) {
       }
     />
   );
-}
+});
 
 export default PowerProduction;

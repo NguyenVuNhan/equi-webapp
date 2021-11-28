@@ -1,11 +1,12 @@
 import { useBatteryStatus } from '@virtue-equi/equi-shared-features';
 import { DataBubble } from '@virtue-equi/equi/shared/ui';
+import { memo } from 'react';
 
 export interface BatteryLevelProps {
-  y?: number;
+  y: number;
 }
 
-export function BatteryLevel(props: BatteryLevelProps) {
+export const BatteryLevel = memo((props: BatteryLevelProps) => {
   const { y } = props;
   const { percent, status } = useBatteryStatus();
 
@@ -31,6 +32,6 @@ export function BatteryLevel(props: BatteryLevelProps) {
       }
     />
   );
-}
+});
 
 export default BatteryLevel;

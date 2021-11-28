@@ -1,11 +1,12 @@
 import { usePowerConsumptionStatus } from '@virtue-equi/equi-shared-features';
 import { DataBubble } from '@virtue-equi/equi/shared/ui';
+import { memo } from 'react';
 
 export interface PowerConsumptionProps {
-  y?: number;
+  y: number;
 }
 
-export function PowerConsumption(props: PowerConsumptionProps) {
+export const PowerConsumption = memo((props: PowerConsumptionProps) => {
   const { y } = props;
   const consumption = usePowerConsumptionStatus();
 
@@ -29,6 +30,6 @@ export function PowerConsumption(props: PowerConsumptionProps) {
       }
     />
   );
-}
+});
 
 export default PowerConsumption;

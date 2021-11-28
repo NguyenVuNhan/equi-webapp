@@ -16,13 +16,21 @@ import {
   PowerConsumption,
   PowerProduction,
 } from '@virtue-equi/equi/scheduler/ui';
-import { useLayoutEffect } from 'react';
+import { memo, useLayoutEffect } from 'react';
 // TODO: replace with real data
 import { scheduled_item_data } from './dataMock';
 import SchedulerPolar from './scheduler-polar';
 
 /* eslint-disable-next-line */
 export interface SchedulerProps {}
+
+const Appliances = memo(() => (
+  <Subscribe source$={onScheduleAppliance}>
+    {scheduled_item_data.map((item, id) => (
+      <Appliance key={id} appliance={item} />
+    ))}
+  </Subscribe>
+));
 
 export function Scheduler(props: SchedulerProps) {
   const appliance = useActiveAppliance();
@@ -41,11 +49,7 @@ export function Scheduler(props: SchedulerProps) {
       <DialTimeText />
       <SchedulerPolar />
 
-      <Subscribe source$={onScheduleAppliance}>
-        {scheduled_item_data.map((item, id) => (
-          <Appliance key={id} appliance={item} />
-        ))}
-      </Subscribe>
+      <Appliances />
 
       <path
         mask="url(#mask0)"
