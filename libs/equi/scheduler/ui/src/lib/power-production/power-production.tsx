@@ -9,7 +9,6 @@ export interface PowerProductionProps {
 export const PowerProduction = memo((props: PowerProductionProps) => {
   const { y } = props;
   const production = usePowerProductionStatus();
-  console.log(production);
 
   return (
     <DataBubble
