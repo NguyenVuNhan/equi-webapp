@@ -1788,7 +1788,6 @@ const PowerProduction = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_2__.memo)
     y
   } = props;
   const production = (0,_virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_0__.usePowerProductionStatus)();
-  console.log(production);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_virtue_equi_equi_shared_ui__WEBPACK_IMPORTED_MODULE_1__.DataBubble, {
     name: "PowerProduction",
     text: production,
