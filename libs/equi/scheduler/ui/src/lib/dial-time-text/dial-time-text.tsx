@@ -1,4 +1,4 @@
-import { useDialAngle } from '@virtue-equi/equi-shared-features';
+import { useDialTimeTextAngle } from '@virtue-equi/equi/scheduler/feature/appliance-state';
 import { angleToTime } from '@virtue-equi/equi/scheduler/utils';
 import { memo, useEffect, useState } from 'react';
 import TextClock from '../text-clock/text-clock';
@@ -7,7 +7,7 @@ const dialLeftBoundary = 352;
 
 export const DialTimeText = memo(
   () => {
-    const dialPosition = useDialAngle();
+    const dialPosition = useDialTimeTextAngle();
     const [dialAppear, setDialAppear] = useState(false);
 
     useEffect(() => {

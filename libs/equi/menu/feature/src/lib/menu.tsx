@@ -1,4 +1,7 @@
-import { clicked$, useDialAngle } from '@virtue-equi/equi-shared-features';
+import {
+  buttonClicked$,
+  useDialAngle,
+} from '@virtue-equi/equi-shared-features';
 import {
   ApplianceButton,
   CloseButton,
@@ -16,7 +19,7 @@ export function Menu(props: EquiMenuFeatureProps) {
   const dialPosition = useDialAngle();
 
   useEffect(() => {
-    const clickedSubscriber = clicked$.subscribe(() => {
+    const clickedSubscriber = buttonClicked$.subscribe(() => {
       switch (active) {
         case 2:
           history.push('/scheduling');

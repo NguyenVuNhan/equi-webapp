@@ -1,6 +1,7 @@
 import { bind } from '@react-rxjs/core';
 import { createSignal } from '@react-rxjs/utils';
-import { clicked$, dialAngle$ } from '@virtue-equi/equi-shared-features';
+import { buttonClicked$, dialAngle$ } from '@virtue-equi/equi-shared-features';
+import { isScheduling$ } from './dial.event';
 import { IAppliance } from '@virtue-equi/shared/interfaces';
 import {
   BehaviorSubject,
@@ -40,7 +41,7 @@ export const [useActiveAppliance, activeAppliance$] = bind(
   null
 );
 
-export const onScheduleAppliance = clicked$.pipe(
+export const onScheduleAppliance = buttonClicked$.pipe(
   withLatestFrom(activeAppliance$, scheduleAppliance$),
   tap(([_, appliance, scheduleAppliance]) => {
     if (appliance) {
@@ -49,7 +50,14 @@ export const onScheduleAppliance = clicked$.pipe(
   })
 );
 
-export const applianceUpdate$ = combineLatest([dialAngle$, scheduleAppliance$]);
+export const applianceUpdate$ = combineLatest([
+  dialAngle$,
+  scheduleAppliance$,
+]).pipe(
+  withLatestFrom(isScheduling$),
+  filter(([, isScheduling]) => !isScheduling),
+  map(([value]) => value)
+);
 
 export const [useApplianceState, applianceState$] = bind(
   (appliance: IAppliance, initPosition: AppliancePosition) =>

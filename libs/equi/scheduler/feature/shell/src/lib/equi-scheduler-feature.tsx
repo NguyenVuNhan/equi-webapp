@@ -5,6 +5,7 @@ import {
   setActiveAppliance,
   setScheduleAppliance,
   useActiveAppliance,
+  useIsScheduling,
 } from '@virtue-equi/equi/scheduler/feature/appliance-state';
 import {
   Appliance,
@@ -12,6 +13,7 @@ import {
   ApplianceSchedule,
   BatteryLevel,
   DialCursor,
+  DialSchedule,
   DialTimeText,
   PowerConsumption,
   PowerProduction,
@@ -34,6 +36,7 @@ const Appliances = memo(() => (
 
 export function Scheduler(props: SchedulerProps) {
   const appliance = useActiveAppliance();
+  const isScheduling = useIsScheduling();
 
   useLayoutEffect(() => {
     setDialAngleChange(0);
@@ -45,39 +48,47 @@ export function Scheduler(props: SchedulerProps) {
 
   return (
     <g>
-      <DialCursor />
-      <DialTimeText />
-      <SchedulerPolar />
+      {!isScheduling && <DialCursor />}
+      <g
+        style={{
+          filter: isScheduling ? 'blur(3px)' : undefined,
+        }}
+      >
+        <SchedulerPolar />
+        <Appliances />
 
-      <Appliances />
+        <path
+          mask="url(#mask0)"
+          d="M540 540 505 0 0 0 0 540 Z"
+          fill="url(#linearColors1)"
+        />
 
-      <path
-        mask="url(#mask0)"
-        d="M540 540 505 0 0 0 0 540 Z"
-        fill="url(#linearColors1)"
-      />
+        <linearGradient id="linearColors1" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0%" stopColor="black" stopOpacity="0"></stop>
+          <stop offset="50%" stopColor="black" stopOpacity="0"></stop>
+          <stop offset="60%" stopColor="black" stopOpacity="0.4"></stop>
+          <stop offset="100%" stopColor="black" stopOpacity="0.85"></stop>
+        </linearGradient>
 
-      <linearGradient id="linearColors1" x1="0" y1="1" x2="1" y2="0">
-        <stop offset="0%" stopColor="black" stopOpacity="0"></stop>
-        <stop offset="50%" stopColor="black" stopOpacity="0"></stop>
-        <stop offset="60%" stopColor="black" stopOpacity="0.4"></stop>
-        <stop offset="100%" stopColor="black" stopOpacity="0.85"></stop>
-      </linearGradient>
+        {appliance ? (
+          <>
+            <AppliancePowerConsumption
+              powerConsumption={appliance.power_consumption}
+            />
+            <ApplianceSchedule y={220} timeStart={appliance.time_start} />
+          </>
+        ) : (
+          <>
+            <BatteryLevel y={80} />
+            <PowerConsumption y={160} />
+            <PowerProduction y={240} />
+          </>
+        )}
+        <DialTimeText />
+      </g>
 
-      {appliance ? (
-        <>
-          <AppliancePowerConsumption
-            powerConsumption={appliance.power_consumption}
-          />
-          <ApplianceSchedule y={220} timeStart={appliance.time_start} />
-        </>
-      ) : (
-        <>
-          <BatteryLevel y={80} />
-          <PowerConsumption y={160} />
-          <PowerProduction y={240} />
-        </>
-      )}
+      <DialSchedule />
+      {isScheduling && <DialCursor />}
     </g>
   );
 }

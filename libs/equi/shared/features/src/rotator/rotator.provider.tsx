@@ -8,7 +8,11 @@ import {
 } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ClickEvent, RotatorContext } from './rotator.context';
-import { setClicked, setDialRotate } from './rotator.event';
+import {
+  onButtonClicked,
+  onButtonHolded,
+  setDialRotate,
+} from './rotator.event';
 
 export interface RotatorProviderProps {
   children: ReactNode;
@@ -33,10 +37,12 @@ export function RotatorProvider(props: RotatorProviderProps) {
         setDialRotate(false);
         break;
       case 'holdEvent':
-        history.goBack();
+        console.log('holding');
+
+        onButtonHolded();
         break;
       case 'clickEvent':
-        setClicked();
+        onButtonClicked();
         break;
       case 'doubleClickEvent':
         history.push('/menu');

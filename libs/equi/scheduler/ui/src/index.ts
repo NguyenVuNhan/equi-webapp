@@ -1,3 +1,4 @@
+export * from './lib/dial-schedule/dial-schedule';
 export * from './lib/text-clock/text-clock';
 export * from './lib/power-production/power-production';
 export * from './lib/power-consumption/power-consumption';
