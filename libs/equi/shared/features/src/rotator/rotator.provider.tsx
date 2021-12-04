@@ -37,8 +37,6 @@ export function RotatorProvider(props: RotatorProviderProps) {
         setDialRotate(false);
         break;
       case 'holdEvent':
-        console.log('holding');
-
         onButtonHolded();
         break;
       case 'clickEvent':

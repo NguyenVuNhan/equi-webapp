@@ -9,6 +9,7 @@ import {
 
 export function DialSchedule() {
   const { angle, activeId } = useDialSchedule();
+  // useSubscribe(applianceSchedule$);
   const dialAppear = angle !== 0;
 
   return (

@@ -23,7 +23,6 @@ export function Appliance(props: ApplianceProps) {
 
   const initPosition = useMemo<AppliancePosition>(() => {
     const angle = dateToAngle(appliance.time_start);
-
     return {
       x: 540 + Math.sin((angle * Math.PI) / 180) * 360,
       y: 540 - Math.cos((angle * Math.PI) / 180) * 360,

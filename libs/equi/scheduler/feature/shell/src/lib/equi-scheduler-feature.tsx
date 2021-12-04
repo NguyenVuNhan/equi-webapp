@@ -1,12 +1,12 @@
 import { Subscribe } from '@react-rxjs/core';
 import { setDialAngleChange } from '@virtue-equi/equi-shared-features';
 import {
-  applianceSchedule$,
   onScheduleAppliance,
   setActiveAppliance,
   setScheduleAppliance,
   useActiveAppliance,
   useIsScheduling,
+  useScheduleAppliances,
 } from '@virtue-equi/equi/scheduler/feature/appliance-state';
 import {
   Appliance,
@@ -20,20 +20,21 @@ import {
   PowerProduction,
 } from '@virtue-equi/equi/scheduler/ui';
 import { memo, useLayoutEffect } from 'react';
-// TODO: replace with real data
-import { scheduled_item_data } from '@virtue-equi/equi/scheduler/utils';
 import SchedulerPolar from './scheduler-polar';
 
 /* eslint-disable-next-line */
 export interface SchedulerProps {}
+const Appliances = memo(() => {
+  const scheduleAppliances = useScheduleAppliances();
 
-const Appliances = memo(() => (
-  <Subscribe source$={onScheduleAppliance}>
-    {scheduled_item_data.map((item, id) => (
-      <Appliance key={id} appliance={item} />
-    ))}
-  </Subscribe>
-));
+  return (
+    <Subscribe source$={onScheduleAppliance}>
+      {scheduleAppliances.map(([, appliance], id) => (
+        <Appliance key={appliance.id} appliance={appliance} />
+      ))}
+    </Subscribe>
+  );
+});
 
 export function Scheduler(props: SchedulerProps) {
   const appliance = useActiveAppliance();
@@ -88,11 +89,7 @@ export function Scheduler(props: SchedulerProps) {
       </g>
 
       <DialTimeText />
-      {isScheduling && (
-        <Subscribe source$={applianceSchedule$}>
-          <DialSchedule />
-        </Subscribe>
-      )}
+      {isScheduling && <DialSchedule />}
     </g>
   );
 }

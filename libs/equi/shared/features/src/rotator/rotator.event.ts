@@ -4,6 +4,7 @@ import { debounceTime, merge, scan } from 'rxjs';
 
 export const [buttonClicked$, onButtonClicked] = createSignal();
 export const [buttonHolded$, onButtonHolded] = createSignal();
+export const [buttonDblClick$, onButtonDblClick] = createSignal();
 export const [dialRotate$, setDialRotate] = createSignal<boolean>();
 export const [dialAngleChange$, setDialAngleChange] = createSignal<number>();
 export const [useDialAngle, dialAngle$] = bind(

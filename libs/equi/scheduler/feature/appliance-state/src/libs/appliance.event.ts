@@ -1,7 +1,11 @@
 import { bind } from '@react-rxjs/core';
-import { createSignal } from '@react-rxjs/utils';
+import {
+  combineKeys,
+  createSignal,
+  mergeWithKey,
+  partitionByKey,
+} from '@react-rxjs/utils';
 import { buttonClicked$, dialAngle$ } from '@virtue-equi/equi-shared-features';
-import { isScheduling$ } from './dial.event';
 import { IAppliance } from '@virtue-equi/shared/interfaces';
 import {
   BehaviorSubject,
@@ -10,9 +14,11 @@ import {
   filter,
   map,
   merge,
+  scan,
   tap,
   withLatestFrom,
 } from 'rxjs';
+import { isScheduling$ } from './dial.event';
 
 const APPLIANCE_ACTIVE_THRESHOLD = 5;
 const APPLIANCE_DEFAULT_RADIOUS = 32;
@@ -123,3 +129,39 @@ const getApplianceInitPosition = ({ x, y, angle }: AppliancePosition) => ({
   y: y - APPLIANCE_DEFAULT_RADIOUS,
   angle,
 });
+
+export const [addScheduleAppliance$, onAddScheduleAppliance] =
+  createSignal<Omit<IAppliance, 'id'>>();
+export const [updateScheduleAppliance$, onUpdateScheduleAppliance] =
+  createSignal<{ id: number; appliance: Partial<IAppliance> }>();
+const scheduleApplianceAction$ = mergeWithKey({
+  add: addScheduleAppliance$.pipe(
+    map((value) => ({ id: Date.now(), appliance: value }))
+  ),
+  update: updateScheduleAppliance$,
+});
+export const [scheduleApplianceMap, scheduleApplianceKeys$] = partitionByKey(
+  scheduleApplianceAction$,
+  (event) => event.payload.id,
+  (event$, id) =>
+    event$.pipe(
+      scan(
+        (state, action) => {
+          switch (action.type) {
+            case 'add':
+            case 'update':
+              return { ...state, ...action.payload.appliance };
+            default:
+              return state;
+          }
+        },
+        { id } as IAppliance
+      )
+    )
+);
+
+export const [useScheduleAppliances, scheduleAppliances$] = bind(
+  combineKeys(scheduleApplianceKeys$, scheduleApplianceMap).pipe(
+    map((value) => [...value])
+  )
+);
