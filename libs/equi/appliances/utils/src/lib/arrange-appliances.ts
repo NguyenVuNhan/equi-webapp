@@ -1,10 +1,11 @@
+import { DeviceType } from '@virtue-equi/equi/shared/utils/helper';
 import { IAppliance } from '@virtue-equi/shared/interfaces';
 
 export interface IApplianceBubble {
   x: number;
   y: number;
   r: number;
-  type: string;
+  type: DeviceType;
 }
 
 const isCollision = (curr: IApplianceBubble, balls: IApplianceBubble[]) => {

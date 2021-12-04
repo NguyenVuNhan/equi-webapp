@@ -1,3 +1,5 @@
+import { IAppliance } from '@virtue-equi/shared/interfaces';
+
 const device_type = [
   'Audio',
   'Big Fridge',
@@ -16,13 +18,17 @@ const device_type = [
   'Washing Machine',
 ];
 
-export const appliances = Array(10)
+export const appliances: IAppliance[] = Array(10)
   .fill(0)
-  .map((_, index) => ({
-    id: index,
-    power_consumption: Math.floor(Math.random() * 1023),
-    time_start: new Date(),
-    time_end: new Date(),
-    device_type: device_type[Math.floor(Math.random() * device_type.length)],
-    size: Math.random() * 60 + 60,
-  }));
+  .map(
+    (_, index) =>
+      ({
+        id: index,
+        power_consumption: Math.floor(Math.random() * 1023),
+        time_start: new Date(),
+        time_end: new Date(),
+        device_type:
+          device_type[Math.floor(Math.random() * device_type.length)],
+        size: Math.random() * 60 + 60,
+      } as IAppliance)
+  );

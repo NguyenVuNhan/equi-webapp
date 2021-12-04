@@ -1,22 +1,34 @@
-const devices: { [key: string]: string } = {
+const devices = {
   Audio: 'AudioIcon.svg',
-  'Big Fridge': 'BigFridgeIcon.svg',
-  Dishwasher: 'DishWasherIcon.svg',
-  'Washing Machine': 'WashingMachineIcon.svg',
-  'Coffee Machine': 'CoffeeMachineIcon.svg',
+  BigFridge: 'BigFridgeIcon.svg',
+  DishWasher: 'DishWasherIcon.svg',
+  WashingMachine: 'WashingMachineIcon.svg',
+  CoffeeMachine: 'CoffeeMachineIcon.svg',
   Completed: 'CompletedIcon.svg',
-  'Dryer Machine': 'DryerMachineIcon.svg',
-  'Extractor Hood': 'ExtractorHoodIcon.svg',
-  'Floor Heating': 'FloorHeatingIcon.svg',
-  'Induction Top': 'InductionTopIcon.svg',
+  DryerMachine: 'DryerMachineIcon.svg',
+  ExtractorHood: 'ExtractorHoodIcon.svg',
+  FloorHeating: 'FloorHeatingIcon.svg',
+  InductionTop: 'InductionTopIcon.svg',
   Oven: 'OvenIcon.svg',
-  'Small Fridge': 'SmallFridgeIcon.svg',
-  'Tee Kettle': 'TeeKettleIcon.svg',
+  SmallFridge: 'SmallFridgeIcon.svg',
+  TeeKettle: 'TeeKettleIcon.svg',
   Television: 'TelevisionIcon.svg',
-  'Wall Outlet': 'WallOutletIcon.svg',
+  WallOutlet: 'WallOutletIcon.svg',
+  AddDishWasher: 'AddDishWasher.svg',
+  AddDryerMachine: 'AddDryerMachine.svg',
+  AddWashingMachine: 'AddWashingMachine.svg',
+  AddOven: 'AddOven.svg',
+  AddCancle: 'AddCancle.svg',
+  BlurDishWasher: 'BlurDishWasher.svg',
+  BlurDryerMachine: 'BlurDryerMachine.svg',
+  BlurWashingMachine: 'BlurWashingMachine.svg',
+  BlurOven: 'BlurOven.svg',
+  BlurCancle: 'BlurCancle.svg',
 };
 
-export const getDeviceIcon = (device: string) => {
+export type DeviceType = keyof typeof devices;
+
+export const getDeviceIcon = (device: DeviceType) => {
   const prefix = process.env.NX_EQUI_BASENAME;
   return (prefix ? `/${prefix}` : '') + '/assets/' + devices[device];
 };

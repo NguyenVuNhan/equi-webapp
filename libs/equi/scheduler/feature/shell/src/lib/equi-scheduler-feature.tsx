@@ -1,6 +1,7 @@
 import { Subscribe } from '@react-rxjs/core';
 import { setDialAngleChange } from '@virtue-equi/equi-shared-features';
 import {
+  applianceSchedule$,
   onScheduleAppliance,
   setActiveAppliance,
   setScheduleAppliance,
@@ -20,7 +21,7 @@ import {
 } from '@virtue-equi/equi/scheduler/ui';
 import { memo, useLayoutEffect } from 'react';
 // TODO: replace with real data
-import { scheduled_item_data } from './dataMock';
+import { scheduled_item_data } from '@virtue-equi/equi/scheduler/utils';
 import SchedulerPolar from './scheduler-polar';
 
 /* eslint-disable-next-line */
@@ -84,11 +85,14 @@ export function Scheduler(props: SchedulerProps) {
             <PowerProduction y={240} />
           </>
         )}
-        <DialTimeText />
       </g>
 
-      <DialSchedule />
-      {isScheduling && <DialCursor />}
+      <DialTimeText />
+      {isScheduling && (
+        <Subscribe source$={applianceSchedule$}>
+          <DialSchedule />
+        </Subscribe>
+      )}
     </g>
   );
 }

@@ -20,6 +20,7 @@ export interface ApplianceProps {
 
 export function Appliance(props: ApplianceProps) {
   const { appliance } = props;
+
   const initPosition = useMemo<AppliancePosition>(() => {
     const angle = dateToAngle(appliance.time_start);
 
@@ -29,6 +30,7 @@ export function Appliance(props: ApplianceProps) {
       angle,
     };
   }, [appliance.time_start]);
+
   const {
     active,
     position: { x, y, angle },
