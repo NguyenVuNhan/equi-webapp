@@ -88,18 +88,25 @@ function App() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2784);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(28316);
-/* harmony import */ var _app_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(90212);
-/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(93558);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(52322);
+/* harmony import */ var _react_rxjs_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(78016);
+/* harmony import */ var _virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(95487);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2784);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(28316);
+/* harmony import */ var _app_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(90212);
+/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(93558);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(52322);
 
 
 
 
 
-react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.StrictMode, {
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_app_App__WEBPACK_IMPORTED_MODULE_2__["default"], {})
+
+
+react_dom__WEBPACK_IMPORTED_MODULE_2__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react__WEBPACK_IMPORTED_MODULE_1__.StrictMode, {
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_react_rxjs_core__WEBPACK_IMPORTED_MODULE_6__.Subscribe, {
+    source$: _virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_0__.scheduleAppliance$,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_app_App__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+  })
 }), document.getElementById('root'));
 
 /***/ }),
@@ -873,16 +880,29 @@ function ScheduleButton(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "activeAppliance$": () => (/* reexport safe */ _libs_appliance_event__WEBPACK_IMPORTED_MODULE_0__.activeAppliance$),
+/* harmony export */   "addScheduleAppliance$": () => (/* reexport safe */ _libs_appliance_event__WEBPACK_IMPORTED_MODULE_0__.addScheduleAppliance$),
 /* harmony export */   "applianceState$": () => (/* reexport safe */ _libs_appliance_event__WEBPACK_IMPORTED_MODULE_0__.applianceState$),
 /* harmony export */   "applianceUpdate$": () => (/* reexport safe */ _libs_appliance_event__WEBPACK_IMPORTED_MODULE_0__.applianceUpdate$),
 /* harmony export */   "onActiveAppliance$": () => (/* reexport safe */ _libs_appliance_event__WEBPACK_IMPORTED_MODULE_0__.onActiveAppliance$),
+/* harmony export */   "onAddScheduleAppliance": () => (/* reexport safe */ _libs_appliance_event__WEBPACK_IMPORTED_MODULE_0__.onAddScheduleAppliance),
 /* harmony export */   "onScheduleAppliance": () => (/* reexport safe */ _libs_appliance_event__WEBPACK_IMPORTED_MODULE_0__.onScheduleAppliance),
+/* harmony export */   "onUpdateScheduleAppliance": () => (/* reexport safe */ _libs_appliance_event__WEBPACK_IMPORTED_MODULE_0__.onUpdateScheduleAppliance),
 /* harmony export */   "scheduleAppliance$": () => (/* reexport safe */ _libs_appliance_event__WEBPACK_IMPORTED_MODULE_0__.scheduleAppliance$),
+/* harmony export */   "scheduleApplianceKeys$": () => (/* reexport safe */ _libs_appliance_event__WEBPACK_IMPORTED_MODULE_0__.scheduleApplianceKeys$),
+/* harmony export */   "scheduleApplianceMap": () => (/* reexport safe */ _libs_appliance_event__WEBPACK_IMPORTED_MODULE_0__.scheduleApplianceMap),
+/* harmony export */   "scheduleAppliances$": () => (/* reexport safe */ _libs_appliance_event__WEBPACK_IMPORTED_MODULE_0__.scheduleAppliances$),
 /* harmony export */   "setActiveAppliance": () => (/* reexport safe */ _libs_appliance_event__WEBPACK_IMPORTED_MODULE_0__.setActiveAppliance),
 /* harmony export */   "setScheduleAppliance": () => (/* reexport safe */ _libs_appliance_event__WEBPACK_IMPORTED_MODULE_0__.setScheduleAppliance),
+/* harmony export */   "updateScheduleAppliance$": () => (/* reexport safe */ _libs_appliance_event__WEBPACK_IMPORTED_MODULE_0__.updateScheduleAppliance$),
 /* harmony export */   "useActiveAppliance": () => (/* reexport safe */ _libs_appliance_event__WEBPACK_IMPORTED_MODULE_0__.useActiveAppliance),
 /* harmony export */   "useApplianceState": () => (/* reexport safe */ _libs_appliance_event__WEBPACK_IMPORTED_MODULE_0__.useApplianceState),
+/* harmony export */   "useScheduleAppliances": () => (/* reexport safe */ _libs_appliance_event__WEBPACK_IMPORTED_MODULE_0__.useScheduleAppliances),
+/* harmony export */   "appliances": () => (/* reexport safe */ _libs_dial_event__WEBPACK_IMPORTED_MODULE_1__.appliances),
+/* harmony export */   "dialAppear$": () => (/* reexport safe */ _libs_dial_event__WEBPACK_IMPORTED_MODULE_1__.dialAppear$),
+/* harmony export */   "dialTimeTextAngle$": () => (/* reexport safe */ _libs_dial_event__WEBPACK_IMPORTED_MODULE_1__.dialTimeTextAngle$),
 /* harmony export */   "isScheduling$": () => (/* reexport safe */ _libs_dial_event__WEBPACK_IMPORTED_MODULE_1__.isScheduling$),
+/* harmony export */   "useDialAppear": () => (/* reexport safe */ _libs_dial_event__WEBPACK_IMPORTED_MODULE_1__.useDialAppear),
+/* harmony export */   "useDialSchedule": () => (/* reexport safe */ _libs_dial_event__WEBPACK_IMPORTED_MODULE_1__.useDialSchedule),
 /* harmony export */   "useDialTimeTextAngle": () => (/* reexport safe */ _libs_dial_event__WEBPACK_IMPORTED_MODULE_1__.useDialTimeTextAngle),
 /* harmony export */   "useIsScheduling": () => (/* reexport safe */ _libs_dial_event__WEBPACK_IMPORTED_MODULE_1__.useIsScheduling)
 /* harmony export */ });
@@ -908,24 +928,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "onScheduleAppliance": () => (/* binding */ onScheduleAppliance),
 /* harmony export */   "applianceUpdate$": () => (/* binding */ applianceUpdate$),
 /* harmony export */   "useApplianceState": () => (/* binding */ useApplianceState),
-/* harmony export */   "applianceState$": () => (/* binding */ applianceState$)
+/* harmony export */   "applianceState$": () => (/* binding */ applianceState$),
+/* harmony export */   "addScheduleAppliance$": () => (/* binding */ addScheduleAppliance$),
+/* harmony export */   "onAddScheduleAppliance": () => (/* binding */ onAddScheduleAppliance),
+/* harmony export */   "updateScheduleAppliance$": () => (/* binding */ updateScheduleAppliance$),
+/* harmony export */   "onUpdateScheduleAppliance": () => (/* binding */ onUpdateScheduleAppliance),
+/* harmony export */   "scheduleApplianceMap": () => (/* binding */ scheduleApplianceMap),
+/* harmony export */   "scheduleApplianceKeys$": () => (/* binding */ scheduleApplianceKeys$),
+/* harmony export */   "useScheduleAppliances": () => (/* binding */ useScheduleAppliances),
+/* harmony export */   "scheduleAppliances$": () => (/* binding */ scheduleAppliances$)
 /* harmony export */ });
 /* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15735);
 /* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6886);
 /* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _react_rxjs_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(78016);
-/* harmony import */ var _react_rxjs_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(34763);
-/* harmony import */ var _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(81506);
-/* harmony import */ var _dial_event__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(66220);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(56130);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(58795);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(11348);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(43588);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(99054);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(77984);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(94953);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(39369);
+/* harmony import */ var core_js_modules_es_object_assign_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(43105);
+/* harmony import */ var core_js_modules_es_object_assign_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_assign_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _react_rxjs_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(78016);
+/* harmony import */ var _react_rxjs_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(34763);
+/* harmony import */ var _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(81506);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(56130);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(58795);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(11348);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(43588);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(99054);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(77984);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(94953);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(39369);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(65083);
+/* harmony import */ var _dial_event__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(66220);
+
 
 
 
@@ -936,20 +968,20 @@ __webpack_require__.r(__webpack_exports__);
 const APPLIANCE_ACTIVE_THRESHOLD = 5;
 const APPLIANCE_DEFAULT_RADIOUS = 32;
 const APPLIANCE_ACTIVE_RADIOUS = APPLIANCE_DEFAULT_RADIOUS * 2;
-const scheduleAppliance$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__.BehaviorSubject(null);
+const scheduleAppliance$ = new rxjs__WEBPACK_IMPORTED_MODULE_5__.BehaviorSubject(null);
 const setScheduleAppliance = id => {
   scheduleAppliance$.next(id);
 };
-const [onActiveAppliance$, setActiveAppliance] = (0,_react_rxjs_utils__WEBPACK_IMPORTED_MODULE_5__.createSignal)();
-const [useActiveAppliance, activeAppliance$] = (0,_react_rxjs_core__WEBPACK_IMPORTED_MODULE_6__.bind)(onActiveAppliance$, null);
-const onScheduleAppliance = _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_2__.buttonClicked$.pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_7__.withLatestFrom)(activeAppliance$, scheduleAppliance$), (0,rxjs__WEBPACK_IMPORTED_MODULE_8__.tap)(([_, appliance, scheduleAppliance]) => {
+const [onActiveAppliance$, setActiveAppliance] = (0,_react_rxjs_utils__WEBPACK_IMPORTED_MODULE_6__.createSignal)();
+const [useActiveAppliance, activeAppliance$] = (0,_react_rxjs_core__WEBPACK_IMPORTED_MODULE_7__.bind)(onActiveAppliance$, null);
+const onScheduleAppliance = _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_3__.buttonClicked$.pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_8__.withLatestFrom)(activeAppliance$, scheduleAppliance$), (0,rxjs__WEBPACK_IMPORTED_MODULE_9__.tap)(([_, appliance, scheduleAppliance]) => {
   if (appliance) {
     setScheduleAppliance(scheduleAppliance !== null ? null : appliance.id);
   }
 }));
-const applianceUpdate$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_9__.combineLatest)([_virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_2__.dialAngle$, scheduleAppliance$]).pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_7__.withLatestFrom)(_dial_event__WEBPACK_IMPORTED_MODULE_3__.isScheduling$), (0,rxjs__WEBPACK_IMPORTED_MODULE_10__.filter)(([, isScheduling]) => !isScheduling), (0,rxjs__WEBPACK_IMPORTED_MODULE_11__.map)(([value]) => value));
-const [useApplianceState, applianceState$] = (0,_react_rxjs_core__WEBPACK_IMPORTED_MODULE_6__.bind)((appliance, initPosition) => (0,rxjs__WEBPACK_IMPORTED_MODULE_12__.merge)( // Stream for toggle active state
-applianceUpdate$.pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_10__.filter)(([_, scheduleAppliance]) => scheduleAppliance === null), (0,rxjs__WEBPACK_IMPORTED_MODULE_11__.map)(([dialAngle]) => {
+const applianceUpdate$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_10__.combineLatest)([_virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_3__.dialAngle$, scheduleAppliance$]).pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_8__.withLatestFrom)(_dial_event__WEBPACK_IMPORTED_MODULE_4__.isScheduling$), (0,rxjs__WEBPACK_IMPORTED_MODULE_11__.filter)(([, isScheduling]) => !isScheduling), (0,rxjs__WEBPACK_IMPORTED_MODULE_12__.map)(([value]) => value));
+const [useApplianceState, applianceState$] = (0,_react_rxjs_core__WEBPACK_IMPORTED_MODULE_7__.bind)((appliance, initPosition) => (0,rxjs__WEBPACK_IMPORTED_MODULE_13__.merge)( // Stream for toggle active state
+applianceUpdate$.pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_11__.filter)(([_, scheduleAppliance]) => scheduleAppliance === null), (0,rxjs__WEBPACK_IMPORTED_MODULE_12__.map)(([dialAngle]) => {
   const {
     angle,
     x,
@@ -974,10 +1006,10 @@ applianceUpdate$.pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_10__.filter)(([_, schedul
     position: getApplianceInitPosition(initPosition),
     radious: APPLIANCE_DEFAULT_RADIOUS
   };
-}), (0,rxjs__WEBPACK_IMPORTED_MODULE_13__.distinctUntilChanged)((prev, curr) => prev.active === curr.active), (0,rxjs__WEBPACK_IMPORTED_MODULE_8__.tap)(({
+}), (0,rxjs__WEBPACK_IMPORTED_MODULE_14__.distinctUntilChanged)((prev, curr) => prev.active === curr.active), (0,rxjs__WEBPACK_IMPORTED_MODULE_9__.tap)(({
   active
 }) => setActiveAppliance(active ? appliance : null))), // Stream for scheduling
-applianceUpdate$.pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_10__.filter)(([_, scheduleAppliance]) => scheduleAppliance === appliance.id), (0,rxjs__WEBPACK_IMPORTED_MODULE_11__.map)(([dialAngle]) => {
+applianceUpdate$.pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_11__.filter)(([_, scheduleAppliance]) => scheduleAppliance === appliance.id), (0,rxjs__WEBPACK_IMPORTED_MODULE_12__.map)(([dialAngle]) => {
   // TODO: Update the appliance with new data
   // This will work and update the reference to the init position
   // thanks to the advantage of using same object referent (similar to pointer)
@@ -1007,6 +1039,29 @@ const getApplianceInitPosition = ({
   angle
 });
 
+const [addScheduleAppliance$, onAddScheduleAppliance] = (0,_react_rxjs_utils__WEBPACK_IMPORTED_MODULE_6__.createSignal)();
+const [updateScheduleAppliance$, onUpdateScheduleAppliance] = (0,_react_rxjs_utils__WEBPACK_IMPORTED_MODULE_6__.createSignal)();
+const scheduleApplianceAction$ = (0,_react_rxjs_utils__WEBPACK_IMPORTED_MODULE_6__.mergeWithKey)({
+  add: addScheduleAppliance$.pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_12__.map)(value => ({
+    id: Date.now(),
+    appliance: value
+  }))),
+  update: updateScheduleAppliance$
+});
+const [scheduleApplianceMap, scheduleApplianceKeys$] = (0,_react_rxjs_utils__WEBPACK_IMPORTED_MODULE_6__.partitionByKey)(scheduleApplianceAction$, event => event.payload.id, (event$, id) => event$.pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_15__.scan)((state, action) => {
+  switch (action.type) {
+    case 'add':
+    case 'update':
+      return Object.assign({}, state, action.payload.appliance);
+
+    default:
+      return state;
+  }
+}, {
+  id
+})));
+const [useScheduleAppliances, scheduleAppliances$] = (0,_react_rxjs_core__WEBPACK_IMPORTED_MODULE_7__.bind)((0,_react_rxjs_utils__WEBPACK_IMPORTED_MODULE_6__.combineKeys)(scheduleApplianceKeys$, scheduleApplianceMap).pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_12__.map)(value => [...value])));
+
 /***/ }),
 
 /***/ 66220:
@@ -1017,24 +1072,116 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "useIsScheduling": () => (/* binding */ useIsScheduling),
 /* harmony export */   "isScheduling$": () => (/* binding */ isScheduling$),
-/* harmony export */   "useDialTimeTextAngle": () => (/* binding */ useDialTimeTextAngle)
+/* harmony export */   "useDialAppear": () => (/* binding */ useDialAppear),
+/* harmony export */   "dialAppear$": () => (/* binding */ dialAppear$),
+/* harmony export */   "useDialTimeTextAngle": () => (/* binding */ useDialTimeTextAngle),
+/* harmony export */   "dialTimeTextAngle$": () => (/* binding */ dialTimeTextAngle$),
+/* harmony export */   "useDialSchedule": () => (/* binding */ useDialSchedule),
+/* harmony export */   "appliances": () => (/* binding */ appliances)
 /* harmony export */ });
 /* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15735);
 /* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6886);
 /* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _react_rxjs_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(78016);
-/* harmony import */ var _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(81506);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(94953);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(77984);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(43588);
+/* harmony import */ var core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(48319);
+/* harmony import */ var core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_split_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_es_object_assign_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(43105);
+/* harmony import */ var core_js_modules_es_object_assign_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_assign_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _react_rxjs_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(78016);
+/* harmony import */ var _react_rxjs_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(34763);
+/* harmony import */ var _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(81506);
+/* harmony import */ var _virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(95487);
+/* harmony import */ var _virtue_equi_equi_scheduler_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(48346);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(94953);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(58795);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(11348);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(77984);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(99054);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(43588);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(65083);
 
 
 
 
 
-const [useIsScheduling, isScheduling$] = (0,_react_rxjs_core__WEBPACK_IMPORTED_MODULE_3__.bind)((0,rxjs__WEBPACK_IMPORTED_MODULE_4__.merge)(_virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_2__.buttonClicked$.pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_5__.map)(() => false)), _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_2__.buttonHolded$.pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_5__.map)(() => true))), false);
-const [useDialTimeTextAngle] = (0,_react_rxjs_core__WEBPACK_IMPORTED_MODULE_3__.bind)((0,rxjs__WEBPACK_IMPORTED_MODULE_6__.combineLatest)([_virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_2__.dialAngle$, isScheduling$]).pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_5__.map)(([dialAngle, isScheduling]) => isScheduling ? 0 : dialAngle)), 0);
+
+
+
+
+
+const DIAL_RIGHT_BOUNDARY = 8;
+const DIAL_LEFT_BOUNDARY = 352;
+const [dialSchedule$, connectDialSchedule] = (0,_react_rxjs_utils__WEBPACK_IMPORTED_MODULE_7__.selfDependant)();
+const [useIsScheduling, isScheduling$] = (0,_react_rxjs_core__WEBPACK_IMPORTED_MODULE_8__.bind)((0,rxjs__WEBPACK_IMPORTED_MODULE_9__.merge)(_virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_4__.buttonClicked$.pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_10__.withLatestFrom)(dialSchedule$), (0,rxjs__WEBPACK_IMPORTED_MODULE_11__.tap)(([, {
+  activeId,
+  angle
+}]) => {
+  if (activeId !== 4) {
+    const [strHour, strMinute] = (0,_virtue_equi_equi_scheduler_utils__WEBPACK_IMPORTED_MODULE_6__.angleToTime)(angle).split(':');
+    const hour = parseInt(strHour);
+    const minute = parseInt(strMinute);
+    const time_start = new Date();
+    const time_end = new Date();
+    time_start.setHours(hour, minute);
+    time_end.setHours(hour, minute + 30);
+    (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_5__.onAddScheduleAppliance)({
+      device_type: appliances[activeId],
+      time_start,
+      time_end,
+      power_consumption: 500,
+      size: 1
+    });
+  }
+
+  (0,_virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_4__.setDialAngleChange)(angle);
+}), (0,rxjs__WEBPACK_IMPORTED_MODULE_12__.map)(() => false)), _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_4__.buttonHolded$.pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_12__.map)(() => true))), false);
+const [useDialAppear, dialAppear$] = (0,_react_rxjs_core__WEBPACK_IMPORTED_MODULE_8__.bind)(_virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_4__.dialAngle$.pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_12__.map)(dialAngle => dialAngle < DIAL_RIGHT_BOUNDARY || dialAngle > DIAL_LEFT_BOUNDARY ? false : true)), false);
+const [useDialTimeTextAngle, dialTimeTextAngle$] = (0,_react_rxjs_core__WEBPACK_IMPORTED_MODULE_8__.bind)(_virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_4__.dialAngle$.pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_10__.withLatestFrom)(dialAppear$), (0,rxjs__WEBPACK_IMPORTED_MODULE_10__.withLatestFrom)(isScheduling$), (0,rxjs__WEBPACK_IMPORTED_MODULE_13__.filter)(([, isScheduling]) => !isScheduling), (0,rxjs__WEBPACK_IMPORTED_MODULE_12__.map)(([value]) => value), (0,rxjs__WEBPACK_IMPORTED_MODULE_12__.map)(([dialAngle, dialAppear]) => !dialAppear ? 0 : dialAngle)), 0);
+const [useDialSchedule] = (0,_react_rxjs_core__WEBPACK_IMPORTED_MODULE_8__.bind)((0,rxjs__WEBPACK_IMPORTED_MODULE_14__.combineLatest)([_virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_4__.dialAngle$, isScheduling$]).pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_10__.withLatestFrom)(dialAppear$), (0,rxjs__WEBPACK_IMPORTED_MODULE_15__.scan)((acc, [[dialAngle, isScheduling], dialAppear]) => {
+  if (!isScheduling) {
+    return {
+      angle: -1,
+      activeId: 0
+    };
+  }
+
+  const angle = !dialAppear ? 0 : dialAngle;
+  acc.activeId = Math.floor(angle / 72);
+
+  if (acc.angle === -1) {
+    acc.angle = angle;
+  }
+
+  return Object.assign({}, acc);
+}, {
+  angle: -1,
+  activeId: 0
+}), connectDialSchedule()));
+const appliances = ['DishWasher', 'DryerMachine', 'WashingMachine', 'Oven', 'Cancle']; // export const applianceSchedule$ = buttonClicked$.pipe(
+//   withLatestFrom(dialSchedule$),
+//   map(([, value]) => value),
+//   tap(({ activeId, angle }) => {
+//     if (activeId !== 4) {
+//       const [strHour, strMinute] = angleToTime(angle).split(':');
+//       const hour = parseInt(strHour);
+//       const minute = parseInt(strMinute);
+//       const time_start = new Date();
+//       const time_end = new Date();
+//       time_start.setHours(hour, minute);
+//       time_end.setHours(hour, minute + 30);
+//       onAddScheduleAppliance({
+//         device_type: appliances[activeId] as DeviceType,
+//         time_start,
+//         time_end,
+//         power_consumption: 500,
+//         size: 1,
+//       });
+//     }
+//     setDialAngleChange(angle);
+//     onStopScheduling();
+//   }),
+//   map(() => EMPTY)
+// );
 
 /***/ }),
 
@@ -1051,40 +1198,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 66101:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "scheduled_item_data": () => (/* binding */ scheduled_item_data),
-/* harmony export */   "general_energy_data": () => (/* binding */ general_energy_data)
-/* harmony export */ });
-const scheduled_item_data = [{
-  id: 1,
-  device_type: 'Dishwasher',
-  time_start: new Date('2020-09-23T07:10:53'),
-  time_end: new Date('2020-09-23T07:20:53'),
-  power_consumption: 2100,
-  size: 1
-}, {
-  id: 2,
-  device_type: 'Washing Machine',
-  time_start: new Date('2020-09-23T19:10:53'),
-  time_end: new Date('2020-09-23T20:40:53'),
-  power_consumption: 3000,
-  size: 1
-}];
-const general_energy_data = {
-  current: {
-    total_solar_production: 605,
-    total_consumption: 0,
-    battery_level: 12
-  }
-};
-
-/***/ }),
-
 /***/ 22836:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -1094,19 +1207,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Scheduler": () => (/* binding */ Scheduler),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _react_rxjs_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(78016);
-/* harmony import */ var _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(81506);
-/* harmony import */ var _virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(95487);
-/* harmony import */ var _virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(46628);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(2784);
-/* harmony import */ var _dataMock__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(66101);
-/* harmony import */ var _scheduler_polar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(56691);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(52322);
+/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15735);
+/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6886);
+/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _react_rxjs_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(78016);
+/* harmony import */ var _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(81506);
+/* harmony import */ var _virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(95487);
+/* harmony import */ var _virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(46628);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(2784);
+/* harmony import */ var _scheduler_polar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(56691);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(52322);
 
 
 
 
- // TODO: replace with real data
+
 
 
 
@@ -1115,71 +1231,74 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Appliances = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_3__.memo)(() => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_react_rxjs_core__WEBPACK_IMPORTED_MODULE_7__.Subscribe, {
-  source$: _virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_1__.onScheduleAppliance,
-  children: _dataMock__WEBPACK_IMPORTED_MODULE_4__.scheduled_item_data.map((item, id) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_2__.Appliance, {
-    appliance: item
-  }, id))
-}));
+const Appliances = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_5__.memo)(() => {
+  const scheduleAppliances = (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_3__.useScheduleAppliances)();
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_rxjs_core__WEBPACK_IMPORTED_MODULE_8__.Subscribe, {
+    source$: _virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_3__.onScheduleAppliance,
+    children: scheduleAppliances.map(([, appliance], id) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__.Appliance, {
+      appliance: appliance
+    }, appliance.id))
+  });
+});
 function Scheduler(props) {
-  const appliance = (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_1__.useActiveAppliance)();
-  const isScheduling = (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_1__.useIsScheduling)();
-  (0,react__WEBPACK_IMPORTED_MODULE_3__.useLayoutEffect)(() => {
-    (0,_virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_0__.setDialAngleChange)(0);
+  const appliance = (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_3__.useActiveAppliance)();
+  const isScheduling = (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_3__.useIsScheduling)();
+  (0,react__WEBPACK_IMPORTED_MODULE_5__.useLayoutEffect)(() => {
+    (0,_virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_2__.setDialAngleChange)(0);
     return () => {
-      (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_1__.setScheduleAppliance)(null);
-      (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_1__.setActiveAppliance)(null);
+      (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_3__.setScheduleAppliance)(null);
+      (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_3__.setActiveAppliance)(null);
     };
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("g", {
-    children: [!isScheduling && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_2__.DialCursor, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("g", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("g", {
+    children: [!isScheduling && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__.DialCursor, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("g", {
       style: {
         filter: isScheduling ? 'blur(3px)' : undefined
       },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_scheduler_polar__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(Appliances, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("path", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_scheduler_polar__WEBPACK_IMPORTED_MODULE_6__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(Appliances, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("path", {
         mask: "url(#mask0)",
         d: "M540 540 505 0 0 0 0 540 Z",
         fill: "url(#linearColors1)"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("linearGradient", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("linearGradient", {
         id: "linearColors1",
         x1: "0",
         y1: "1",
         x2: "1",
         y2: "0",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("stop", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("stop", {
           offset: "0%",
           stopColor: "black",
           stopOpacity: "0"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("stop", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("stop", {
           offset: "50%",
           stopColor: "black",
           stopOpacity: "0"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("stop", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("stop", {
           offset: "60%",
           stopColor: "black",
           stopOpacity: "0.4"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("stop", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("stop", {
           offset: "100%",
           stopColor: "black",
           stopOpacity: "0.85"
         })]
-      }), appliance ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_2__.AppliancePowerConsumption, {
+      }), appliance ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__.AppliancePowerConsumption, {
           powerConsumption: appliance.power_consumption
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_2__.ApplianceSchedule, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__.ApplianceSchedule, {
           y: 220,
           timeStart: appliance.time_start
         })]
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_2__.BatteryLevel, {
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__.BatteryLevel, {
           y: 80
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_2__.PowerConsumption, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__.PowerConsumption, {
           y: 160
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_2__.PowerProduction, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__.PowerProduction, {
           y: 240
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_2__.DialTimeText, {})]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_2__.DialSchedule, {}), isScheduling && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_2__.DialCursor, {})]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__.DialTimeText, {}), isScheduling && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__.DialSchedule, {})]
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Scheduler);
@@ -1654,27 +1773,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "DialSchedule": () => (/* binding */ DialSchedule),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(81506);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(52322);
-
-/* eslint-disable-next-line */
-
+/* harmony import */ var _virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(95487);
+/* harmony import */ var _virtue_equi_equi_shared_utils_helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(47189);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(52322);
 
 
-function DialSchedule(props) {
-  const dialPosition = (0,_virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_0__.useDialAngle)();
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("g", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-      d: "M540 1080C521.561 1080 503.134 1079.07 484.789 1077.21C466.791 1075.38 448.896 1072.65 431.171 1069.03C413.779 1065.47 396.371 1060.99 379.421 1055.72C362.676 1050.51 345.983 1044.41 329.808 1037.56C313.79 1030.79 297.908 1023.14 282.608 1014.83C267.419 1006.57 252.439 997.474 238.084 987.776C223.808 978.131 209.821 967.676 196.513 956.69C183.243 945.739 170.341 934.013 158.166 921.837C145.991 909.661 134.266 896.763 123.313 883.49C112.329 870.18 101.87 856.19 92.2271 841.919C82.5271 827.568 73.427 812.589 65.178 797.396C56.864 782.09 49.213 766.208 42.439 750.196C35.601 734.028 29.492 717.336 24.281 700.583C19.012 683.644 14.535 666.232 10.975 648.832C7.35327 631.107 4.6222 613.212 2.79199 595.214C0.933885 576.868 0.00204291 558.44 0 540C0.000838709 521.561 0.931317 503.134 2.78796 484.788C4.61811 466.79 7.34918 448.896 10.9709 431.171C14.5319 413.771 19.009 396.359 24.277 379.42C29.488 362.667 35.5971 345.975 42.4351 329.808C49.2101 313.79 56.861 297.908 65.174 282.608C73.4249 267.418 82.526 252.438 92.223 238.084C101.871 223.803 112.33 209.817 123.309 196.513C134.264 183.239 145.99 170.337 158.162 158.166C170.334 145.995 183.239 134.266 196.509 123.313C209.809 112.335 223.798 101.876 238.08 92.2271C252.427 82.5341 267.407 73.4331 282.604 65.1781C297.904 56.8641 313.789 49.2132 329.804 42.4391C345.973 35.6001 362.665 29.4901 379.417 24.2811C396.363 19.0101 413.774 14.5331 431.167 10.9741C448.892 7.35177 466.787 4.62069 484.785 2.79114C491.118 2.14814 497.585 1.6081 503.996 1.1911V329.024C501.621 329.424 499.223 329.873 496.868 330.355C483.099 333.176 469.644 337.352 456.698 342.824C443.972 348.212 431.798 354.82 420.346 362.555C408.982 370.238 398.377 378.988 388.675 388.686C378.977 398.388 370.227 408.993 362.544 420.357C354.809 431.809 348.202 443.983 342.813 456.708C337.341 469.654 333.164 483.109 330.343 496.878C327.451 511.07 325.996 525.517 326 540C325.996 554.486 327.453 568.935 330.347 583.128C333.168 596.897 337.345 610.353 342.817 623.299C348.206 636.024 354.813 648.198 362.548 659.65C370.231 671.015 378.981 681.62 388.679 691.321C398.381 701.02 408.986 709.77 420.35 717.453C431.801 725.188 443.975 731.796 456.7 737.183C469.646 742.655 483.101 746.832 496.87 749.652C511.064 752.547 525.514 754.003 540 754C554.486 754.003 568.935 752.547 583.129 749.652C596.898 746.832 610.354 742.655 623.3 737.183C636.025 731.795 648.199 725.187 659.65 717.452C671.015 709.769 681.62 701.019 691.322 691.32C701.02 681.618 709.77 671.013 717.453 659.649C725.188 648.198 731.795 636.025 737.184 623.3C742.656 610.354 746.833 596.898 749.654 583.129C752.548 568.935 754.004 554.486 754 540C754.003 525.514 752.547 511.065 749.653 496.871C746.832 483.103 742.655 469.647 737.183 456.701C731.795 443.976 725.187 431.802 717.452 420.35C709.769 408.986 701.019 398.381 691.321 388.679C681.619 378.981 671.014 370.231 659.649 362.548C648.198 354.813 636.025 348.205 623.3 342.817C610.354 337.345 596.899 333.169 583.13 330.348C580.774 329.866 578.376 329.418 576.001 329.017V1.18311C582.426 1.60511 588.89 2.14514 595.213 2.78314C613.211 4.61272 631.106 7.3438 648.83 10.9661C666.23 14.5261 683.643 19.0031 700.581 24.2731C717.334 29.4841 734.026 35.5932 750.194 42.4312C766.213 49.2062 782.094 56.8571 797.394 65.1701C812.585 73.4221 827.565 82.5221 841.917 92.2191C856.199 101.867 870.185 112.326 883.488 123.305C896.765 134.262 909.667 145.988 921.835 158.158C934.003 170.328 945.735 183.234 956.688 196.505C967.67 209.813 978.129 223.8 987.774 238.076C997.467 252.423 1006.57 267.404 1014.82 282.6C1023.14 297.907 1030.79 313.789 1037.56 329.8C1044.4 345.962 1050.51 362.654 1055.72 379.412C1060.99 396.35 1065.47 413.762 1069.03 431.163C1072.65 448.888 1075.38 466.782 1077.21 484.78C1079.07 503.128 1080 521.558 1080 540C1080 558.439 1079.07 576.866 1077.21 595.211C1075.38 613.209 1072.65 631.104 1069.03 648.829C1065.47 666.229 1060.99 683.64 1055.72 700.58C1050.51 717.33 1044.4 734.022 1037.56 750.193C1030.79 766.205 1023.14 782.087 1014.83 797.393C1006.57 812.593 997.468 827.572 987.777 841.916C978.124 856.203 967.665 870.19 956.691 883.487C945.738 896.758 934.011 909.66 921.838 921.834C909.665 934.008 896.766 945.734 883.491 956.687C870.191 967.664 856.204 978.123 841.92 987.773C827.575 997.464 812.595 1006.57 797.397 1014.82C782.09 1023.14 766.208 1030.79 750.197 1037.56C734.023 1044.4 717.33 1050.51 700.584 1055.72C683.636 1060.99 666.225 1065.47 648.833 1069.03C631.109 1072.65 613.214 1075.38 595.216 1077.21C576.869 1079.07 558.441 1080 540 1080Z",
-      fill: "black",
-      opacity: "0.0",
-      filter: "url(#blurMe)"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("filter", {
-      id: "blurMe",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("feGaussianBlur", {
-        in: "SourceGraphic",
-        stdDeviation: "5"
-      })
+
+
+
+function DialSchedule() {
+  const {
+    angle,
+    activeId
+  } = (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_0__.useDialSchedule)(); // useSubscribe(applianceSchedule$);
+
+  const dialAppear = angle !== 0;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("g", {
+      transform: dialAppear ? `rotate(${angle} 540 540)` : 'rotate(0 540 540)',
+      children: Array.from(Array(5)).map((_, i) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("g", {
+        transform: `translate(${angle > 180 && angle < 270 ? '465' : '470'}, ${i * 66})`,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("image", {
+          href: (0,_virtue_equi_equi_shared_utils_helper__WEBPACK_IMPORTED_MODULE_1__.getDeviceIcon)(`${activeId === i ? 'Add' : 'Blur'}${_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_0__.appliances[i]}`),
+          width: 50,
+          height: 50,
+          transform: dialAppear ? `rotate(${-1 * angle} 30 30)` : 'rotate(0)'
+        })
+      }, i))
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("line", {
+      id: "line1",
+      x1: "540",
+      x2: "1080",
+      y1: "540",
+      y2: "540",
+      mask: "url(#mask0)",
+      stroke: "white",
+      transform: `rotate(${angle - 90} 540 540)`,
+      strokeWidth: "10"
     })]
   });
 }
@@ -1691,17 +1826,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "DialTimeText": () => (/* binding */ DialTimeText),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15735);
-/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6886);
-/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(95487);
-/* harmony import */ var _virtue_equi_equi_scheduler_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(48346);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(2784);
-/* harmony import */ var _text_clock_text_clock__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(53621);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(52322);
-
-
+/* harmony import */ var _virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(95487);
+/* harmony import */ var _virtue_equi_equi_scheduler_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(48346);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2784);
+/* harmony import */ var _text_clock_text_clock__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(53621);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(52322);
 
 
 
@@ -1709,17 +1838,10 @@ __webpack_require__.r(__webpack_exports__);
 
 const dialRightBoundary = 8;
 const dialLeftBoundary = 352;
-const DialTimeText = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_4__.memo)(() => {
-  const dialPosition = (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_2__.useDialTimeTextAngle)();
-  const [dialAppear, setDialAppear] = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(false);
-  (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
-    if ((dialPosition < dialRightBoundary || dialPosition > dialLeftBoundary) && dialAppear) {
-      setDialAppear(false);
-    } else if (dialPosition > dialRightBoundary && dialPosition < dialLeftBoundary && !dialAppear) {
-      setDialAppear(true);
-    }
-  }, [dialAppear, dialPosition]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("text", {
+const DialTimeText = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_2__.memo)(() => {
+  const dialPosition = (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_0__.useDialTimeTextAngle)();
+  const dialAppear = dialPosition !== 0;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("text", {
     x: dialAppear ? '5' : '30',
     y: dialAppear ? 520 : 490,
     fontSize: dialAppear ? 40 : 110,
@@ -1727,7 +1849,7 @@ const DialTimeText = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_4__.memo)(()
     fill: "white",
     textAnchor: "start",
     transform: dialAppear ? `rotate(${90 + dialPosition} 540 540)` : 'rotate(90 540 540)',
-    children: dialAppear ? (0,_virtue_equi_equi_scheduler_utils__WEBPACK_IMPORTED_MODULE_3__.angleToTime)(dialPosition) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_text_clock_text_clock__WEBPACK_IMPORTED_MODULE_5__["default"], {})
+    children: dialAppear ? (0,_virtue_equi_equi_scheduler_utils__WEBPACK_IMPORTED_MODULE_1__.angleToTime)(dialPosition) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_text_clock_text_clock__WEBPACK_IMPORTED_MODULE_3__["default"], {})
   });
 }, // Never rerender this component based on it's parent.
 // It knows when to restart by itself
@@ -1968,13 +2090,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "timePrettier": () => (/* reexport safe */ _lib_time_prettier__WEBPACK_IMPORTED_MODULE_1__.timePrettier),
 /* harmony export */   "angleToTime": () => (/* reexport safe */ _lib_angle_to_time__WEBPACK_IMPORTED_MODULE_2__.angleToTime),
 /* harmony export */   "dateToAngle": () => (/* reexport safe */ _lib_date_to_angle__WEBPACK_IMPORTED_MODULE_3__.dateToAngle),
-/* harmony export */   "getApplianceTimeRange": () => (/* reexport safe */ _lib_get_appliance_time_range__WEBPACK_IMPORTED_MODULE_4__.getApplianceTimeRange)
+/* harmony export */   "getApplianceTimeRange": () => (/* reexport safe */ _lib_get_appliance_time_range__WEBPACK_IMPORTED_MODULE_4__.getApplianceTimeRange),
+/* harmony export */   "general_energy_data": () => (/* reexport safe */ _lib_mock_data__WEBPACK_IMPORTED_MODULE_5__.general_energy_data),
+/* harmony export */   "scheduled_item_data": () => (/* reexport safe */ _lib_mock_data__WEBPACK_IMPORTED_MODULE_5__.scheduled_item_data)
 /* harmony export */ });
 /* harmony import */ var _lib_path_generator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(46147);
 /* harmony import */ var _lib_time_prettier__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(67428);
 /* harmony import */ var _lib_angle_to_time__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7905);
 /* harmony import */ var _lib_date_to_angle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(59579);
 /* harmony import */ var _lib_get_appliance_time_range__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(33989);
+/* harmony import */ var _lib_mock_data__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(84589);
+
 
 
 
@@ -2016,11 +2142,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "dateToAngle": () => (/* binding */ dateToAngle)
 /* harmony export */ });
 const dateToAngle = date => {
+  const currDate = new Date();
+
   if (typeof date === 'string') {
     date = new Date(date);
   }
 
-  return (date.getHours() * 60 + date.getMinutes()) * 360 / 1440;
+  const currentTime = currDate.getHours() * 60 + currDate.getMinutes();
+  const dateTime = date.getHours() * 60 + date.getMinutes();
+  const absHour = Math.abs(currDate.getHours() - date.getHours());
+  const absMinutes = Math.abs(currDate.getMinutes() - date.getMinutes());
+  const absAngle = (absHour * 60 + absMinutes) * 0.25;
+  return currentTime > dateTime ? 360 - absAngle : absAngle;
 };
 
 /***/ }),
@@ -2039,6 +2172,40 @@ const getApplianceTimeRange = appliance => {
   const from = (0,_time_prettier__WEBPACK_IMPORTED_MODULE_0__.timePrettier)(appliance.time_start);
   const to = (0,_time_prettier__WEBPACK_IMPORTED_MODULE_0__.timePrettier)(appliance.time_end);
   return from + ' → ' + to;
+};
+
+/***/ }),
+
+/***/ 84589:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "scheduled_item_data": () => (/* binding */ scheduled_item_data),
+/* harmony export */   "general_energy_data": () => (/* binding */ general_energy_data)
+/* harmony export */ });
+const scheduled_item_data = [{
+  id: 1,
+  device_type: 'DishWasher',
+  time_start: new Date('2020-09-23T07:10:53'),
+  time_end: new Date('2020-09-23T07:20:53'),
+  power_consumption: 2100,
+  size: 1
+}, {
+  id: 2,
+  device_type: 'WashingMachine',
+  time_start: new Date('2020-09-23T19:10:53'),
+  time_end: new Date('2020-09-23T20:40:53'),
+  power_consumption: 3000,
+  size: 1
+}];
+const general_energy_data = {
+  current: {
+    total_solar_production: 605,
+    total_consumption: 0,
+    battery_level: 12
+  }
 };
 
 /***/ }),
@@ -2256,11 +2423,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "RotatorContext": () => (/* reexport safe */ _rotator_rotator_context__WEBPACK_IMPORTED_MODULE_2__.RotatorContext),
 /* harmony export */   "useRotatorContext": () => (/* reexport safe */ _rotator_rotator_context__WEBPACK_IMPORTED_MODULE_2__.useRotatorContext),
 /* harmony export */   "buttonClicked$": () => (/* reexport safe */ _rotator_rotator_event__WEBPACK_IMPORTED_MODULE_3__.buttonClicked$),
+/* harmony export */   "buttonDblClick$": () => (/* reexport safe */ _rotator_rotator_event__WEBPACK_IMPORTED_MODULE_3__.buttonDblClick$),
 /* harmony export */   "buttonHolded$": () => (/* reexport safe */ _rotator_rotator_event__WEBPACK_IMPORTED_MODULE_3__.buttonHolded$),
 /* harmony export */   "dialAngle$": () => (/* reexport safe */ _rotator_rotator_event__WEBPACK_IMPORTED_MODULE_3__.dialAngle$),
 /* harmony export */   "dialAngleChange$": () => (/* reexport safe */ _rotator_rotator_event__WEBPACK_IMPORTED_MODULE_3__.dialAngleChange$),
 /* harmony export */   "dialRotate$": () => (/* reexport safe */ _rotator_rotator_event__WEBPACK_IMPORTED_MODULE_3__.dialRotate$),
 /* harmony export */   "onButtonClicked": () => (/* reexport safe */ _rotator_rotator_event__WEBPACK_IMPORTED_MODULE_3__.onButtonClicked),
+/* harmony export */   "onButtonDblClick": () => (/* reexport safe */ _rotator_rotator_event__WEBPACK_IMPORTED_MODULE_3__.onButtonDblClick),
 /* harmony export */   "onButtonHolded": () => (/* reexport safe */ _rotator_rotator_event__WEBPACK_IMPORTED_MODULE_3__.onButtonHolded),
 /* harmony export */   "setDialAngleChange": () => (/* reexport safe */ _rotator_rotator_event__WEBPACK_IMPORTED_MODULE_3__.setDialAngleChange),
 /* harmony export */   "setDialRotate": () => (/* reexport safe */ _rotator_rotator_event__WEBPACK_IMPORTED_MODULE_3__.setDialRotate),
@@ -2385,6 +2554,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "onButtonClicked": () => (/* binding */ onButtonClicked),
 /* harmony export */   "buttonHolded$": () => (/* binding */ buttonHolded$),
 /* harmony export */   "onButtonHolded": () => (/* binding */ onButtonHolded),
+/* harmony export */   "buttonDblClick$": () => (/* binding */ buttonDblClick$),
+/* harmony export */   "onButtonDblClick": () => (/* binding */ onButtonDblClick),
 /* harmony export */   "dialRotate$": () => (/* binding */ dialRotate$),
 /* harmony export */   "setDialRotate": () => (/* binding */ setDialRotate),
 /* harmony export */   "dialAngleChange$": () => (/* binding */ dialAngleChange$),
@@ -2408,6 +2579,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const [buttonClicked$, onButtonClicked] = (0,_react_rxjs_utils__WEBPACK_IMPORTED_MODULE_2__.createSignal)();
 const [buttonHolded$, onButtonHolded] = (0,_react_rxjs_utils__WEBPACK_IMPORTED_MODULE_2__.createSignal)();
+const [buttonDblClick$, onButtonDblClick] = (0,_react_rxjs_utils__WEBPACK_IMPORTED_MODULE_2__.createSignal)();
 const [dialRotate$, setDialRotate] = (0,_react_rxjs_utils__WEBPACK_IMPORTED_MODULE_2__.createSignal)();
 const [dialAngleChange$, setDialAngleChange] = (0,_react_rxjs_utils__WEBPACK_IMPORTED_MODULE_2__.createSignal)();
 const [useDialAngle, dialAngle$] = (0,_react_rxjs_core__WEBPACK_IMPORTED_MODULE_3__.bind)((0,rxjs__WEBPACK_IMPORTED_MODULE_4__.merge)(dialRotate$, dialAngleChange$).pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_5__.debounceTime)(10), (0,rxjs__WEBPACK_IMPORTED_MODULE_6__.scan)((acc, value) => {
@@ -2468,7 +2640,6 @@ function RotatorProvider(props) {
         break;
 
       case 'holdEvent':
-        console.log('holding');
         (0,_rotator_event__WEBPACK_IMPORTED_MODULE_5__.onButtonHolded)();
         break;
 
@@ -2630,20 +2801,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const devices = {
   Audio: 'AudioIcon.svg',
-  'Big Fridge': 'BigFridgeIcon.svg',
-  Dishwasher: 'DishWasherIcon.svg',
-  'Washing Machine': 'WashingMachineIcon.svg',
-  'Coffee Machine': 'CoffeeMachineIcon.svg',
+  BigFridge: 'BigFridgeIcon.svg',
+  DishWasher: 'DishWasherIcon.svg',
+  WashingMachine: 'WashingMachineIcon.svg',
+  CoffeeMachine: 'CoffeeMachineIcon.svg',
   Completed: 'CompletedIcon.svg',
-  'Dryer Machine': 'DryerMachineIcon.svg',
-  'Extractor Hood': 'ExtractorHoodIcon.svg',
-  'Floor Heating': 'FloorHeatingIcon.svg',
-  'Induction Top': 'InductionTopIcon.svg',
+  DryerMachine: 'DryerMachineIcon.svg',
+  ExtractorHood: 'ExtractorHoodIcon.svg',
+  FloorHeating: 'FloorHeatingIcon.svg',
+  InductionTop: 'InductionTopIcon.svg',
   Oven: 'OvenIcon.svg',
-  'Small Fridge': 'SmallFridgeIcon.svg',
-  'Tee Kettle': 'TeeKettleIcon.svg',
+  SmallFridge: 'SmallFridgeIcon.svg',
+  TeeKettle: 'TeeKettleIcon.svg',
   Television: 'TelevisionIcon.svg',
-  'Wall Outlet': 'WallOutletIcon.svg'
+  WallOutlet: 'WallOutletIcon.svg',
+  AddDishWasher: 'AddDishWasher.svg',
+  AddDryerMachine: 'AddDryerMachine.svg',
+  AddWashingMachine: 'AddWashingMachine.svg',
+  AddOven: 'AddOven.svg',
+  AddCancle: 'AddCancle.svg',
+  BlurDishWasher: 'BlurDishWasher.svg',
+  BlurDryerMachine: 'BlurDryerMachine.svg',
+  BlurWashingMachine: 'BlurWashingMachine.svg',
+  BlurOven: 'BlurOven.svg',
+  BlurCancle: 'BlurCancle.svg'
 };
 const getDeviceIcon = device => {
   const prefix = "equi-webapp";
@@ -2660,11 +2841,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "useInterval": () => (/* reexport safe */ _lib_useInterval__WEBPACK_IMPORTED_MODULE_0__.useInterval),
 /* harmony export */   "useIsMounted": () => (/* reexport safe */ _lib_useIsMounted__WEBPACK_IMPORTED_MODULE_1__.useIsMounted),
-/* harmony export */   "useTimeout": () => (/* reexport safe */ _lib_useTimeout__WEBPACK_IMPORTED_MODULE_2__.useTimeout)
+/* harmony export */   "useTimeout": () => (/* reexport safe */ _lib_useTimeout__WEBPACK_IMPORTED_MODULE_2__.useTimeout),
+/* harmony export */   "useSubscribe": () => (/* reexport safe */ _lib_useSubscribe__WEBPACK_IMPORTED_MODULE_3__.useSubscribe)
 /* harmony export */ });
 /* harmony import */ var _lib_useInterval__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(39893);
 /* harmony import */ var _lib_useIsMounted__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(12247);
 /* harmony import */ var _lib_useTimeout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(40868);
+/* harmony import */ var _lib_useSubscribe__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(8381);
+
 
 
 
@@ -2729,6 +2913,27 @@ const useIsMounted = () => {
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(() => ref.current, [ref]);
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useIsMounted);
+
+/***/ }),
+
+/***/ 8381:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useSubscribe": () => (/* binding */ useSubscribe)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2784);
+
+const useSubscribe = o$ => {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const subscriber = o$.subscribe();
+    return () => {
+      subscriber.unsubscribe();
+    };
+  }, [o$]);
+};
 
 /***/ }),
 
