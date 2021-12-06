@@ -2,34 +2,19 @@ import logging
 import asyncio
 import websockets
 import serial
-import serial_asyncio 
+from serial_asyncio import open_serial_connection
 
 
 # save all clients
 clients = set()
 
 
-class OutputProtocol(asyncio.Protocol):
-    def connection_made(self, transport):
-        self.transport = transport
-        print('port opened', transport)
-
-    def data_received(self, data):
-        print('data received', repr(data))
+async def teensyReader():
+    reader, writer = await open_serial_connection(url='/dev/ttyACM0', baudrate=9600)
+    while True:
+        line = await reader.readline()
         line = str(line, 'utf-8').strip()
-        sendMessage(line)
-
-    def connection_lost(self, exc):
-        print('port closed')
-        self.transport.loop.stop()
-
-    def pause_writing(self):
-        print('pause writing')
-        print(self.transport.get_write_buffer_size())
-
-    def resume_writing(self):
-        print(self.transport.get_write_buffer_size())
-        print('resume writing')
+        await sendMessage(line)
 
 
 async def sendMessage(message):
@@ -70,8 +55,7 @@ if __name__ == "__main__":
     # register the async tasks
     loop = asyncio.get_event_loop()
     loop.run_until_complete(start_server)
-    coro = serial_asyncio.create_serial_connection(loop, OutputProtocol, '/dev/ttyACM0', baudrate=9600)
-    transport, protocol = loop.run_until_complete(coro)
+    loop.run_until_complete(teensyReader())
 
     # run all the async
     loop.run_forever()
