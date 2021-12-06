@@ -70,7 +70,7 @@ if __name__ == "__main__":
     # register the async tasks
     loop = asyncio.get_event_loop()
     loop.run_until_complete(start_server)
-    coro = serial_asyncio.create_serial_connection(loop, OutputProtocol, '/dev/ttyUSB0', baudrate=9600)
+    coro = serial_asyncio.create_serial_connection(loop, OutputProtocol, '/dev/ttyACM0', baudrate=9600)
     transport, protocol = loop.run_until_complete(coro)
 
     # run all the async
