@@ -2,19 +2,11 @@ import logging
 import asyncio
 import websockets
 import serial
-from serial_asyncio import open_serial_connection
+import serial_asyncio 
 
 
 # save all clients
 clients = set()
-
-
-async def teensyReader():
-    reader, writer = await open_serial_connection(url='/dev/ttyACM0', baudrate=9600)
-    while True:
-        line = await reader.readline()
-        line = str(line, 'utf-8').strip()
-        await sendMessage(line)
 
 
 class OutputProtocol(asyncio.Protocol):
