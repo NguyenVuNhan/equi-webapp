@@ -10,16 +10,16 @@ from util.helper import pluck
 
 
 class EnphaseBattery:
-    def __init__(self, percent: int, state: str, wNow: int):
+    def __init__(self, percent: int, state: str, whNow: int):
         self.percent = percent
         self.state = state
-        self.wNow = wNow
+        self.whNow = whNow
 
     def getJson(self):
         return {
             "percent": self.percent,
             "state": self.state,
-            "wNow": self.wNow
+            "whNow": self.whNow
         }
 
 
@@ -48,7 +48,7 @@ def getEnphaseData() -> EnphaseData:
             battery=EnphaseBattery(
                 percent=battery["percentFull"],
                 state=battery["state"],
-                wNow=battery["wNow"]
+                wNow=battery["whNow"]
             )
         )
 
