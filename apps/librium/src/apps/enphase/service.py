@@ -19,6 +19,7 @@ class EnphaseBattery:
         return {
             "percent": self.percent,
             "state": self.state,
+            "wNow": self.wNow
         }
 
 
