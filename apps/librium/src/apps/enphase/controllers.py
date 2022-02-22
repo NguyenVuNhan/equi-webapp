@@ -13,7 +13,6 @@ def powerStatus() -> EnphaseData:
     data = getEnphaseData().getJson()
     return getSuccessMessage(data)
 
-
 @enphase_blueprint.route("/series", methods=['GET'])
 def series():
     data = getEnphaseDataGraph()

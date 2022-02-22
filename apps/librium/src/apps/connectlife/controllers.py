@@ -11,7 +11,9 @@ connectLifeBlueprint = Blueprint('connect-life', __name__)
 @connectLifeBlueprint.route("/start/dishwasher", methods=['GET'])
 def startDishWasher():
     return getSuccessMessage(dishWasher.setProperty({
-        "ChildLock": "7372"
+        "Actions": "1",
+        "SelectedProgramId": "7205",
+        "ProgramMode": "7436"
     }))
 
 

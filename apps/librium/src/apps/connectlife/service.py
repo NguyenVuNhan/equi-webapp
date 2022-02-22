@@ -26,10 +26,11 @@ class AtagAppliance:
         response = requests.post(
             url=urljoin(
                 current_app.config["CONNECT_LIFE_URL"],
-                "Appliance"
+                "v1/Appliance"
             ),
             headers={
-                "Authorization": token
+                "Authorization": token,
+                "Content-Type": "application/json"
             },
             data=[
                 {
@@ -39,23 +40,24 @@ class AtagAppliance:
             ]
         )
 
+        print(response.reason)
+        print(response.json())
         print(urljoin(
                 current_app.config["CONNECT_LIFE_URL"],
                 "Appliance"
             ),
-{
+            {
                 "Authorization": token
-            }, [
+            }, 
+            [
                 {
                     "id": self.id,
                     "properties": properties
                 }
             ]
             )
-        print(response.json())
 
         if (response.ok):
-            print(response.json())
             return response.json()
 
         return None
