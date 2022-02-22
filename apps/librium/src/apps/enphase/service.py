@@ -48,7 +48,7 @@ def getEnphaseData() -> EnphaseData:
             battery=EnphaseBattery(
                 percent=battery["percentFull"],
                 state=battery["state"],
-                wNow=battery["whNow"]
+                whNow=battery["whNow"]
             )
         )
 
