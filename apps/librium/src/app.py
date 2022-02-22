@@ -29,7 +29,9 @@ def create_app():
 
     # Register all controller to app
     from apps.enphase.controllers import enphase_blueprint
+    from apps.connectlife.controllers import connectLifeBlueprint
     app.register_blueprint(enphase_blueprint, url_prefix='/api/enphase/')
+    app.register_blueprint(connectLifeBlueprint, url_prefix='/api/connect-life/')
 
     influxdb.init_app(app)
 
