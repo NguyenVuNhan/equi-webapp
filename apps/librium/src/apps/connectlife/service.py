@@ -1,6 +1,16 @@
+from cgitb import text
+import time
+import timeit
+
 import requests
-from requests.compat import urljoin, quote_plus
 from flask import current_app
+from requests.compat import quote_plus, urljoin
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 def login() -> str:
@@ -14,13 +24,16 @@ def login() -> str:
 
     return None
 
+class Appliance(object):
+    def start(self):
+        raise NotImplementedError()
 
-class AtagAppliance:
-    def __init__(self, id, name):
-        self.id = id
-        self.name = name
-
-    def setProperty(self, properties):
+class DishWasher(Appliance):
+    def __init__(self):
+        self.id = "8730010000000000007370150002202100010930013-0000000000007370150002202100010930013", 
+        self.name = "DishWasher"
+    
+    def __setProperty(self, properties):
         token = login()
 
         response = requests.post(
@@ -40,35 +53,54 @@ class AtagAppliance:
             ]
         )
 
-        print(response.reason)
-        print(response.json())
-        print(urljoin(
-                current_app.config["CONNECT_LIFE_URL"],
-                "Appliance"
-            ),
-            {
-                "Authorization": token
-            }, 
-            [
-                {
-                    "id": self.id,
-                    "properties": properties
-                }
-            ]
-            )
-
         if (response.ok):
             return response.json()
 
         return None
 
+    def start(self):
+        return self.__setProperty({
+            "Actions": "1",
+            "SelectedProgramId": "7191", # ECO Program
+            "ProgramMode": "7436"        # Normal mode
+        })
 
-dishWasher = AtagAppliance(
-    "8730010000000000007370150002202100010930013-0000000000007370150002202100010930013", 
-    "DishWasher"
-    )
-refrigerator = AtagAppliance(
-    "8730010000000000007325830006202100011030001-0000000000007325830006202100011030001",
-    "Refrigerator"
-)
-    
+class WashingMachine(Appliance):
+    def start(self):
+        # instantiate a chrome options object so you can set the size and headless preference
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--window-size=1920x1080")
+        # go to google
+        driver = webdriver.Chrome(
+            chrome_options=chrome_options,
+            executable_path="/usr/bin/chromedriver")
+        driver.get("https://my.homey.app/login")
+
+        try:
+            element = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "#root iframe"))
+            )
+            driver.switch_to.frame(element)
+            driver.find_element_by_css_selector('#main input[name="email"]')\
+                  .send_keys("Jim.blom@teamvirtue.nl")
+            driver.find_element_by_css_selector('#main input[name="password"]')\
+                  .send_keys("SmartSystemForLife#1")
+            driver.find_element_by_css_selector('#main form[name="login"]')\
+                  .submit()
+
+            time.sleep(5)
+
+            driver.get("https://my.homey.app/homeys/608fe2c7a268e00c2b5f2ca0/flows/f01f64c4-1e79-4573-a10a-81b5f6aabcc8")
+            element = WebDriverWait(driver, 30).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "div.css-1i31ksw.e1v3vv30 > button.css-4ml5bp.e8sxues1 > span.css-ot5p3k.e8sxues0"))
+            )
+            element.click()
+            time.sleep(20)
+            return element.text
+        finally:
+            pass
+            driver.quit()
+
+dishWasher = DishWasher();
+washingMachine = WashingMachine();
