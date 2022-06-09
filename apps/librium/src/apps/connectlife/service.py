@@ -1,4 +1,5 @@
 from cgitb import text
+import json
 import time
 import timeit
 
@@ -30,11 +31,16 @@ class Appliance(object):
 
 class DishWasher(Appliance):
     def __init__(self):
-        self.id = "8730010000000000007370150002202100010930013-0000000000007370150002202100010930013", 
+        self.applianceId = "8730010000000000007370150002202100010930013-0000000000007370150002202100010930013"
         self.name = "DishWasher"
     
     def __setProperty(self, properties):
         token = login()
+
+        data = [{
+            "id": self.applianceId,
+            "properties": properties
+        }]
 
         response = requests.post(
             url=urljoin(
@@ -45,10 +51,7 @@ class DishWasher(Appliance):
                 "Authorization": token,
                 "Content-Type": "application/json"
             },
-            data={
-                "id": self.id,
-                "properties": properties
-            }
+            data=json.dumps(data)
         )
 
         if (response.ok):
@@ -56,6 +59,9 @@ class DishWasher(Appliance):
 
         return {
             "isFailed": True,
+            "status": response.status_code,
+            "token": token,
+            "data": data,
             "response": response.json()
         }
 
