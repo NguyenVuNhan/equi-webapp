@@ -20057,6 +20057,40 @@ function switchMap(project, resultSelector) {
 
 /***/ }),
 
+/***/ 56718:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "take": () => (/* binding */ take)
+/* harmony export */ });
+/* harmony import */ var _observable_empty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(20);
+/* harmony import */ var _util_lift__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1118);
+/* harmony import */ var _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(67394);
+
+
+
+function take(count) {
+    return count <= 0
+        ?
+            function () { return _observable_empty__WEBPACK_IMPORTED_MODULE_0__.EMPTY; }
+        : (0,_util_lift__WEBPACK_IMPORTED_MODULE_1__.operate)(function (source, subscriber) {
+            var seen = 0;
+            source.subscribe(new _OperatorSubscriber__WEBPACK_IMPORTED_MODULE_2__.OperatorSubscriber(subscriber, function (value) {
+                if (++seen <= count) {
+                    subscriber.next(value);
+                    if (count <= seen) {
+                        subscriber.complete();
+                    }
+                }
+            }));
+        });
+}
+//# sourceMappingURL=take.js.map
+
+/***/ }),
+
 /***/ 11348:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
