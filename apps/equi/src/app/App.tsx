@@ -1,20 +1,43 @@
-import { Subscribe } from '@react-rxjs/core';
-import { dialAngle$, RotatorProvider } from '@virtue-equi/equi-shared-features';
+import { bind } from '@react-rxjs/core';
+import { Scheduler } from '@virtue-equi/equi-scheduler-feature-shell';
+import {
+  buttonClicked$,
+  buttonDblClick$,
+  buttonHolded$,
+  dialAngleChange$,
+  dialRotate$,
+  RotatorProvider,
+} from '@virtue-equi/equi-shared-features';
 import { Appliances } from '@virtue-equi/equi/appliances/feature';
 import { Menu } from '@virtue-equi/equi/menu/feature';
-import { Scheduler } from '@virtue-equi/equi-scheduler-feature-shell';
 import { VirtualRotator } from '@virtue-equi/equi/shell/features/virtual-rotator';
 import { Standby } from '@virtue-equi/equi/standby/feature';
-import { memo } from 'react';
+import { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Redirect,
   Route,
   Switch,
 } from 'react-router-dom';
+import { debounceTime, merge, take } from 'rxjs';
 import './App.css';
 
+// Work around. When there no interaction for 10 minute, go to the standby screen
+const timeoutRefresh$ = merge(
+  buttonClicked$,
+  buttonHolded$,
+  buttonDblClick$,
+  dialRotate$,
+  dialAngleChange$
+).pipe(debounceTime(10000), take(1));
+
 function App() {
+  useEffect(() => {
+    timeoutRefresh$.subscribe(() => {
+      window.location.href = '/standby';
+    });
+  });
+
   return (
     <Router basename={process.env.NX_EQUI_BASENAME}>
       <div className="App">
