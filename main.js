@@ -1224,13 +1224,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6886);
 /* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _react_rxjs_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(78016);
-/* harmony import */ var _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(81506);
-/* harmony import */ var _virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(95487);
-/* harmony import */ var _virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(46628);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(2784);
-/* harmony import */ var _scheduler_polar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(56691);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(52322);
+/* harmony import */ var _react_rxjs_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(78016);
+/* harmony import */ var _virtue_equi_equi_shared_data_access__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(70039);
+/* harmony import */ var _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(81506);
+/* harmony import */ var _virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(95487);
+/* harmony import */ var _virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(46628);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(2784);
+/* harmony import */ var _scheduler_polar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(56691);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(52322);
+
 
 
 
@@ -1244,74 +1246,90 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const Appliances = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_5__.memo)(() => {
-  const scheduleAppliances = (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_3__.useScheduleAppliances)();
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_react_rxjs_core__WEBPACK_IMPORTED_MODULE_8__.Subscribe, {
-    source$: _virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_3__.onScheduleAppliance,
-    children: scheduleAppliances.map(([, appliance], id) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__.Appliance, {
+const Appliances = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_6__.memo)(() => {
+  const scheduleAppliances = (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_4__.useScheduleAppliances)(); // get all the schedule appliances
+
+  (0,react__WEBPACK_IMPORTED_MODULE_6__.useEffect)(() => {
+    (0,_virtue_equi_equi_shared_data_access__WEBPACK_IMPORTED_MODULE_2__.getScheduledAppliance)().then(data => {
+      console.log('fetch success');
+      console.log(data);
+    }).catch(err => {
+      console.log('fetch failed');
+      console.log(err);
+    }); // onAddScheduleAppliance({
+    //   device_type: appliances[activeId] as DeviceType,
+    //   time_start,
+    //   time_end,
+    //   power_consumption: 500,
+    //   size: 1,
+    // });
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_react_rxjs_core__WEBPACK_IMPORTED_MODULE_9__.Subscribe, {
+    source$: _virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_4__.onScheduleAppliance,
+    children: scheduleAppliances.map(([, appliance], id) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_5__.Appliance, {
       appliance: appliance
     }, appliance.id))
   });
 });
 function Scheduler(props) {
-  const appliance = (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_3__.useActiveAppliance)();
-  const isScheduling = (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_3__.useIsScheduling)();
-  (0,react__WEBPACK_IMPORTED_MODULE_5__.useLayoutEffect)(() => {
-    (0,_virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_2__.setDialAngleChange)(0);
+  const appliance = (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_4__.useActiveAppliance)();
+  const isScheduling = (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_4__.useIsScheduling)();
+  (0,react__WEBPACK_IMPORTED_MODULE_6__.useLayoutEffect)(() => {
+    (0,_virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_3__.setDialAngleChange)(0);
     return () => {
-      (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_3__.setScheduleAppliance)(null);
-      (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_3__.setActiveAppliance)(null);
+      (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_4__.setScheduleAppliance)(null);
+      (0,_virtue_equi_equi_scheduler_feature_appliance_state__WEBPACK_IMPORTED_MODULE_4__.setActiveAppliance)(null);
     };
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("g", {
-    children: [!isScheduling && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__.DialCursor, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("g", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("g", {
+    children: [!isScheduling && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_5__.DialCursor, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("g", {
       style: {
         filter: isScheduling ? 'blur(3px)' : undefined
       },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_scheduler_polar__WEBPACK_IMPORTED_MODULE_6__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(Appliances, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("path", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_scheduler_polar__WEBPACK_IMPORTED_MODULE_7__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(Appliances, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("path", {
         mask: "url(#mask0)",
         d: "M540 540 505 0 0 0 0 540 Z",
         fill: "url(#linearColors1)"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("linearGradient", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("linearGradient", {
         id: "linearColors1",
         x1: "0",
         y1: "1",
         x2: "1",
         y2: "0",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("stop", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("stop", {
           offset: "0%",
           stopColor: "black",
           stopOpacity: "0"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("stop", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("stop", {
           offset: "50%",
           stopColor: "black",
           stopOpacity: "0"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("stop", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("stop", {
           offset: "60%",
           stopColor: "black",
           stopOpacity: "0.4"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("stop", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("stop", {
           offset: "100%",
           stopColor: "black",
           stopOpacity: "0.85"
         })]
-      }), appliance ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__.AppliancePowerConsumption, {
+      }), appliance ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_5__.AppliancePowerConsumption, {
           powerConsumption: appliance.power_consumption
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__.ApplianceSchedule, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_5__.ApplianceSchedule, {
           y: 220,
           timeStart: appliance.time_start
         })]
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__.BatteryLevel, {
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_5__.BatteryLevel, {
           y: 80
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__.PowerConsumption, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_5__.PowerConsumption, {
           y: 160
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__.PowerProduction, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_5__.PowerProduction, {
           y: 240
         })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__.DialTimeText, {}), isScheduling && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_4__.DialSchedule, {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_5__.DialTimeText, {}), isScheduling && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_virtue_equi_equi_scheduler_ui__WEBPACK_IMPORTED_MODULE_5__.DialSchedule, {})]
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Scheduler);
@@ -2332,13 +2350,15 @@ const timePrettier = time => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "getPowerStatus": () => (/* binding */ getPowerStatus),
-/* harmony export */   "getEnphaseSeries": () => (/* binding */ getEnphaseSeries)
+/* harmony export */   "getEnphaseSeries": () => (/* binding */ getEnphaseSeries),
+/* harmony export */   "getScheduledAppliance": () => (/* binding */ getScheduledAppliance)
 /* harmony export */ });
 /* harmony import */ var core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(73439);
 /* harmony import */ var core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_promise_js__WEBPACK_IMPORTED_MODULE_0__);
 
-const getPowerStatus = async () => {
-  const res = await fetch(`${"https://virtue-librium.loca.lt"}/api/enphase/power-status`);
+
+const getData = async url => {
+  const res = await fetch(url);
 
   if (res.ok) {
     const data = await res.json();
@@ -2347,12 +2367,26 @@ const getPowerStatus = async () => {
 
   return false;
 };
-const getEnphaseSeries = async () => {
-  const res = await fetch(`${"https://virtue-librium.loca.lt"}/api/enphase/series`);
 
-  if (res.ok) {
-    const data = await res.json();
-    return data.data;
+const getPowerStatus = async () => {
+  return getData(`${"https://virtue-librium.loca.lt"}/api/enphase/power-status`);
+};
+const getEnphaseSeries = async () => {
+  return getData(`${"https://virtue-librium.loca.lt"}/api/enphase/series`);
+};
+const getScheduledAppliance = async () => {
+  if (({"NODE_ENV":"production","NX_LIBRIUM_URL":"https://virtue-librium.loca.lt","NX_EQUI_BASENAME":"equi-webapp","NX_CLI_SET":"true","NX_INVOKED_BY_RUNNER":"true","NX_WORKSPACE_ROOT":"/home/runner/work/equi-webapp/equi-webapp","NX_TERMINAL_OUTPUT_PATH":"/home/runner/work/equi-webapp/equi-webapp/node_modules/.cache/nx/terminalOutputs/c1e6d71aaed391b0bf41341c5afd96ce594f2466ccc8ab000e47759b2fb8d5ee","NX_FORWARD_OUTPUT":"true","NX_TASK_TARGET_PROJECT":"equi","NX_TASK_HASH":"c1e6d71aaed391b0bf41341c5afd96ce594f2466ccc8ab000e47759b2fb8d5ee"}).NX_GET_SCHEDULER_URL) {
+    console.log('fetching');
+    const res = await fetch(({"NODE_ENV":"production","NX_LIBRIUM_URL":"https://virtue-librium.loca.lt","NX_EQUI_BASENAME":"equi-webapp","NX_CLI_SET":"true","NX_INVOKED_BY_RUNNER":"true","NX_WORKSPACE_ROOT":"/home/runner/work/equi-webapp/equi-webapp","NX_TERMINAL_OUTPUT_PATH":"/home/runner/work/equi-webapp/equi-webapp/node_modules/.cache/nx/terminalOutputs/c1e6d71aaed391b0bf41341c5afd96ce594f2466ccc8ab000e47759b2fb8d5ee","NX_FORWARD_OUTPUT":"true","NX_TASK_TARGET_PROJECT":"equi","NX_TASK_HASH":"c1e6d71aaed391b0bf41341c5afd96ce594f2466ccc8ab000e47759b2fb8d5ee"}).NX_GET_SCHEDULER_URL);
+    await fetch('http://64.225.81.130:8080/default/virtue/solarprediction');
+    console.log('res:', res.body);
+
+    if (res.ok) {
+      const data = await res.json();
+      return data.data;
+    }
+
+    return getData(({"NODE_ENV":"production","NX_LIBRIUM_URL":"https://virtue-librium.loca.lt","NX_EQUI_BASENAME":"equi-webapp","NX_CLI_SET":"true","NX_INVOKED_BY_RUNNER":"true","NX_WORKSPACE_ROOT":"/home/runner/work/equi-webapp/equi-webapp","NX_TERMINAL_OUTPUT_PATH":"/home/runner/work/equi-webapp/equi-webapp/node_modules/.cache/nx/terminalOutputs/c1e6d71aaed391b0bf41341c5afd96ce594f2466ccc8ab000e47759b2fb8d5ee","NX_FORWARD_OUTPUT":"true","NX_TASK_TARGET_PROJECT":"equi","NX_TASK_HASH":"c1e6d71aaed391b0bf41341c5afd96ce594f2466ccc8ab000e47759b2fb8d5ee"}).NX_GET_SCHEDULER_URL);
   }
 
   return false;
@@ -2367,7 +2401,8 @@ const getEnphaseSeries = async () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "getEnphaseSeries": () => (/* reexport safe */ _api_enphase_api__WEBPACK_IMPORTED_MODULE_0__.getEnphaseSeries),
-/* harmony export */   "getPowerStatus": () => (/* reexport safe */ _api_enphase_api__WEBPACK_IMPORTED_MODULE_0__.getPowerStatus)
+/* harmony export */   "getPowerStatus": () => (/* reexport safe */ _api_enphase_api__WEBPACK_IMPORTED_MODULE_0__.getPowerStatus),
+/* harmony export */   "getScheduledAppliance": () => (/* reexport safe */ _api_enphase_api__WEBPACK_IMPORTED_MODULE_0__.getScheduledAppliance)
 /* harmony export */ });
 /* harmony import */ var _api_enphase_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(40733);
 
