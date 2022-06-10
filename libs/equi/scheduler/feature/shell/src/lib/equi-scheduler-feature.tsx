@@ -1,6 +1,8 @@
 import { Subscribe } from '@react-rxjs/core';
+import { getScheduledAppliance } from '@virtue-equi/equi-shared-data-access';
 import { setDialAngleChange } from '@virtue-equi/equi-shared-features';
 import {
+  onAddScheduleAppliance,
   onScheduleAppliance,
   setActiveAppliance,
   setScheduleAppliance,
@@ -19,13 +21,35 @@ import {
   PowerConsumption,
   PowerProduction,
 } from '@virtue-equi/equi/scheduler/ui';
-import { memo, useLayoutEffect } from 'react';
+import { DeviceType } from '@virtue-equi/equi/shared/utils/helper';
+import { memo, useEffect, useLayoutEffect } from 'react';
 import SchedulerPolar from './scheduler-polar';
 
 /* eslint-disable-next-line */
 export interface SchedulerProps {}
 const Appliances = memo(() => {
   const scheduleAppliances = useScheduleAppliances();
+
+  // get all the schedule appliances
+  useEffect(() => {
+    getScheduledAppliance()
+      .then((data) => {
+        console.log('fetch success');
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log('fetch failed');
+        console.log(err);
+      });
+
+    // onAddScheduleAppliance({
+    //   device_type: appliances[activeId] as DeviceType,
+    //   time_start,
+    //   time_end,
+    //   power_consumption: 500,
+    //   size: 1,
+    // });
+  }, []);
 
   return (
     <Subscribe source$={onScheduleAppliance}>
