@@ -29,7 +29,7 @@ const timeoutRefresh$ = merge(
   buttonDblClick$,
   dialRotate$,
   dialAngleChange$
-).pipe(debounceTime(10000), take(1));
+).pipe(debounceTime(5 * 60 * 1000), take(1));
 
 function App() {
   useEffect(() => {
