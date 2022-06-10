@@ -35,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const timeoutRefresh$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_9__.merge)(_virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_1__.buttonClicked$, _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_1__.buttonHolded$, _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_1__.buttonDblClick$, _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_1__.dialRotate$, _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_1__.dialAngleChange$).pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_10__.debounceTime)(10000), (0,rxjs__WEBPACK_IMPORTED_MODULE_11__.take)(1));
+const timeoutRefresh$ = (0,rxjs__WEBPACK_IMPORTED_MODULE_9__.merge)(_virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_1__.buttonClicked$, _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_1__.buttonHolded$, _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_1__.buttonDblClick$, _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_1__.dialRotate$, _virtue_equi_equi_shared_features__WEBPACK_IMPORTED_MODULE_1__.dialAngleChange$).pipe((0,rxjs__WEBPACK_IMPORTED_MODULE_10__.debounceTime)(5 * 60 * 1000), (0,rxjs__WEBPACK_IMPORTED_MODULE_11__.take)(1));
 
 function App() {
   (0,react__WEBPACK_IMPORTED_MODULE_6__.useEffect)(() => {
