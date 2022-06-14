@@ -1,3 +1,4 @@
+import json
 from typing import List
 
 from flask import jsonify
@@ -37,22 +38,42 @@ class EnphaseData:
         }
 
 
-def getEnphaseData() -> EnphaseData:
-    r = requests.get(current_app.config["ENVOY_PRODUCTION_URL"])
-    if (r.ok):
-        data = r.json()
-        battery = data['storage'][0]
-        return EnphaseData(
-            production=data["production"][1]["wNow"],
-            consumption=data["consumption"][0]["wNow"],
-            battery=EnphaseBattery(
-                percent=battery["percentFull"],
-                state=battery["state"],
-                whNow=battery["whNow"]
-            )
-        )
-
-    raise AppError("Unable to get enphase data")
+def getEnphaseData():
+    # First try to get the session_id
+    try:
+        r = requests.post(
+            url=current_app.config["ENLIGHTEN_LOGIN_URL"],
+            headers={
+                "Content-Type": "application/json"
+            },
+            data=json.dumps({
+                "user": {
+                    "email": current_app.config["ENLIGHTEN_USERNAME"],
+                    "password": current_app.config["ENLIGHTEN_PASSWORD"]
+                }}
+        ))
+        if (r.ok):
+            data = r.json()
+            print("check 2", data)
+            session_id = data["session_id"]
+            # Second try to get the battery data
+            r = requests.get(
+                url=current_app.config["ENLIGHTEN_BATTERY_URL"],
+                headers={
+                    "e-auth-token": session_id
+                })
+            if (r.ok):
+                data = r.json()
+                batteryPercentage = int(data["storages"][0]["current_charge"].replace("%", ""))
+                return {
+                    "battery": {
+                        "percent": batteryPercentage
+                    }
+                }
+        raise Exception
+    except Exception as e:
+        print(e)
+        raise AppError("Unable to get enphase data")
 
 
 def getEnphaseDataGraph() -> List[List[int]]:
